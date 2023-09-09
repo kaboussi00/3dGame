@@ -59,12 +59,12 @@ int ft_strlen(char *str)
     return(i);
 }
 
-int	ft_strncmp(const char *str1, const char *str2, int n)
+int	ft_strncmp(const char *str1, const char *str2)
 {
 	int			i;
 
 	i = 0;
-	while ((str1[i] != '\0' || str2[i] != '\0') && i < n)
+	while (str1[i] != '\0' || str2[i] != '\0')
 	{
 		if (str1[i] != str2[i])
 			return (str1[i] - str2[i]);
@@ -115,4 +115,42 @@ void press_map(t_cub *cub)
     }
     cub->map[i] = NULL;
 }
+
+void	check_texture(t_cub *cub)
+{
+	int i = 0;
+	while (cub->map[i] < 6)
+	{
+		char **text = ft_split(cub->map[i], ' ');
+		if (text[2] != NULL || ft_strcmp(text[0] , "NO") || ft_strcmp(text[0] , "SO") ||\
+		 ft_strcmp(text[0] , "WE") || ft_strcmp(text[0] ,"EA") || ft_strcmp(text[0] , "F")\
+		  || ft_strcmp(text[0], "C"))
+		 	printerror_message("invalid texture!\n");
+	}
+}
+
+// int exit_word(char *str, char *s)
+// {
+// 	int i;
+// 	i = 0;
+
+// 	while (str[i])
+// 	{
+// 		if (strcmp(str, s, ) )
+// 	}
+// }
+
+
+// void	check_valid_map(t_cub *cub)
+// {
+
+// }
+
+// void check_texture(t_cub *cub)
+// {
+// 	while (cub->map)
+// 	{
+	
+// 	}
+// }
 
