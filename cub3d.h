@@ -17,7 +17,13 @@ typedef struct s_cub
     int len;
     int fd;
     char **map;
-    char mt_text;
+    char **text;
+    int no;
+    int so;
+    int we;
+    int ea;
+    int f;
+    int c;
 
 }   t_cub;
 
