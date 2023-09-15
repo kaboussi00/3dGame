@@ -7,6 +7,7 @@ void	printerror_message(char *str)
 	exit(0);
 }
 
+
 void	ft_putstr(char *s)
 {
 	int		i;
