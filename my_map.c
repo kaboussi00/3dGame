@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:04:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/14 12:50:44 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:10:45 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ void	wallsbonus2(t_cub *cub)
 
 // while (var->map[0][var->i] && var->map[0][var->i] != '\n')
 // {
-// 	if (var->map[0][var->i] != '1' || \
+// 	if (var->map[0][var->i] != '1' || 
 // 	var->map[var->lines - 1][var->i] != '1')
 // 		printerror_message("walls problem1\n");
 // 	var->i++;
