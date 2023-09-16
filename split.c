@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   split.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 12:05:37 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/16 15:04:21 by kaboussi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "cub3d.h"
 
 static int	calcule_mot(char const *str, char c)
@@ -69,19 +57,19 @@ static char	*ft_charge(char const *str, char c, int len)
 	return (p);
 }
 
-static char	**ft_free(char **p, int j)
-{
-	int	i;
+// static char	**ft_free(char **p, int j)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < j)
-	{
-		free(p[i]);
-		i++;
-	}
-	free(p);
-	return (NULL);
-}
+// 	i = 0;
+// 	while (i < j)
+// 	{
+// 		free(p[i]);
+// 		i++;
+// 	}
+// 	free(p);
+// 	return (NULL);
+// }
 
 char	**ft_split(char const *s, char c)
 {

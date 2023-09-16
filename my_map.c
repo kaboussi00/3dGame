@@ -1,17 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   my_map.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 12:04:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/16 17:10:45 by kaboussi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "cub3d.h"
-
 // char	*ft_strdup(const char *str)
 // {
 // 	size_t	len;
@@ -122,77 +109,9 @@ void copy_map(t_cub *cub)
         cub->j++;
     }
     cub->map[cub->j] = NULL;
+    // while (cub->map[y])
+    // {
+    //    printf("{,,,,,,,,,,,,,,,,%s}", cub->map[y]); 
+    //    y++;
+    // }
 }
-
-void	check_not_char(t_cub *cub)
-{
-	cub->i = 0;
-	while (cub->i < cub->line)
-	{
-		cub->j = 0;
-		while (cub->j < cub->len)
-		{
-			if (!ft_strchr("10N ", cub->map[cub->i][cub->j]) || !ft_strchr("10S ", cub->map[cub->i][cub->j]\
-            || !ft_strchr("10E ", cub->map[cub->i][cub->j])) || !ft_strchr("10W ", cub->map[cub->i][cub->j]))
-				printerror_message("invalid character\n");
-			cub->j++;
-		}
-		cub->i++;
-	}
-}
-
-void check_valid_walls(t_cub    *cub)
-{
-    cub->i = 0;
-    while (cub->i < cub->line)
-    {
-        cub->j = 0;
-        while (cub->j < cub->len)
-        {
-            
-        }
-        
-    }
-}
-
-void check_space(t_cub  *cub)
-{
-    cub->i = 0;
-    cub->j = 0;
-    if (cub->map[cub->i][0] != '1' || cub->map[cub->i][0] != ' ')
-        printerror_message("walls problem2\n");
-    while (cub->map[cub->i][cub->j] == ' ')
-    {
-        cub->j++;
-        if (cub->map[cub->i][cub->j+1] != 1)
-            printerror_message("walls problem2\n");
-    }
-    
-        
-}
-
-void	wallsbonus2(t_cub *cub)
-{
-	cub->i = 0;
-	while (cub->i < cub->line)
-	{
-		if (cub->map[cub->i][0] != '1' || cub->map[cub->i][cub->len - 1] != '1')
-			printerror_message("walls problem2\n");
-		cub->i++;
-	}
-    while (cub->map[0][cub->i] && cub->map[0][cub->i] != '\n')
-    {
-    	if (cub->map[0][cub->i] != '1' || \
-    	cub->map[cub->line - 1][cub->i] != '1')
-    		printerror_message("walls problem1\n");
-    	cub->i++;
-    }
-}
-
-// while (var->map[0][var->i] && var->map[0][var->i] != '\n')
-// {
-// 	if (var->map[0][var->i] != '1' || 
-// 	var->map[var->lines - 1][var->i] != '1')
-// 		printerror_message("walls problem1\n");
-// 	var->i++;
-// }
