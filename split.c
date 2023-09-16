@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kaboussi <kaboussi@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/14 12:05:37 by kaboussi          #+#    #+#             */
+/*   Updated: 2023/09/16 15:04:21 by kaboussi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static int	calcule_mot(char const *str, char c)
@@ -7,14 +19,14 @@ static int	calcule_mot(char const *str, char c)
 
 	i = 0;
 	calcul = 0;
-	while (str[i])
+	while (str[i] && str[i] != '\n')
 	{
 		while (str[i] == c)
 			i++;
-		if (str[i] != c && str[i])
+		if (str[i] != c && str[i] && str[i] != '\n')
 		{
 			calcul++;
-			while (str[i] != c && str[i])
+			while (str[i] != c && str[i] && str[i] != '\n')
 				i++;
 		}
 	}
@@ -28,9 +40,9 @@ static int	calcule_lettre(char const *str, char c)
 
 	i = 0;
 	j = 0;
-	while (str[i] == c && str[i])
+	while (str[i] == c && str[i] && str[i] != '\n')
 		i++;
-	while (str[i] != c && str[i])
+	while (str[i] != c && str[i] && str[i] != '\n')
 	{
 		j++;
 		i++;
@@ -45,13 +57,13 @@ static char	*ft_charge(char const *str, char c, int len)
 	char	*p;
 
 	i = 0;
-	p = ft_calloc((len + 1), sizeof(char));
+	p = malloc((len + 1) * sizeof(char));
 	if (!p || len == 0)
 		return (NULL);
 	k = 0;
-	while (str[i] == c && str[i])
+	while (str[i] == c && str[i] && str[i] != '\n')
 		i++;
-	while (str[i] != c && str[i])
+	while (str[i] != c && str[i] && str[i] != '\n')
 		p[k++] = str[i++];
 	p[k] = '\0';
 	return (p);
@@ -82,18 +94,16 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	i = 0;
-	p = ft_calloc((calcule_mot(s, c) + 1), sizeof(char *));
+	p = malloc((calcule_mot(s, c) + 1) * sizeof(char *));
 	if (!p)
 		return (NULL);
 	j = 0;
-	while (s[i])
+	while (s[i] && s[i] != '\n')
 	{
-		while (s[i] == c && s[i])
+		while (s[i] == c && s[i] && s[i] != '\n')
 			i++;
 		len = calcule_lettre(s + i, c);
 		ptr = ft_charge(s + i, c, len);
-		if (!ptr)
-			return (ft_free(p, j));
 		if (ptr)
 			p[j++] = ptr;
 		i += len;

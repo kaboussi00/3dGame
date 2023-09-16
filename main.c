@@ -105,9 +105,20 @@ int main(int ac, char **av)
     check_opening(av[1]);
     count_map(&cub, av[1]);
     press_map(&cub, av[1]);
+    check_texture_color(&cub);
+    puts("1");
+    copy_map(&cub);
+    puts("2");
+    // while (cub->map[i])
+    // {
+    //     puts("e");
+    //     printf("map : %s\n", cub.map[i]);
+    //     i++;
+    //     puts("v");
+    // }
     int i = 0;
     while(cub.map[i])
     {
-        printf("%s", cub.map[i++]);
+        printf("%s\n", cub.map[i++]);
     }
 }
