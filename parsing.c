@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:56:15 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/14 12:03:03 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/16 14:49:11 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+#include "cub3d.h"
+
+void	printerror_message(char *str)
+{
+	write (1, "Error\n", 6);
+	ft_putstr(str);
+	exit(0);
+}
+
+void	ft_putstr(char *s)
+{
+	int		i;
+
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+}
 
 void	check_extension(char *str)
 {
@@ -46,6 +69,43 @@ void    count_map(t_cub *cub, char *file)
 
     cub->fd=open(file, O_RDWR);
     if (cub->fd < 0)
+		printerror_message("can't open file\n");
+	return (fd);
+}
+
+int ft_strlen(char *str)
+{
+    int i;
+
+    i = 0;
+    while (str[i])
+        i++;
+    return(i);
+}
+
+int	ft_strncmp(const char *str1, const char *str2, int n)
+{
+	int			i;
+
+	i = 0;
+	while ((str1[i] != '\0' || str2[i] != '\0') && i < n)
+	{
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		i++;
+	}
+	return (0);
+}
+
+void    count_map(char *file)
+{
+    int i;
+    t_cub   *cub;
+    char* line_readed;
+
+    i = 0;
+    cub->fd=open(file, O_RDWR);
+    if (!fd)
         printerror_message("can't open file\n");
     line_readed = get_next_line(cub->fd);
     while (line_readed)
@@ -170,3 +230,23 @@ void	check_texture_color(t_cub *cub)
 	}
 	duplicate(cub);
 }
+}
+
+void press_map(t_cub *cub)
+{
+    char *read_line;
+
+    cub->map = malloc((sizeof(char *)) * (cub->line + 1));
+    if  (cub->map)
+        retun (0);
+    cub->i = 0;
+    read_line=get_next_line(cub->fd);
+    while (cub->i < cub->line)
+    {
+        if (read_line[0] != '\n')
+            cub->map[cub->i] = read_line;
+        read_line=get_next_line(cub->fd);
+    }
+    cub->map[i] = NULL;
+}
+
