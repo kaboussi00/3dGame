@@ -149,7 +149,7 @@ void	check_texture_color(t_cub *cub)
 		check_duplicate(cub, cub->text[0]);
 		if (!ft_strcmp(cub->text[0] , "C") || !ft_strcmp(cub->text[0] , "F"))
 		{
-			printf("color : {%s}\n", cub->text[1]);
+			// printf("color : {%s}\n", cub->text[1]);
 			check_color(cub->text[1]);
 		}
 		else

@@ -44,7 +44,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (p);
 }
 
-char	*charge(char c, int len)
+char	*charge_space(char c, int len)
 {
 	int		i;
 	char	*p;
@@ -69,7 +69,21 @@ int	ft_str_line(const char *str)
 	return (i);
 }
 
-void copy_map(t_cub *cub)
+char	**ft_free(char **p)
+{
+	int	i;
+
+	i = 0;
+	while (p[i])
+	{
+		free(p[i]);
+		i++;
+	}
+	free(p);
+	return (NULL);
+}
+
+void	copy_map(t_cub *cub)
 {
     int size;
     int l;
@@ -82,7 +96,6 @@ void copy_map(t_cub *cub)
     cub->map = malloc(sizeof(char *) * (cub->line - 5));
     if (!cub->map)
         return ;
-    printf("cub->len avant  : %d\n", cub->len);
     while (cub->i < cub->line)
     {
         cub->map[cub->j] = malloc(sizeof(char) * (cub->len + 1));
@@ -95,12 +108,9 @@ void copy_map(t_cub *cub)
             cub->map[cub->j][y++] = cub->all_map[cub->i][x++];
         }
         cub->map[cub->j][y] = '\0';
-        printf("????????%d\n", size);
-        printf("cub->len  : %d\n", cub->len);
         if (size < cub->len)
         {
-            puts("p");
-            str = charge(' ', l);
+            str = charge_space(' ', l);
             cub->map[cub->j] = ft_strjoin(cub->map[cub->j], str);
             free (str);
             str = NULL;
@@ -109,9 +119,55 @@ void copy_map(t_cub *cub)
         cub->j++;
     }
     cub->map[cub->j] = NULL;
-    // while (cub->map[y])
-    // {
-    //    printf("{,,,,,,,,,,,,,,,,%s}", cub->map[y]); 
-    //    y++;
-    // }
+}
+
+int	charge_1(t_cub *cub, t_data p)
+{
+	t_data	data;
+
+	if (cub->map[p.y][p.x] == 'W' || cub->map[p.x][p.y] == 'A'\
+    || cub->map[p.y][p.x] == 'S' || cub->map[p.x][p.y] == 'D')
+	{
+		cub->o++;
+		cub->map[p.y][p.x] = '1';
+		return (0);
+	}
+	if (p.y < 0 || p.y >= cub->line || p.x < 0 || p.x >= cub->len
+		|| cub->map[p.y][p.x] == '1')
+		return (0);
+	cub->map[p.y][p.x] = '1';
+	data.x = p.x;
+	data.y = p.y + 1;
+	charge_1(cub, data);
+	data.x = p.x;
+	data.y = p.y - 1;
+	charge_1(cub, data);
+	data.x = p.x - 1;
+	data.y = p.y;
+	charge_1(cub, data);
+	data.x = p.x + 1;
+	data.y = p.y;
+	charge_1(cub, data);
+	return (1);
+}
+
+void	check_walls(t_cub *cub)
+{
+	t_data	p;
+
+	cub->o = 0;
+	p.y = cub->pos_i;
+	p.x = cub->pos_j;
+	charge_1(cub, p);
+	cub->i = -1;
+	while (++cub->i < cub->line)
+	{
+		cub->j = -1;
+		while (++cub->j < cub->len)
+		{
+			if (cub->o != 1 || cub->o != ' ')
+				printerror_message("invalid map !\n");
+		}
+	}
+	ft_free(cub->map);
 }

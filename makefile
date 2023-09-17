@@ -7,6 +7,7 @@ SRCS = parsing.c\
 	get_next_line/get_next_line.c\
 	get_next_line/get_next_line_utils.c\
 	my_map.c\
+	check_copy.c\
 
 
 OBJS = $(SRCS:.c=.o)

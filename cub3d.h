@@ -13,6 +13,8 @@ typedef struct s_cub
 {
     int i;
     int j;
+    int o;
+    int p;
     int line;
     int len;
     int fd;
@@ -26,8 +28,16 @@ typedef struct s_cub
     int ea;
     int f;
     int c;
+    int pos_i;
+    int pos_j;
 
 }   t_cub;
+
+typedef struct s_data
+{
+	int		x;
+	int		y;
+}	t_data;
 
 /////////////////
 //...<utils>...//
@@ -40,6 +50,7 @@ int     ft_atoi(char *str);
 int	    ft_strcmp(const char *str1, const char *str2);
 char	**ft_split(char const *s, char c);
 int	    ft_str_line(const char *str);
+char	**ft_free(char **p);
 
 
 /////////////////
@@ -55,5 +66,9 @@ void	duplicate(t_cub	*cub);
 void	check_color(char *str);
 void	check_texture_color(t_cub *cub);
 void    copy_map(t_cub *cub);
+int	    charge_1(t_cub *cub, t_data p);
+void	check_walls(t_cub *cub);
+void	check_char(t_cub	*cub);
+void	check_not_char(t_cub *cub);
 
 #endif
