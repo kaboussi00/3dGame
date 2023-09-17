@@ -18,6 +18,8 @@ typedef struct s_cub
     int line;
     int len;
     int fd;
+    int space;
+    int wall;
     char **all_map;
     char **text;
     char **map;
@@ -49,7 +51,7 @@ int     ft_strlen(char *str);
 int     ft_atoi(char *str);
 int	    ft_strcmp(const char *str1, const char *str2);
 char	**ft_split(char const *s, char c);
-int	    ft_str_line(const char *str);
+int	    ft_str_line(char *str);
 char	**ft_free(char **p);
 
 

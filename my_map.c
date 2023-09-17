@@ -59,7 +59,7 @@ char	*charge_space(char c, int len)
 	return (p);
 }
 
-int	ft_str_line(const char *str)
+int	ft_str_line(char *str)
 {
 	int	i;
 

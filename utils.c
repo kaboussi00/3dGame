@@ -69,7 +69,7 @@ int	ft_atoi(char *str)
 	return ((n * s));
 }
 
-char	*ft_strdup(const char *str)
+char	*ft_strdup(char *str)
 {
 	size_t	len;
 	char	*p;

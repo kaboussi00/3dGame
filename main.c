@@ -23,7 +23,7 @@
 int main(int ac, char **av)
 {
     t_cub cub;
-    int i = 0;
+    // int i = 0;
 
     if (ac != 2)
         printerror_message("invalid arg\n");
@@ -33,17 +33,18 @@ int main(int ac, char **av)
     press_map(&cub, av[1]);
     check_texture_color(&cub);
     puts("1");
-    copy_map(&cub);
-     while (cub.map[i])
-    {
-        printf("map : %s\n", cub.map[i]);
-        i++;
-    }
-    check_not_char(&cub);        
-    puts("2");
+    // copy_map(&cub);
+    //  while (cub.map[i])
+    // {
+    //     printf("map : %s\n", cub.map[i]);
+    //     i++;
+    // }
+    // puts("1.5");
     check_char(&cub);
-    check_walls(&cub);
-    // puts("1");
+    // puts("2");
+    // check_not_char(&cub);        
+    // check_walls(&cub);
+    // // puts("1");
     // copy_map(&cub);
     // puts("2");
     // while (cub->map[i])

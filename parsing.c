@@ -36,15 +36,12 @@ void    count_map(t_cub *cub, char *file)
     if (cub->fd < 0)
         printerror_message("can't open file\n");
     line_readed = get_next_line(cub->fd);
+	if (!line_readed)
+        printerror_message("empty file\n");
     while (line_readed)
     {
-        if (!line_readed)
-            printerror_message("empty file\n");
-        else
-        {
-            if (line_readed[0] != '\n') 
-                cub->line++;
-        }
+        if (line_readed[0] != '\n') 
+            cub->line++;
         free(line_readed);
         line_readed = get_next_line(cub->fd);
     }
