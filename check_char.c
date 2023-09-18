@@ -23,7 +23,7 @@ void	check_char(t_cub	*cub)
 	while (cub->i < cub->line - 6)
 	{
 		cub->j = 0;
-		while (cub->j < cub->len - 6)
+		while (cub->j < cub->len - 1)
 		{
 			if (cub->map[cub->i][cub->j] == 'W' || cub->map[cub->i][cub->j] == 'E' \
             || cub->map[cub->i][cub->j] == 'S' || cub->map[cub->i][cub->j] == 'A')

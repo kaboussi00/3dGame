@@ -68,24 +68,3 @@ int	ft_atoi(char *str)
 		printerror_message("invalid color\n"); 
 	return ((n * s));
 }
-
-char	*ft_strdup(char *str)
-{
-	size_t	len;
-	char	*p;
-	int		i;
-
-	len = 0;
-	while (str[len])
-		len++;
-	p = malloc((len + 1) * sizeof(char));
-	if (!p)
-		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		p[i] = str[i];
-		i++;
-	}
-	return (p);
-}

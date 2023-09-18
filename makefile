@@ -3,11 +3,16 @@ INC = cubd.h
 SRCS = parsing.c\
 	main.c\
 	split.c\
-	utils.c\
+	utils00.c\
+	utils01.c\
 	get_next_line/get_next_line.c\
 	get_next_line/get_next_line_utils.c\
 	my_map.c\
-	check_copy.c\
+	check_op_ext.c\
+	check_texture.c\
+	press_map.c\
+	check_char.c\
+	check_wall.c\
 
 
 OBJS = $(SRCS:.c=.o)
