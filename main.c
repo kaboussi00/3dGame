@@ -32,31 +32,14 @@ int main(int ac, char **av)
     count_map(&cub, av[1]);
     press_map(&cub, av[1]);
     check_texture_color(&cub);
-    puts("1");
-    // copy_map(&cub);
-    //  while (cub.map[i])
-    // {
-    //     printf("map : %s\n", cub.map[i]);
-    //     i++;
-    // }
-    // puts("1.5");
+    copy_map(&cub);
     check_char(&cub);
-    // puts("2");
-    // check_not_char(&cub);        
-    // check_walls(&cub);
-    // // puts("1");
-    // copy_map(&cub);
-    // puts("2");
-    // while (cub->map[i])
-    // {
-    //     puts("e");
-    //     printf("map : %s\n", cub.map[i]);
-    //     i++;
-    //     puts("v");
-    // }
-    // int i = 0;
+    check_not_char(&cub);
+    // i = 0;
     // while(cub.map[i])
     // {
-    //     printf("%s\n", cub.map[i++]);
+    //     printf("after check %s\n", cub.map[i++]);
     // }
+    // puts("2");        
+    // check_walls(&cub);
 }

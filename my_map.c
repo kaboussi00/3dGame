@@ -1,24 +1,4 @@
 #include "cub3d.h"
-// char	*ft_strdup(const char *str)
-// {
-// 	size_t	len;
-// 	char	*p;
-// 	int		i;
-
-// 	len = 0;
-// 	while (str[len])
-// 		len++;
-// 	p = malloc((len + 1) * sizeof(char));
-// 	if (!p)
-// 		return (NULL);
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		p[i] = str[i];
-// 		i++;
-// 	}
-// 	return (p);
-// }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
@@ -119,55 +99,4 @@ void	copy_map(t_cub *cub)
         cub->j++;
     }
     cub->map[cub->j] = NULL;
-}
-
-int	charge_1(t_cub *cub, t_data p)
-{
-	t_data	data;
-
-	if (cub->map[p.y][p.x] == 'W' || cub->map[p.x][p.y] == 'A'\
-    || cub->map[p.y][p.x] == 'S' || cub->map[p.x][p.y] == 'D')
-	{
-		cub->o++;
-		cub->map[p.y][p.x] = '1';
-		return (0);
-	}
-	if (p.y < 0 || p.y >= cub->line || p.x < 0 || p.x >= cub->len
-		|| cub->map[p.y][p.x] == '1')
-		return (0);
-	cub->map[p.y][p.x] = '1';
-	data.x = p.x;
-	data.y = p.y + 1;
-	charge_1(cub, data);
-	data.x = p.x;
-	data.y = p.y - 1;
-	charge_1(cub, data);
-	data.x = p.x - 1;
-	data.y = p.y;
-	charge_1(cub, data);
-	data.x = p.x + 1;
-	data.y = p.y;
-	charge_1(cub, data);
-	return (1);
-}
-
-void	check_walls(t_cub *cub)
-{
-	t_data	p;
-
-	cub->o = 0;
-	p.y = cub->pos_i;
-	p.x = cub->pos_j;
-	charge_1(cub, p);
-	cub->i = -1;
-	while (++cub->i < cub->line)
-	{
-		cub->j = -1;
-		while (++cub->j < cub->len)
-		{
-			if (cub->o != 1 || cub->o != ' ')
-				printerror_message("invalid map !\n");
-		}
-	}
-	ft_free(cub->map);
 }

@@ -3,8 +3,10 @@ NO texture/north_texture
 SO texture/south_texture
 WE texture/west_texture
 EA texture/east_texture
-C 225,30,87
-     00000
-0000000000
-00000
-0000000000
+C 225,30,8
+1111111
+100000111111
+100000000001
+1000W0011111
+10000000001
+11111111111
