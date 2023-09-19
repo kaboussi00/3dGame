@@ -21,7 +21,7 @@ OBJS_B = $(SRCS_B:.c=.o)
 
 RM = rm -f
 
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 # -fsanitize=address -g
 
 CC = cc

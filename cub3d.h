@@ -11,35 +11,39 @@
 
 typedef struct s_cub
 {
-    int i;
-    int j;
-    int o;
-    int p;
-    int line;
-    int len;
-    int fd;
-    int space;
-    int wall;
-    char **all_map;
-    char **text;
-    char **map;
-    char **copie;
-    int no;
-    int so;
-    int we;
-    int ea;
-    int f;
-    int c;
-    int pos_i;
-    int pos_j;
+	int i;
+	int j;
+	int o;
+	int p;
+	int line;
+	int len;
+	int fd;
+	int wall;
+	char **all_map;
+	char **text;
+	char **map;
+	char **copie;
+	int no;
+	int so;
+	int we;
+	int ea;
+	int f;
+	int c;
+	int pos_i;
+	int pos_j;
+	void *mlx;
+	void *mlx_window;
 
 }   t_cub;
 
-typedef struct s_data
+typedef struct s_img
 {
-	int		x;
-	int		y;
-}	t_data;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_img;
 
 /////////////////
 //...<utils>...//
@@ -77,5 +81,11 @@ void	check_char(t_cub	*cub);
 void	check_not_char(t_cub *cub);
 void    copie_with_spaces(t_cub *cub);
 void	check_wall(t_cub *cub);
+
+/////////////////
+//....<mlx>....//
+/////////////////
+
+void own_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 #endif

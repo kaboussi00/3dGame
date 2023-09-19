@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_char.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/19 15:09:58 by kaboussi          #+#    #+#             */
+/*   Updated: 2023/09/19 15:09:59 by kaboussi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	check_not_char(t_cub *cub)
@@ -32,8 +44,6 @@ void	check_char(t_cub	*cub)
 				cub->pos_i = cub->i;
 				cub->pos_j = cub->j;
 			}
-			else if (cub->map[cub->i][cub->j] == '0')
-				cub->space++;
             cub->j++;
 		}
         cub->i++;
