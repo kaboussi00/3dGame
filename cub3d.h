@@ -9,6 +9,15 @@
 #include <math.h>
 #include "get_next_line/get_next_line.h"
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_img;
+
 typedef struct s_cub
 {
 	int i;
@@ -33,17 +42,9 @@ typedef struct s_cub
 	int pos_j;
 	void *mlx;
 	void *mlx_window;
+    t_img img;
 
 }   t_cub;
-
-typedef struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_img;
 
 /////////////////
 //...<utils>...//
@@ -86,6 +87,8 @@ void	check_wall(t_cub *cub);
 //....<mlx>....//
 /////////////////
 
-void own_mlx_pixel_put(t_img *img, int x, int y, int color);
+void 	own_mlx_pixel_put(t_img *img, int x, int y, int color);
+void    ft_put_color(t_cub *cub, int x, int y, int color);
+int		render(t_cub *cub);
 
 #endif

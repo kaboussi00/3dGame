@@ -13,7 +13,7 @@ SRCS = parsing.c\
 	press_map.c\
 	check_char.c\
 	check_wall.c\
-
+	ft_mlx.c\
 
 OBJS = $(SRCS:.c=.o)
 
@@ -21,18 +21,20 @@ OBJS_B = $(SRCS_B:.c=.o)
 
 RM = rm -f
 
-CFLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+# CFLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 # -fsanitize=address -g
+
+# $(CC) -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz $(OBJ) -o $(NAME)
 
 CC = cc
 
 all:$(NAME)
 
 $(NAME):$(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 %.o:%.c $(INC)
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 clean:
 	$(RM) $(OBJS) $(OBJS_B)
