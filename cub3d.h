@@ -87,8 +87,8 @@ void	check_wall(t_cub *cub);
 //....<mlx>....//
 /////////////////
 
-void 	own_mlx_pixel_put(t_img *img, int x, int y, int color);
-void    ft_put_color(t_cub *cub, int x, int y, int color);
-int		render(t_cub *cub);
+void 	own_mlx_pixel_put(t_cub *cub, int x, int y, int color);
+void  ft_put_color(t_cub *cub, int x, int y, int color);
+int		render_minimap(t_cub *cub);
 
 #endif

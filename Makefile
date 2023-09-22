@@ -1,7 +1,7 @@
 NAME = 	cub3d
 INC = cubd.h
-SRCS = parsing.c\
-	main.c\
+SRCS = main.c\
+	parsing.c\
 	split.c\
 	utils00.c\
 	utils01.c\
@@ -21,6 +21,10 @@ OBJS_B = $(SRCS_B:.c=.o)
 
 RM = rm -f
 
+MLX_DIR = minilibx-linux
+
+CFLAGS_LNX = -Wall -Wextra -Werror -I$(MLX_DIR) -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+
 # CFLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 # -fsanitize=address -g
 
@@ -31,10 +35,10 @@ CC = cc
 all:$(NAME)
 
 $(NAME):$(OBJS)
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(OBJS) $(CFLAGS_LNX) -o $(NAME)
 
 %.o:%.c $(INC)
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+	$(CC) $(CFLAGS_LNX) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS) $(OBJS_B)

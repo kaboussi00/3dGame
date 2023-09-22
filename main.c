@@ -20,11 +20,12 @@ int main(int ac, char **av)
         printerror_message("invalid arg\n");
     parse(&cub, av[1]);
     cub.mlx = mlx_init();
-    cub.mlx_window = mlx_new_window(cub.mlx, 1920, 1080, "my map <3");
-    cub.img.img = mlx_new_image(cub.mlx, 10*cub.len, 10*(cub.line-6));
+    cub.mlx_window = mlx_new_window(cub.mlx, 1000, 500, "my map <3");
+    cub.img.img = mlx_new_image(cub.mlx, 30*cub.len, 30*(cub.line-6));
     cub.img.addr = mlx_get_data_addr(cub.img.img, &cub.img.bits_per_pixel, \
     &cub.img.line_length, &cub.img.endian);
-    render(&cub);
+    render_minimap(&cub);
     mlx_put_image_to_window(cub.mlx, cub.mlx_window, cub.img.img, 0, 0);
     mlx_loop(cub.mlx);
+    return (0);
 }

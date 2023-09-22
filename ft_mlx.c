@@ -1,10 +1,10 @@
 #include "cub3d.h"
 
-void own_mlx_pixel_put(t_img *img, int x, int y, int color)
+void own_mlx_pixel_put(t_cub *cub, int x, int y, int color)
 {
     char *pixel;
 
-    pixel = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+    pixel = cub->img.addr + (y * cub->img.line_length + x * (cub->img.bits_per_pixel / 8));
     *(unsigned int*)pixel = color;
 }
 
@@ -12,21 +12,25 @@ void    ft_put_color(t_cub *cub, int x, int y, int color)
 {
     int i;
     int j;
+    int c;
 
     i = x;
-    while (i < x + 10)
+    while (i < x + 30)
     {
         j = y;
-        while (j < y + 10)
+        while (j < y + 30)
         {
-            own_mlx_pixel_put(cub->img.img, i, j, color);
+            if (i % 30 == 0 || j % 30 == 0)
+                own_mlx_pixel_put(cub, j, i, 0x000000);
+            else
+                own_mlx_pixel_put(cub, j, i, color);
             j++;
         }
         i++;
     }
 }
 
-int	render(t_cub *cub)
+int	render_minimap(t_cub *cub)
 {
 	cub->i = -1;
 	while (++cub->i < cub->line - 6)
@@ -35,13 +39,11 @@ int	render(t_cub *cub)
 		while (++cub->j < cub->len)
 		{
 			if (cub->map[cub->i][cub->j] == '1')
-                ft_put_color(cub, cub->i, cub->j, 0xFF0000);
+                ft_put_color(cub, cub->i * 30, cub->j * 30, 0x1f0b09);
 			if (cub->map[cub->i][cub->j] == '0')
-				ft_put_color(cub, cub->i, cub->j, 0x00FF00);
-			if (cub->map[cub->i][cub->j] == ' ')
-				ft_put_color(cub, cub->i, cub->j, 0x0000FF);
+				ft_put_color(cub, cub->i * 30, cub->j * 30, 0x63413f);
 			if (cub->map[cub->i][cub->j] == 'W')
-				ft_put_color(cub, cub->i, cub->j, 0xFFFF00);
+				ft_put_color(cub, cub->i * 30, cub->j * 30, 0xf5756c);
 		}
 	}
 	return (0);
