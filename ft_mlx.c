@@ -15,12 +15,12 @@ void    ft_put_color(t_cub *cub, int x, int y, int color)
     int c;
 
     i = x;
-    while (i < x + 30)
+    while (i < x + SZ)
     {
         j = y;
-        while (j < y + 30)
+        while (j < y + SZ)
         {
-            if (i % 30 == 0 || j % 30 == 0)
+            if (i % SZ == 0 || j % SZ == 0)
                 own_mlx_pixel_put(cub, j, i, 0x000000);
             else
                 own_mlx_pixel_put(cub, j, i, color);
@@ -39,12 +39,13 @@ int	render_minimap(t_cub *cub)
 		while (++cub->j < cub->len)
 		{
 			if (cub->map[cub->i][cub->j] == '1')
-                ft_put_color(cub, cub->i * 30, cub->j * 30, 0x1f0b09);
+                ft_put_color(cub, cub->i * SZ, cub->j * SZ, 0x1f0b09);
 			if (cub->map[cub->i][cub->j] == '0')
-				ft_put_color(cub, cub->i * 30, cub->j * 30, 0x63413f);
+				ft_put_color(cub, cub->i * SZ, cub->j * SZ, 0x63413f);
 			if (cub->map[cub->i][cub->j] == 'W')
-				ft_put_color(cub, cub->i * 30, cub->j * 30, 0xf5756c);
+				ft_put_color(cub, cub->i * SZ, cub->j * SZ, 0x63413f);
 		}
 	}
+    render_player(cub, SZ/4);
 	return (0);
 }

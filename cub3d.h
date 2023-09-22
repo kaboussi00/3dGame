@@ -9,6 +9,8 @@
 #include <math.h>
 #include "get_next_line/get_next_line.h"
 
+#define SZ 30
+
 typedef struct s_img
 {
 	void	*img;
@@ -88,7 +90,9 @@ void	check_wall(t_cub *cub);
 /////////////////
 
 void 	own_mlx_pixel_put(t_cub *cub, int x, int y, int color);
-void  ft_put_color(t_cub *cub, int x, int y, int color);
+void  	ft_put_color(t_cub *cub, int x, int y, int color);
 int		render_minimap(t_cub *cub);
+void	player_position(t_cub *cub);
+void	render_player(t_cub *cub, int rayon);
 
 #endif
