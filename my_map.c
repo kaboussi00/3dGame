@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:37 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/19 15:08:40 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/23 14:04:01 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,12 @@ void	new_map(t_cub *cub)
 
     cub->i = 6;
     cub->j = 0;
+    printf("line befpre : %d\n", cub->line);
     cub->map = malloc(sizeof(char *) * (cub->line - 5));
     if (!cub->map)
         return ;
+    printf("len : %d\n", cub->len);
+    printf("line : %d\n", cub->line);
     while (cub->i < cub->line)
     {
         cub->map[cub->j] = malloc(sizeof(char) * (cub->len + 1));
@@ -52,6 +55,8 @@ void	new_map(t_cub *cub)
             cub->map[cub->j][y++] = cub->all_map[cub->i][x++];
         }
         cub->map[cub->j][y] = '\0';
+        puts("12");
+        // printf("map a: {%s}\n", cub->map[cub->j]);
         if (size < cub->len)
         {
             str = charge_space(' ', l);
@@ -59,6 +64,7 @@ void	new_map(t_cub *cub)
             free (str);
             str = NULL;
         }
+        // printf("map b: {%s}\n", cub->map[cub->j]);
         cub->i++;
         cub->j++;
     }

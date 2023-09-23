@@ -62,6 +62,7 @@ char	*ft_strjoin(char *s1, char *s2);
 int	    ft_str_line(char *str);
 char	**ft_free(char **p);
 char	**ft_split(char const *s, char c);
+void	initial_variable(t_cub *cub);
 
 
 /////////////////

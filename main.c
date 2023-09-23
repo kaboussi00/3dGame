@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/22 19:53:40 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/23 14:37:25 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int main(int ac, char **av)
 
     if (ac != 2)
         printerror_message("invalid arg\n");
+    puts("1");
+    initial_variable(&cub);
     parse(&cub, av[1]);
     cub.mlx = mlx_init();
     cub.mlx_window = mlx_new_window(cub.mlx, 1000, 500, "my map <3");

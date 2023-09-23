@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:21 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/19 15:09:23 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/23 14:36:30 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,13 @@ char	**ft_free(char **p)
 	}
 	free(p);
 	return (NULL);
+}
+
+void initial_variable(t_cub *cub)
+{
+	cub->i = 0;
+	cub->j = 0;
+	cub->len = 0;
+	cub->line = 0;
+	
 }

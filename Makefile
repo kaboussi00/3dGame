@@ -22,9 +22,12 @@ OBJS_B = $(SRCS_B:.c=.o)
 
 RM = rm -f
 
-MLX_DIR = minilibx-linux
+# MLX_DIR = minilibx-linux
+MLX_DIR = minilibx_opengl
 
-CFLAGS_LNX = -Wall -Wextra -Werror -I$(MLX_DIR) -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+CFLAGS_LNX = -Wall -Wextra -Werror -I$(MLX_DIR) -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -lm
+
+# CFLAGS_LNX = -Wall -Wextra -Werror -I$(MLX_DIR) -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 # CFLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 # -fsanitize=address -g
