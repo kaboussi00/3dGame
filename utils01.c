@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:21 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/23 14:36:30 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/24 20:51:16 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ void initial_variable(t_cub *cub)
 	cub->j = 0;
 	cub->len = 0;
 	cub->line = 0;
-	
+	cub->player.walk_direction = 0;
+	cub->player.turn_direction = 0;
+	cub->player.rotation_speed = M_PI / 2;
 }

@@ -20,12 +20,23 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
+typedef struct s_player
+{
+	double	turn_direction ; // (= 0) -1 if left, +1 if right
+	double	walk_direction ; // (= 0) -1 if back, +1 if front
+	double	rotationangle; //(= ) N ^, W <, E >, S.
+	double	move_speed; //(3.0 speed of player in mini-map)
+	double	rotation_speed; //(=3*(M_PI / 180))
+}	t_player;
+
 typedef struct s_cub
 {
 	int i;
 	int j;
 	int o;
 	int p;
+	int x;
+	int y;
 	int line;
 	int len;
 	int fd;
@@ -44,7 +55,12 @@ typedef struct s_cub
 	int pos_j;
 	void *mlx;
 	void *mlx_window;
+	int up;
+	int down;
+	int right;
+	int left;
     t_img img;
+	t_player player;
 
 }   t_cub;
 
@@ -95,5 +111,9 @@ void  	ft_put_color(t_cub *cub, int x, int y, int color);
 int		render_minimap(t_cub *cub);
 void	player_position(t_cub *cub);
 void	render_player(t_cub *cub, int rayon);
+int		move_player(t_cub *cub, int code);
+int		key_prs(int code, t_cub *cub);
+int		key_releases(t_cub	*cub, int code);
+int		myExit(t_cub *cub);
 
 #endif

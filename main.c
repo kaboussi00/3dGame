@@ -6,11 +6,17 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/23 14:37:25 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/24 21:05:31 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	myExit(t_cub *cub)
+{
+	(void)cub;
+	exit(0);
+}
 
 int main(int ac, char **av)
 {
@@ -29,6 +35,9 @@ int main(int ac, char **av)
     player_position(&cub);
     render_minimap(&cub);
     mlx_put_image_to_window(cub.mlx, cub.mlx_window, cub.img.img, 0, 0);
+    mlx_hook(cub.mlx_window, 02, 0L, key_prs, &cub);
+	mlx_hook(cub.mlx_window, 17, 0L, myExit, &cub);
+	mlx_hook(cub.mlx_window, 03, 0L, key_releases, &cub);
     mlx_loop(cub.mlx);
     return (0);
 }
