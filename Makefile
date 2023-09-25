@@ -15,6 +15,7 @@ SRCS = main.c\
 	check_wall.c\
 	ft_mlx.c\
 	render_player.c\
+	ft_keys.c\
 
 OBJS = $(SRCS:.c=.o)
 

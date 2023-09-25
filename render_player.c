@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:29:10 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/24 21:07:36 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:47:24 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,71 @@
 
 void player_position(t_cub *cub)
 {
-    // in window
-    cub->pos_i = cub->pos_i * SZ + (SZ / 2);
-    cub->pos_j = cub->pos_j * SZ + (SZ / 2);
+    // position in window
+    cub->player.xInwindow = cub->pos_i * SZ + (SZ / 2);
+    cub->player.xInwindow = cub->pos_i * SZ + (SZ / 2);
+}
+
+// void drow_line(t_cub *cub)
+// {
+	// puts("s");
+	// cub->i = cub->pos_i;
+	// cub->j = cub->pos_j;
+	// cub->x = cub->x + cos(cub->player.rotationangle) * 30;
+    // cub->y = cub->y + sin(cub->player.rotationangle) * 30;
+// }
+
+
+// extern double round(double n)
+// {
+// 	//
+// 	if (n - n < 0,5)
+// 		return (n);
+// 	return (n+1);
+// }
+
+void	drowLine(t_cub *cub)
+{
+	double x0;
+	double y0;
+	double x1;
+	double y1;
+	double inx;
+	double iny;
+	int step;
+
+	x0 = cub->player.xInwindow;
+	y0 = cub->player.yInwindow;
+    //
+    x1 = x0 + cos(cub->player.rotationangle) * 30;
+    y1 = y0 + sin(cub->player.rotationangle) * 30;
+    // printf("{after ; p_i ; %d p_j ; %d}\n", cub->pos_i,cub->pos_j );
+    double i = 0;
+    double j = 0;
+	int x = x1 - x0;
+	int y = y1 - y0;
+    printf("{//// ; i ; %d j ; %d}\n", cub->i,cub->j );
+    //
+	if (abs(x) > abs(y))
+        step = abs(x);
+    else
+        step = abs(y);
+    //
+	inx = x / step;
+	iny = y / step;
+    //
+	cub->v = 0; 
+	while (cub->v < step)
+	{
+        // puts("here1");
+		own_mlx_pixel_put(cub, round(x0) , round(y0), 0xf5756c);
+        // puts("here2");
+		// cub->player.xInwindow += inx;
+		// cub->player.yInwindow += iny;
+        x0 += inx;
+        y0 += iny;
+		cub->v++;
+	}
 }
 
 void render_player(t_cub *cub, int rayon)
@@ -39,61 +101,6 @@ void render_player(t_cub *cub, int rayon)
         }
         i++;
     }
+    puts("111111111");
+	drowLine(cub);
 }
-
-int	move_player(t_cub *cub, int code)
-{
-	cub->i = cub->pos_i;
-	cub->j = cub->pos_j;
-	if (code == 13)
-		cub->player.walk_direction = 1;
-	if (code == 0)
-		cub->player.walk_direction = -1;
-	if (code == 1)
-		cub->player.turn_direction = 1;
-	if (code == 2)
-		cub->player.turn_direction = -1;
-	return (0);
-}
-
-int key_releases(t_cub	*cub, int code)
-{
-	cub->i = cub->pos_i;
-	cub->j = cub->pos_j;
-	if (code == 13)
-		cub->player.walk_direction = 0;
-	if (code == 0)
-		cub->player.walk_direction = 0;
-	if (code == 1)
-		cub->player.turn_direction = 0;
-	if (code == 2)
-		cub->player.turn_direction = 0;
-	return (0);
-}
-
-int	key_prs(int code, t_cub *cub)
-{
-	cub->x = cub->pos_i;
-	cub->y = cub->pos_j;
-	if (code == 53)
-		exit(0);
-	if (code == 13 && !move_player(cub, code))
-	{
-		//cub->x = cub->x + 
-	}
-	if (code == 0 && !move_player(cub, code))
-	{
-		//
-	}
-	if (code == 1 && !move_player(cub, code))
-	{
-		//
-	}
-	if (code == 2 && !move_player(cub, code))
-	{
-		//
-	}
-	return (0);
-}
- 
-

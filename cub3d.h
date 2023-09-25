@@ -22,6 +22,8 @@ typedef struct s_img
 
 typedef struct s_player
 {
+	double xInwindow;
+	double yInwindow;
 	double	turn_direction ; // (= 0) -1 if left, +1 if right
 	double	walk_direction ; // (= 0) -1 if back, +1 if front
 	double	rotationangle; //(= ) N ^, W <, E >, S.
@@ -33,10 +35,9 @@ typedef struct s_cub
 {
 	int i;
 	int j;
+	int v;
 	int o;
 	int p;
-	int x;
-	int y;
 	int line;
 	int len;
 	int fd;
@@ -59,6 +60,8 @@ typedef struct s_cub
 	int down;
 	int right;
 	int left;
+	double x_new;
+	double y_new;
     t_img img;
 	t_player player;
 
@@ -114,6 +117,6 @@ void	render_player(t_cub *cub, int rayon);
 int		move_player(t_cub *cub, int code);
 int		key_prs(int code, t_cub *cub);
 int		key_releases(t_cub	*cub, int code);
-int		myExit(t_cub *cub);
+int		myExit_prs(t_cub *cub);
 
 #endif

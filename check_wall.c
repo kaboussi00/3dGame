@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:39 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/19 15:09:41 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:29:38 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ void copie_with_spaces(t_cub *cub)
         y=0;
         cub->copie[cub->j] = malloc(sizeof(char) * cub->len + 2);
         cub->copie[cub->j][0] = ' ';
-        while(cub->map[cub->i][y])   
+        printf("{len : %d, line : %d}\n", cub->len, cub->line);
+        while(cub->map[cub->i][y])  
+        {
             cub->copie[cub->j][x++] = cub->map[cub->i][y++];
+        }
         cub->copie[cub->j][cub->len + 1] = ' ';
         cub->copie[cub->j][cub->len + 2] = '\0';
         cub->i++;
