@@ -114,7 +114,7 @@ void  	ft_put_color(t_cub *cub, int x, int y, int color);
 int		render_minimap(t_cub *cub);
 void	player_position(t_cub *cub);
 void	render_player(t_cub *cub, int rayon);
-int		move_player(t_cub *cub, int code);
+int		keyMovePlayer(t_cub *cub, int code);
 int		key_prs(int code, t_cub *cub);
 int		key_releases(t_cub	*cub, int code);
 int		myExit_prs(t_cub *cub);
