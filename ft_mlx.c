@@ -32,6 +32,7 @@ void    ft_put_color(t_cub *cub, int x, int y, int color)
 
 int	render_minimap(t_cub *cub)
 {
+    // mlx_clear_window(cub->mlx, cub->mlx_window);
 	cub->i = -1;
 	while (++cub->i < cub->line - 6)
 	{
@@ -46,6 +47,5 @@ int	render_minimap(t_cub *cub)
 				ft_put_color(cub, cub->i * SZ, cub->j * SZ, 0x63413f);
 		}
 	}
-    render_player(cub, SZ/4);
 	return (0);
 }

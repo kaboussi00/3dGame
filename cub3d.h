@@ -24,11 +24,14 @@ typedef struct s_player
 {
 	double xInwindow;
 	double yInwindow;
+	double	side_direction ; // (= 0) -1 if left, +1 if right
 	double	turn_direction ; // (= 0) -1 if left, +1 if right
 	double	walk_direction ; // (= 0) -1 if back, +1 if front
 	double	rotationangle; //(= ) N ^, W <, E >, S.
+	double	rayangle; //(= ) N ^, W <, E >, S.
 	double	move_speed; //(3.0 speed of player in mini-map)
 	double	rotation_speed; //(=3*(M_PI / 180))
+	double	fov;
 }	t_player;
 
 typedef struct s_cub
@@ -114,9 +117,10 @@ void  	ft_put_color(t_cub *cub, int x, int y, int color);
 int		render_minimap(t_cub *cub);
 void	player_position(t_cub *cub);
 void	render_player(t_cub *cub, int rayon);
-int		keyMovePlayer(t_cub *cub, int code);
-int		key_prs(int code, t_cub *cub);
-int		key_releases(t_cub	*cub, int code);
+int		keyPress(int code, t_cub *cub);
+int		key_releases(int code, t_cub *cub);
 int		myExit_prs(t_cub *cub);
+double 	rotationAngle(t_cub *cub);
+int		render(t_cub *cub);
 
 #endif
