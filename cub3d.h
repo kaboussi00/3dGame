@@ -72,7 +72,7 @@ typedef struct s_cub
 }   t_cub;
 
 /////////////////
-//...<utils>...//
+//...<Utils>...//
 /////////////////
 
 
@@ -89,7 +89,7 @@ void	initial_variable(t_cub *cub);
 
 
 /////////////////
-//..<parsing>..//
+//..<Parsing>..//
 /////////////////
 
 
@@ -110,18 +110,25 @@ void    copie_with_spaces(t_cub *cub);
 void	check_wall(t_cub *cub);
 
 /////////////////
-//....<mlx>....//
+//<RenderM_map>//
 /////////////////
 
 void 	own_mlx_pixel_put(t_cub *cub, int x, int y, int color);
 void  	ft_put_color(t_cub *cub, int x, int y, int color);
 int		render_minimap(t_cub *cub);
-void	player_position(t_cub *cub);
+
+//////////////////
+//<RenderPlayer>//
+//////////////////
+
 void	render_player(t_cub *cub, int rayon);
-int		keyPress(int code, t_cub *cub);
-int		key_releases(int code, t_cub *cub);
+void	player_position(t_cub *cub);
+void	drowLine(t_cub *cub);
 int		myExit_prs(t_cub *cub);
+int		keyReleases(int code, t_cub *cub);
+int		keyPress(int code, t_cub *cub);
 double 	rotationAngle(t_cub *cub);
+void	movePlayer(t_cub *cub);
 int		render(t_cub *cub);
 
 

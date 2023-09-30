@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/27 17:03:51 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/30 11:20:21 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main(int ac, char **av)
     // mlx_loop_hook(cub->mlx, &render, cub);
     mlx_hook(cub->mlx_window, 2, 0L, &keyPress, cub);
 	mlx_hook(cub->mlx_window, 17, 0L, &myExit_prs, cub);
-	mlx_hook(cub->mlx_window, 3, 0L, &key_releases, cub);
+	mlx_hook(cub->mlx_window, 3, 0L, &keyReleases, cub);
     mlx_loop(cub->mlx);
     return (0);
 }

@@ -2,20 +2,22 @@ NAME = 	cub3d
 INC = cubd.h
 SRCS = main.c\
 	parsing.c\
-	split.c\
-	utils00.c\
-	utils01.c\
+	pars_check_char.c\
+	pars_check_opext.c\
+	pars_check_texture.c\
+	pars_check_wall.c\
+	pars_press_map.c\
+	pars_my_map.c\
+	render_player.c\
+	ren_minimap.c\
+	ren_player_drow.c\
+	ren_player_keys.c\
+	ren_player_move.c\
+	utils_split.c\
+	utils_00.c\
+	utils_01.c\
 	get_next_line/get_next_line.c\
 	get_next_line/get_next_line_utils.c\
-	my_map.c\
-	check_op_ext.c\
-	check_texture.c\
-	press_map.c\
-	check_char.c\
-	check_wall.c\
-	ft_mlx.c\
-	render_player.c\
-	ft_keys.c\
 
 OBJS = $(SRCS:.c=.o)
 
