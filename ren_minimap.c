@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mlx.c                                           :+:      :+:    :+:   */
+/*   REN_MiniMap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:47:18 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/30 10:47:21 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/30 16:06:47 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void    ft_put_color(t_cub *cub, int x, int y, int color)
 int	render_minimap(t_cub *cub)
 {
     // mlx_clear_window(cub->mlx, cub->mlx_window);
-	cub->i = -1;
-	while (++cub->i < cub->line - 6)
+	cub->i = 0;
+	while (cub->i < cub->line - 6)
 	{
-		cub->j = -1;
-		while (++cub->j < cub->len)
+		cub->j = 0;
+		while (cub->j < cub->len)
 		{
 			if (cub->map[cub->i][cub->j] == '1')
                 ft_put_color(cub, cub->i * SZ, cub->j * SZ, 0x1f0b09);
@@ -57,7 +57,9 @@ int	render_minimap(t_cub *cub)
 				ft_put_color(cub, cub->i * SZ, cub->j * SZ, 0x63413f);
 			if (cub->map[cub->i][cub->j] == 'W')
 				ft_put_color(cub, cub->i * SZ, cub->j * SZ, 0x63413f);
+            cub->j++;
 		}
+        cub->i++;
 	}
 	return (0);
 }

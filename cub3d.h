@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
+/*   Updated: 2023/09/30 17:19:00 by kaboussi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 #define CUB3D_H
 
@@ -128,8 +140,14 @@ int		myExit_prs(t_cub *cub);
 int		keyReleases(int code, t_cub *cub);
 int		keyPress(int code, t_cub *cub);
 double 	rotationAngle(t_cub *cub);
-void	movePlayer(t_cub *cub);
+void	moveWalkPlayer(t_cub *cub);
+void	moveSidePlayer(t_cub *cub);
 int		render(t_cub *cub);
+
+//////////////////
+//.<Raycasting.>//
+//////////////////
+
 
 
 #endif

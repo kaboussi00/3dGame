@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   REN_PlayerKeys.c                                   :+:      :+:    :+:   */
+/*   REN_Player_Keys.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:06 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/30 11:00:43 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/30 17:22:01 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,16 @@ int	keyPress(int code, t_cub *cub)
 			cub->player.walk_direction = -1;
 		if (code == 13)
 			cub->player.walk_direction = 1;
-		movePlayer(cub);
+		moveWalkPlayer(cub);
 	}
-	if (code == 0)
-		cub->player.side_direction = 1;
-	if (code == 2)
-		cub->player.side_direction = -1;
+	if (code == 0 || code == 2)
+	{
+		if (code == 0)
+			cub->player.side_direction = 1;
+		if (code == 2)
+			cub->player.side_direction = -1;
+		moveSidePlayer(cub);
+	}
 	if (code == 123 || code == 124)
 	{
 		if (code == 123)

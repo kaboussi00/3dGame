@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   REN_Playermove.c                                   :+:      :+:    :+:   */
+/*   ren_player_move.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:45:42 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/30 11:01:09 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/30 17:20:16 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 double rotationAngle(t_cub *cub)
 {
 	//update rotation angle
-	double angleChange;
 	
 	cub->player.rotationangle += cub->player.turn_direction * cub->player.rotation_speed;
 	// if (cub->player.rotationangle >= 360 * (M_PI / 180))
@@ -25,11 +24,16 @@ double rotationAngle(t_cub *cub)
 	return (cub->player.rotationangle);
 }
 
-void	movePlayer(t_cub *cub)
+void	moveWalkPlayer(t_cub *cub)
 {
-	double	dx;
-	double	dy;
 	cub->player.move_step = cub->player.walk_direction * cub->player.move_speed;
 	cub->player.xInwindow += cos(cub->player.rotationangle) * cub->player.move_step;
 	cub->player.yInwindow += sin(cub->player.rotationangle) * cub->player.move_step;
+}
+
+void	moveSidePlayer(t_cub *cub)
+{
+	cub->player.move_step = cub->player.side_direction * cub->player.move_speed;
+	cub->player.xInwindow += cos(cub->player.rotationangle + M_PI_2) * cub->player.move_step;
+	cub->player.yInwindow += sin(cub->player.rotationangle + M_PI_2) * cub->player.move_step;
 }
