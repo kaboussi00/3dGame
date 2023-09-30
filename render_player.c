@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:29:10 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/27 17:03:24 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/30 07:53:33 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,38 @@ void player_position(t_cub *cub)
 	// position in window
 	cub->player.xInwindow = cub->pos_i * SZ + (SZ / 2);
 	cub->player.yInwindow = cub->pos_j * SZ + (SZ / 2);
+}
+
+int	rotationIndexX(t_cub *cub, double x)
+{
+	double ra;
+		
+	ra = cub->player.rotationangle;
+	if (ra >= 0 && ra < M_PI_2)
+		x *= 1;
+	if (ra >= M_PI_2 && ra < M_PI)
+		x *= -1;
+	if (ra >= M_PI && ra < 3 * M_PI / 2)
+		x *= -1;
+	if (ra >= 3 * M_PI / 2 && ra < M_PI_2)
+		x *= 1;
+	return (x);
+}
+
+int	rotationIndexY(t_cub *cub, double y)
+{
+	double ra;
+
+	ra = cub->player.rotationangle;
+	if (ra >= 0 && ra < M_PI_2)
+		y *= -1;
+	if (ra >= M_PI_2 && ra < M_PI)
+		y *= -1;
+	if (ra >= M_PI && ra < 3 * M_PI / 2)
+		y *= 1;
+	if (ra >= 3 * M_PI / 2 && ra < M_PI_2)
+		y *= -1;
+	return (y);
 }
 
 void	drowLine(t_cub *cub)
@@ -32,8 +64,10 @@ void	drowLine(t_cub *cub)
 
 	x0 = cub->player.xInwindow;
 	y0 = cub->player.yInwindow;
-	x1 = x0 + sin(cub->player.rotationangle) * 50;
-	y1 = y0 + cos(cub->player.rotationangle) * 50;
+	x1 = rotationIndexX(cub, x0);
+	y1 = rotationIndexY(cub, y0);
+	x1 = x0 + cos(cub->player.rotationangle) * 50;
+	y1 = y0 + sin(cub->player.rotationangle) * 50;
 	printf("x1 : %f\ny1 : %f\n", x1, y1);
 	int x = x1 - x0;
 	int y = y1 - y0;

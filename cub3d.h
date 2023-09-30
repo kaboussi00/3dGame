@@ -32,6 +32,7 @@ typedef struct s_player
 	double	move_speed; //(3.0 speed of player in mini-map)
 	double	rotation_speed; //(=3*(M_PI / 180))
 	double	fov;
+	double	move_step;
 }	t_player;
 
 typedef struct s_cub
@@ -122,5 +123,6 @@ int		key_releases(int code, t_cub *cub);
 int		myExit_prs(t_cub *cub);
 double 	rotationAngle(t_cub *cub);
 int		render(t_cub *cub);
+
 
 #endif
