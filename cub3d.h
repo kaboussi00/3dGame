@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/30 17:19:00 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/01 09:40:23 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 #include "get_next_line/get_next_line.h"
 
 #define SZ 30
+#define NUM_RAYS 320
+#define FOV 60
 
 typedef struct s_img
 {
@@ -45,6 +47,10 @@ typedef struct s_player
 	double	rotation_speed; //(=3*(M_PI / 180))
 	double	fov;
 	double	move_step;
+	double	changeX;
+	double	changeY;
+	double	posXinmap;
+	double	posYinmap;
 }	t_player;
 
 typedef struct s_cub

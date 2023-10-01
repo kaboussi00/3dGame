@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils01.c                                          :+:      :+:    :+:   */
+/*   utils_01.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:21 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/29 19:10:09 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/09/30 20:51:29 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ void initial_variable(t_cub *cub)
 	cub->player.rotationangle = M_PI_2;
 	cub->player.rayangle = cub->player.rotationangle - (cub->player.fov / 2);
 	cub->player.rotation_speed = 10.0 * (M_PI / 180);
-	// cub->player.move_step = cub->player.walk_direction * cub->player.move_speed;
+	cub->player.changeX = 0;
+	cub->player.changeY = 0;
 }
