@@ -6,19 +6,32 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 07:04:47 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/01 10:44:26 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:50:48 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-double degress_to_radian(double degress)
+void castRays(t_cub *cub)
 {
-    return degress * (M_PI/180.0);
-}
+    int i;
 
-void calculateFOVAndRays(double *fovAngle, int *numRays) 
-{
-    *fovAngle = 60.0 * (M_PI / 180.0);  // Calculate FOV angle in radians
-    *numRays = 320;                     // Set the number of rays
+    i = 0;
+    cub->rayData = malloc(sizeof(t_ray) * NUM_RAYS);
+	if (!cub->rayData)
+        return (0);
+    // Start first ray subtracting half of the FOV
+    cub->player.rayangle = cub->player.rotationangle - (FOV / 2);
+
+    // Loop all columns casting the FOV
+    while (i < NUM_RAYS) 
+    {
+        cub->rayData->angle = cub->player.rayangle;
+        // ray.cast()... (You'll need to implement ray casting here)
+
+        // cub->rayData[i]. = ; // Store the ray in the rays array
+
+        cub->player.rayangle += FOV / NUM_RAYS;
+        i++;
+    }
 }

@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:21 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/30 20:51:29 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:27:31 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void initial_variable(t_cub *cub)
 	cub->player.walk_direction = 0;
 	cub->player.turn_direction = 0;
 	cub->player.move_speed = 6.0;
-	cub->player.fov = 60 * (M_PI / 180);
+	// cub->player.fov = 60 * (M_PI / 180);
 	cub->player.rotationangle = M_PI_2;
-	cub->player.rayangle = cub->player.rotationangle - (cub->player.fov / 2);
+	cub->player.rayangle = cub->player.rotationangle - (FOV / 2);
 	cub->player.rotation_speed = 10.0 * (M_PI / 180);
-	cub->player.changeX = 0;
-	cub->player.changeY = 0;
+// 	cub->player.changeX = 0;
+// 	cub->player.changeY = 0;
 }

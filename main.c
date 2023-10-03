@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/30 11:20:21 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/03 10:52:35 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(int ac, char **av)
     parse(cub, av[1]);
     player_position(cub);
     cub->mlx = mlx_init();
-    cub->mlx_window = mlx_new_window(cub->mlx, 1000, 500, "my map <3");
+    cub->mlx_window = mlx_new_window(cub->mlx, WIDTH ,HEIGHT,  "my map <3");
     cub->img.img = mlx_new_image(cub->mlx, SZ*cub->len, SZ*(cub->line-6));
     cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, \
     &cub->img.line_length, &cub->img.endian);

@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/01 09:40:23 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:42:22 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@
 #include "get_next_line/get_next_line.h"
 
 #define SZ 30
-#define NUM_RAYS 320
-#define FOV 60
+#define WIDTH 1000
+#define HEIGHT 500
+#define	STRIP_WIDTH 4
+#define NUM_RAYS (WIDTH / STRIP_WIDTH) // number of rays to cast
+#define FOV (60 * (M_PI / 180)) // filed of view angle in degress
 
 typedef struct s_img
 {
@@ -45,13 +48,18 @@ typedef struct s_player
 	double	rayangle; //(= ) N ^, W <, E >, S.
 	double	move_speed; //(3.0 speed of player in mini-map)
 	double	rotation_speed; //(=3*(M_PI / 180))
-	double	fov;
 	double	move_step;
-	double	changeX;
-	double	changeY;
+	// double	changeX;
+	// double	changeY;
 	double	posXinmap;
 	double	posYinmap;
 }	t_player;
+
+typedef struct s_ray
+{
+	double	;
+	double	angle;
+}	t_ray;
 
 typedef struct s_cub
 {
@@ -86,6 +94,7 @@ typedef struct s_cub
 	double y_new;
     t_img img;
 	t_player player;
+	t_ray	*rayData;
 
 }   t_cub;
 

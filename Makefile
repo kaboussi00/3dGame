@@ -13,6 +13,7 @@ SRCS = main.c\
 	ren_player_drow.c\
 	ren_player_keys.c\
 	ren_player_move.c\
+	raycasting.c\
 	utils_split.c\
 	utils_00.c\
 	utils_01.c\
