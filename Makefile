@@ -14,6 +14,7 @@ SRCS = main.c\
 	ren_player_keys.c\
 	ren_player_move.c\
 	raycasting.c\
+	ray_render.c\
 	utils_split.c\
 	utils_00.c\
 	utils_01.c\

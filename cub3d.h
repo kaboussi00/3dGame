@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/03 12:42:22 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:42:10 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 #include <math.h>
 #include "get_next_line/get_next_line.h"
 
-#define SZ 30
+#define SZ 30 
 #define WIDTH 1000
 #define HEIGHT 500
 #define	STRIP_WIDTH 4
+// #define	RAY_LENGTH 30
 #define NUM_RAYS (WIDTH / STRIP_WIDTH) // number of rays to cast
 #define FOV (60 * (M_PI / 180)) // filed of view angle in degress
 
@@ -39,8 +40,8 @@ typedef struct s_img
 
 typedef struct s_player
 {
-	double xInwindow;
-	double yInwindow;
+	double 	xInwindow;
+	double 	yInwindow;
 	double	side_direction ; // (= 0) -1 if left, +1 if right
 	double	turn_direction ; // (= 0) -1 if left, +1 if right
 	double	walk_direction ; // (= 0) -1 if back, +1 if front
@@ -49,16 +50,26 @@ typedef struct s_player
 	double	move_speed; //(3.0 speed of player in mini-map)
 	double	rotation_speed; //(=3*(M_PI / 180))
 	double	move_step;
-	// double	changeX;
-	// double	changeY;
 	double	posXinmap;
 	double	posYinmap;
 }	t_player;
 
 typedef struct s_ray
 {
-	double	;
-	double	angle;
+	double	x;
+	double	y;
+	double	xIntersection;
+	double	yIntersection;
+	double	x_Step;
+	double	y_Step;
+	double	x_Wallhit;
+	double	y_Wallhit;
+	double	distance;
+	double	is_up;
+	double	is_down;
+	double	is_left;
+	double	is_right;
+	
 }	t_ray;
 
 typedef struct s_cub
@@ -163,6 +174,6 @@ int		render(t_cub *cub);
 //.<Raycasting.>//
 //////////////////
 
-
+void renderRay(t_cub *cub);
 
 #endif
