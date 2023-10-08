@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/05 13:42:10 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/08 14:43:26 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <mlx.h>
+#include "minilibx_opengl/mlx.h"
 #include <fcntl.h>
 #include <math.h>
 #include "get_next_line/get_next_line.h"
@@ -24,7 +24,7 @@
 #define SZ 30 
 #define WIDTH 1000
 #define HEIGHT 500
-#define	STRIP_WIDTH 4
+#define	STRIP_WIDTH 1
 // #define	RAY_LENGTH 30
 #define NUM_RAYS (WIDTH / STRIP_WIDTH) // number of rays to cast
 #define FOV (60 * (M_PI / 180)) // filed of view angle in degress
@@ -56,19 +56,24 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	double	x;
-	double	y;
-	double	xIntersection;
-	double	yIntersection;
-	double	x_Step;
-	double	y_Step;
+	double	x_hor;
+	double	y_hor;
+	double	angle;
+	double	xIntercept_H;
+	double	yIntercept_H;
+	double	xIntercept_V;
+	double	yIntercept_V;
+	double	x_Step_H;
+	double	y_Step_H;
+	double	x_Step_V;
+	double	y_Step_V;
 	double	x_Wallhit;
 	double	y_Wallhit;
 	double	distance;
-	double	is_up;
-	double	is_down;
-	double	is_left;
-	double	is_right;
+	double	rayUp;
+	double	rayDown;
+	double	rayLeft;
+	double	rayRight;
 	
 }	t_ray;
 
@@ -174,6 +179,5 @@ int		render(t_cub *cub);
 //.<Raycasting.>//
 //////////////////
 
-void renderRay(t_cub *cub);
-
+void CastRays(t_cub *cub);
 #endif

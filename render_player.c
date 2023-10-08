@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:29:10 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/05 13:33:48 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/08 14:44:31 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ int	render(t_cub *cub)
 	mlx_clear_window(cub->mlx, cub->mlx_window);
 	render_minimap(cub);
 	render_player(cub, SZ/4);
-	drowLine(cub);
-	renderRay(cub);
+	CastRays(cub);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_window, cub->img.img, 0, 0);
 	return(0);
 }
