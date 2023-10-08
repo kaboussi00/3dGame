@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   REN_MiniMap.c                                      :+:      :+:    :+:   */
+/*   ren_minimap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:47:18 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/30 16:06:47 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/08 14:52:41 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ void own_mlx_pixel_put(t_cub *cub, int x, int y, int color)
 {
     char *pixel;
 
-    pixel = cub->img.addr + (y * cub->img.line_length + x * (cub->img.bits_per_pixel / 8));
-    *(unsigned int*)pixel = color;
+    if (x >= 0 && x <= WIDTH && y >= 0 && y <= HEIGHT)
+    {
+        pixel = cub->img.addr + (y * cub->img.line_length + x * (cub->img.bits_per_pixel / 8));
+        *(unsigned int*)pixel = color;
+    }
 }
 
 void    ft_put_color(t_cub *cub, int x, int y, int color)
