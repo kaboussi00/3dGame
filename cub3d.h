@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/08 14:43:26 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/08 18:22:02 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #define SZ 30 
 #define WIDTH 1000
 #define HEIGHT 500
-#define	STRIP_WIDTH 1
+#define	STRIP_WIDTH 100
 // #define	RAY_LENGTH 30
 #define NUM_RAYS (WIDTH / STRIP_WIDTH) // number of rays to cast
 #define FOV (60 * (M_PI / 180)) // filed of view angle in degress
@@ -58,22 +58,25 @@ typedef struct s_ray
 {
 	double	x_hor;
 	double	y_hor;
+	double	x_ver;
+	double	y_ver;
 	double	angle;
 	double	xIntercept_H;
 	double	yIntercept_H;
 	double	xIntercept_V;
 	double	yIntercept_V;
+	double	dis_H;
+	double	dis_V;
 	double	x_Step_H;
 	double	y_Step_H;
 	double	x_Step_V;
 	double	y_Step_V;
 	double	x_Wallhit;
 	double	y_Wallhit;
-	double	distance;
-	double	rayUp;
-	double	rayDown;
-	double	rayLeft;
-	double	rayRight;
+	int			rayUp;
+	int			rayDown;
+	int			rayLeft;
+	int			rayRight;
 	
 }	t_ray;
 
@@ -170,7 +173,7 @@ void	drowLine(t_cub *cub);
 int		myExit_prs(t_cub *cub);
 int		keyReleases(int code, t_cub *cub);
 int		keyPress(int code, t_cub *cub);
-double 	rotationAngle(t_cub *cub);
+void 	rotationAngle(t_cub *cub);
 void	moveWalkPlayer(t_cub *cub);
 void	moveSidePlayer(t_cub *cub);
 int		render(t_cub *cub);
@@ -180,4 +183,10 @@ int		render(t_cub *cub);
 //////////////////
 
 void CastRays(t_cub *cub);
+void CheckWall__Ver(t_ray *rayData, t_cub *cub);
+void CheckWall__Hor(t_ray *rayData, t_cub *cub);
+void setDirections(t_ray *rayData);
+void drowLineRay(t_cub *cub, double x1, double y1);
+double normalizingAngle(double angle);
+
 #endif

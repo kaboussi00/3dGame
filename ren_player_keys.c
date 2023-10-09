@@ -56,6 +56,10 @@ int keyReleases(int code, t_cub *cub)
 		cub->player.walk_direction = 0;
 	if (code == 1)
 		cub->player.walk_direction = 0;
+	if (code == 0)
+		cub->player.side_direction = 0;
+	if (code == 2)
+		cub->player.side_direction = 0;
 	if (code == 123)
 		cub->player.turn_direction = 0;
 	if (code == 124)
