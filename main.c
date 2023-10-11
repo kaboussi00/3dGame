@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/03 10:52:35 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/11 23:26:17 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int ac, char **av)
     player_position(cub);
     cub->mlx = mlx_init();
     cub->mlx_window = mlx_new_window(cub->mlx, WIDTH ,HEIGHT,  "my map <3");
-    cub->img.img = mlx_new_image(cub->mlx, SZ*cub->len, SZ*(cub->line-6));
+    cub->img.img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
     cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, \
     &cub->img.line_length, &cub->img.endian);
     render(cub);

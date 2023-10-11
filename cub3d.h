@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/11 10:47:31 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/11 23:23:24 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 #define SZ 30 
 #define WIDTH 1000
 #define HEIGHT 500
-#define	STRIP_WIDTH 100
+#define	STRIP_WIDTH 1
 #define NUM_RAYS (WIDTH / STRIP_WIDTH) // number of rays to cast
 #define FOV (60 * (M_PI / 180)) // filed of view angle in degress
-
+#define SCALE 50
 typedef struct s_img
 {
 	void	*img;
