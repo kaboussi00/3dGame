@@ -16,6 +16,7 @@ SRCS = main.c\
 	raycasting.c\
 	ray_render_hor.c\
 	ray_render_ver.c\
+	ray_distance.c\
 	ray_utils.c\
 	utils_split.c\
 	utils_00.c\

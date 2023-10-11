@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/08 18:22:02 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:47:31 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 #define WIDTH 1000
 #define HEIGHT 500
 #define	STRIP_WIDTH 100
-// #define	RAY_LENGTH 30
 #define NUM_RAYS (WIDTH / STRIP_WIDTH) // number of rays to cast
 #define FOV (60 * (M_PI / 180)) // filed of view angle in degress
 
@@ -184,9 +183,12 @@ int		render(t_cub *cub);
 
 void CastRays(t_cub *cub);
 void CheckWall__Ver(t_ray *rayData, t_cub *cub);
+void convert_into_mapV(t_ray *rayData, t_cub *cub);
 void CheckWall__Hor(t_ray *rayData, t_cub *cub);
 void setDirections(t_ray *rayData);
 void drowLineRay(t_cub *cub, double x1, double y1);
 double normalizingAngle(double angle);
+double	distance(double x, double y, double x1, double y1);
+void closest_dis(t_ray *rayData, t_cub *cub);
 
 #endif

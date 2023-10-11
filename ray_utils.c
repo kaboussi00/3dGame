@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 11:11:27 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/08 17:27:34 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:56:33 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,23 @@ void drowLineRay(t_cub *cub, double x1, double y1)
 	}
 }
 
+void down_right(t_ray *rayData)
+{
+	rayData->rayUp = 0;
+	rayData->rayLeft = 0;
+	rayData->rayRight = 1;
+	rayData->rayDown = 1;
+}
+
+void	down_left(t_ray	*rayData)
+{
+	rayData->rayUp = 0;
+	rayData->rayLeft = 1;
+	rayData->rayRight = 0;
+	rayData->rayDown = 1;
+}
+
+
 void setDirections(t_ray *rayData)
 {
 	double ra;
@@ -59,19 +76,9 @@ void setDirections(t_ray *rayData)
 	x = 1;
 	ra = rayData->angle;
 	if (ra >= 0 && ra < M_PI_2)
-	{
-		rayData->rayUp = 0;
-		rayData->rayLeft = 0;
-		rayData->rayRight = 1;
-		rayData->rayDown = 1;
-	}
+		down_right(rayData);
 	else if (ra >= M_PI_2 && ra < M_PI)
-	{
-		rayData->rayUp = 0;
-		rayData->rayLeft = 1;
-		rayData->rayRight = 0;
-		rayData->rayDown = 1;
-	}
+		down_left(rayData);
 	else if (ra >= M_PI && ra < 3 * M_PI / 2)
 	{
 		rayData->rayUp = 1;
@@ -87,21 +94,3 @@ void setDirections(t_ray *rayData)
 		rayData->rayDown = 0;
 	}
 }
-
-// int	rotationIndexY(t_cub *cub)
-// {
-// 	double ra;
-// 	double y;
-
-// 	y = 1;
-// 	ra = cub->rayData->angle;
-// 	if (ra >= 0 && ra < M_PI_2)
-// 		y *= -1;
-// 	else if (ra >= M_PI_2 && ra < M_PI)
-// 		y *= -1;
-// 	else if (ra >= M_PI && ra < 3 * M_PI / 2)
-// 		y *= 1;
-// 	else if (ra >= 3 * M_PI / 2 && ra < 2 * M_PI)
-// 		y *= 1;
-// 	return (y);
-// }
