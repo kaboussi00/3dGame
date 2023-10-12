@@ -21,6 +21,7 @@ SRCS = main.c\
 	utils_split.c\
 	utils_00.c\
 	utils_01.c\
+	drawall.c\
 	get_next_line/get_next_line.c\
 	get_next_line/get_next_line_utils.c\
 

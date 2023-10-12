@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 11:11:27 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/11 10:56:33 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:42:05 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 double normalizingAngle(double angle)
 {
-	// specific range between 0 and 360 degress
-	if (angle > 0)
-		angle -= (2 * M_PI);
-	if (angle < 0)
-		angle += (2 * M_PI);
-	return (angle);
+    angle = fmod(angle, 2 * M_PI);
+    if (angle < 0)
+        angle += 2 * M_PI;
+    return angle;
 }
 
 void drowLineRay(t_cub *cub, double x1, double y1)
