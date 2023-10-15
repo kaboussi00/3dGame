@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_op_ext.c                                     :+:      :+:    :+:   */
+/*   pars_check_opext.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:52 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/19 15:09:53 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/15 09:45:50 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	check_opening(char *file)
 	int	fd;
 
 	fd = open(file, O_RDWR);
+	printf("%s\n", file);
 	if (fd == -1)
 		printerror_message("can't open file1\n");
     close(fd);

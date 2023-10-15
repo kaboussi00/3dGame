@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/12 20:41:53 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/15 10:17:53 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "minilibx_opengl/mlx.h"
+// #include "minilibx_opengl/mlx.h"
+#include <mlx.h>
 #include <fcntl.h>
 #include <math.h>
 #include "get_next_line/get_next_line.h"
 
-#define SZ 30 
+#define SZ 30
+#define MOUSE_SENSITIVITY 0.009
 #define WIDTH 1000
 #define HEIGHT 500
 #define NUM_RAYS (WIDTH / 1) // number of rays to cast
@@ -110,10 +112,15 @@ typedef struct s_cub
 	double x_new;
 	double y_new;
     t_img img;
+    t_img east;
 	t_player player;
 	t_ray	*rayData;
 
+	// textures
+	unsigned int*	east_table;
+	int			vertical;
 }   t_cub;
+
 
 /////////////////
 //...<Utils>...//

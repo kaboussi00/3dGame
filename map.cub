@@ -1,28 +1,16 @@
+NO ./textures/east.xpm
 
 
+SO ./textures/east.xpm
 
+WE ./textures/east.xpm
 
-NO texture/north_texture
-
-
-SO texture/south_texture
-
-
-
-
-WE texture/west_texture
-
-
-
-
-
-EA texture/east_texture
+EA ./textures/east.xpm
 
 F 220,100,0
 
 
 C 225,30,87
-
 
 
 

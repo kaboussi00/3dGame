@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:47:18 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/12 20:46:45 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:28:45 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void    ft_put_color(t_cub *cub, int x, int y, int color)
     int c;
 
     i = x;
-    while (i < x + 10)
+    while (i < x + 30)
     {
         j = y;
-        while (j < y + 10)
+        while (j < y + 30)
         {
-            if (i % 10 == 0 || j % 10 == 0)
+            if (i % 30 == 0 || j % 30 == 0)
                 own_mlx_pixel_put(cub, j, i, 0x000000);
             else
                 own_mlx_pixel_put(cub, j, i, color);
@@ -55,11 +55,11 @@ int	render_minimap(t_cub *cub)
 		while (cub->j < cub->len)
 		{
 			if (cub->map[cub->i][cub->j] == '1')
-                ft_put_color(cub, cub->i * 10, cub->j * 10, 0x9a7760);
+                ft_put_color(cub, cub->i * 30, cub->j * 30, 0x9a7760);
 			if (cub->map[cub->i][cub->j] == '0')
-				ft_put_color(cub, cub->i * 10, cub->j * 10, 0x85bb65);
+				ft_put_color(cub, cub->i * 30, cub->j * 30, 0x85bb65);
 			if (cub->map[cub->i][cub->j] == 'W')
-				ft_put_color(cub, cub->i * 10, cub->j * 10, 0x63413f);
+				ft_put_color(cub, cub->i * 30, cub->j * 30, 0x63413f);
             cub->j++;
 		}
         cub->i++;

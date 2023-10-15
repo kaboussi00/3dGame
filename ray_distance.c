@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:42:12 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/12 14:23:56 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:27:41 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void closest_dis(t_ray *rayData, t_cub *cub)
 	yV1 = rayData->y_ver;
 	rayData->dis_H = distance(x, y, xH1, yH1);
 	rayData->dis_V = distance(x, y, xV1, yV1);
-	// if (rayData->dis_H > rayData->dis_V)
-	// 	drowLineRay(cub, rayData->x_ver, rayData->y_ver);
-	// else
-	// 	drowLineRay(cub, rayData->x_hor, rayData->y_hor);
+	if (rayData->dis_H > rayData->dis_V)
+		drowLineRay(cub, rayData->x_ver, rayData->y_ver);
+	else
+		drowLineRay(cub, rayData->x_hor, rayData->y_hor);
 }
