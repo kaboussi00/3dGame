@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:29:10 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/15 14:03:35 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/16 13:17:40 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void fillWindow(t_cub *cub)
 
 void drawWall(t_cub *cub)
 {
-    double  offset;
+    double  xoffset;
 
     for (int x = 0; x < WIDTH; x++)
     {
@@ -36,12 +36,12 @@ void drawWall(t_cub *cub)
         double distance;
         if (cub->rayData[x].dis_H < cub->rayData[x].dis_V) {
              distance = cub->rayData[x].dis_H;
-             cub->vertical = 0;
+             cub->rayData[x].vertical = 0;
         }
         else
         {
             distance = cub->rayData[x].dis_H;
-            cub->vertical = 1;
+            cub->rayData[x].vertical = 1;
         }
         distance = cub->rayData[x].dis_H < cub->rayData[x].dis_V ? cub->rayData[x].dis_H : cub->rayData[x].dis_V;
         
@@ -63,16 +63,16 @@ void drawWall(t_cub *cub)
         int index = 0;
 
 
-        if (cub->vertical)
-            offset = fmod(cub->rayData[x].y_ver, 64);
+        if (cub->rayData[x].vertical)
+            xoffset = fmod(cub->rayData[x].y_ver, 64);
         else
-            offset = fmod(cub->rayData[x].x_hor, 64);
+            xoffset = fmod(cub->rayData[x].x_hor, 64);
 
         for (int y = start; y < end; y++)
         {
 	    	double yoffset = (y / height) * 64;
             own_mlx_pixel_put(cub, x, y,
-	    		(cub->east_table)[(int)(64 * yoffset + offset)]);
+	    		(cub->east_table)[(int)(yoffset + xoffset)]);
         }
     }
 }
@@ -86,5 +86,5 @@ int	render(t_cub *cub)
     // render_minimap(cub);
 	// render_player(cub, SZ/4);
     mlx_put_image_to_window(cub->mlx, cub->mlx_window, cub->img.img, 0, 0);
-	return(0);
+    return(0);
 }

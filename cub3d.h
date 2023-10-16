@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/15 10:17:53 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/16 13:14:02 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct s_ray
 	int			rayDown;
 	int			rayLeft;
 	int			rayRight;
-	
+	int			vertical;
 }	t_ray;
 
 typedef struct s_cub
@@ -118,7 +118,6 @@ typedef struct s_cub
 
 	// textures
 	unsigned int*	east_table;
-	int			vertical;
 }   t_cub;
 
 
