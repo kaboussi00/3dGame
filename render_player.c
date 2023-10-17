@@ -6,13 +6,11 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:29:10 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/16 13:17:40 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:43:29 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
 
 void fillWindow(t_cub *cub)
 {
@@ -25,57 +23,115 @@ void fillWindow(t_cub *cub)
     }
 }
 
-
 void drawWall(t_cub *cub)
 {
-    double  xoffset;
-
     for (int x = 0; x < WIDTH; x++)
     {
         double alpha = normalizingAngle(cub->rayData[x].angle - cub->player.rotationangle);
         double distance;
+        int textureIndex = 0;
+
+        // Determine whether the ray hit a vertical or horizontal wall
         if (cub->rayData[x].dis_H < cub->rayData[x].dis_V) {
              distance = cub->rayData[x].dis_H;
              cub->rayData[x].vertical = 0;
-        }
-        else
-        {
-            distance = cub->rayData[x].dis_H;
+            //  textureIndex = cub->rayData[x].rayRight ? 1 : 3; // Texture index for horizontal wall
+        } else {
+            distance = cub->rayData[x].dis_V;
             cub->rayData[x].vertical = 1;
+            // textureIndex = cub->rayData[x].rayUp ? 2 : 0; // Texture index for vertical wall
         }
-        distance = cub->rayData[x].dis_H < cub->rayData[x].dis_V ? cub->rayData[x].dis_H : cub->rayData[x].dis_V;
-        
 
+        // Calculate projected wall height
         double new_dis = distance * cos(alpha);
-        double height = ((HEIGHT / new_dis) * SCALE);
+        double height = (HEIGHT / new_dis) * SCALE;
         int start = (HEIGHT / 2) - (height / 2);
         int end = start + height;
-         if (end > HEIGHT)
-            end = HEIGHT;
-        if (start < 0)
-            start = 0;
-        ///// draw floor and ceil////// 
+
+        // Ensure the start and end points are within screen bounds
+        if (end > HEIGHT) end = HEIGHT;
+        if (start < 0) start = 0;
+
+        // Draw floor and ceiling
         for (int y = end; y < HEIGHT; y++)
             own_mlx_pixel_put(cub, x, y, 0x85bb65);
         for (int y = 0; y <= start; y++)
             own_mlx_pixel_put(cub, x, y, 0x87CEEB);
-        ///// draw wall
-        int index = 0;
 
-
-        if (cub->rayData[x].vertical)
-            xoffset = fmod(cub->rayData[x].y_ver, 64);
-        else
-            xoffset = fmod(cub->rayData[x].x_hor, 64);
+        // Draw wall texture
+        double textureStep = 64.0 / height; // the steps bach ktloopi (heitght = 256 ==> step = 0.25 ==> )
+        double texturePos = 0;
 
         for (int y = start; y < end; y++)
         {
-	    	double yoffset = (y / height) * 64;
-            own_mlx_pixel_put(cub, x, y,
-	    		(cub->east_table)[(int)(yoffset + xoffset)]);
+            // int texY = (int)texturePos;
+            
+            // Get the texture color based on texture index and texture coordinates
+            unsigned int color;
+            if (cub->rayData[x].vertical) {
+                int texX = (int)cub->rayData[x].y_ver % 64;
+                color = cub->east_table[(int)(texturePos) * 64 + texX];
+            } else {
+                int texX = (int)cub->rayData[x].x_hor % 64;
+                color = cub->east_table[(int)(texturePos) * 64 + texX];
+            }
+            texturePos += textureStep;
+
+            own_mlx_pixel_put(cub, x, y, color);
         }
     }
 }
+
+// void drawWall(t_cub *cub)
+// {
+//     double  xoffset;
+
+//     for (int x = 0; x < WIDTH; x++)
+//     {
+//         double alpha = normalizingAngle(cub->rayData[x].angle - cub->player.rotationangle);
+//         double distance;
+//         if (cub->rayData[x].dis_H < cub->rayData[x].dis_V) {
+//              distance = cub->rayData[x].dis_H;
+//              cub->rayData[x].vertical = 0;
+//         }
+//         else
+//         {
+//             distance = cub->rayData[x].dis_H;
+//             cub->rayData[x].vertical = 1;
+//         }
+//         distance = cub->rayData[x].dis_H < cub->rayData[x].dis_V ? cub->rayData[x].dis_H : cub->rayData[x].dis_V;
+
+//         double new_dis = distance * cos(alpha);
+//         double height = ((HEIGHT / new_dis) * SCALE);
+//         int start = (HEIGHT / 2) - (height / 2);
+//         int end = start + height;
+//         if (end > HEIGHT)
+//             end = HEIGHT;
+//         if (start < 0)
+//             start = 0;
+
+//         // draw floor and ceiling
+//         for (int y = end; y < HEIGHT; y++)
+//             own_mlx_pixel_put(cub, x, y, 0x85bb65);
+//         for (int y = 0; y <= start; y++)
+//             own_mlx_pixel_put(cub, x, y, 0x87CEEB);
+
+//         // draw wall with texture
+//         int index = 0;
+
+//         if (cub->rayData[x].vertical)
+//             xoffset = fmod(cub->rayData[x].y_ver, 64) + 0.01; // Add a small offset
+//         else
+//             xoffset = fmod(cub->rayData[x].x_hor, 64) + 0.01; // Add a small offset
+
+//         for (int y = start; y < end; y++)
+//         {
+//             double yoffset = (y / height) * 64;
+//             own_mlx_pixel_put(cub, x, y, (cub->east_table)[(int)(yoffset + xoffset)]);
+//         }
+//     }
+// }
+
 
 int	render(t_cub *cub)
 {
