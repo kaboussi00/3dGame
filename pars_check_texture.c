@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:45 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/17 15:06:09 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:41:20 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,31 +54,87 @@ void	duplicate(t_cub	*cub)
 		printerror_message("invalid texture7!\n");
 }
 
-void	check_texture_color(t_cub *cub)
+char	*ft_strdup(const char *s1)
 {
-	int i = 0;
-	cub->no = 0;
-	cub->so = 0;
-	cub->we = 0;
-	cub->ea = 0;
-	cub->c = 0;
-	cub->f = 0;
-	while (i < 6)
-	{
-		cub->text = ft_split(cub->all_map[i], ' ');
-		if (cub->text[2] != NULL || (ft_strcmp(cub->text[0] , "NO") && ft_strcmp(cub->text[0] , "SO") &&\
-		 ft_strcmp(cub->text[0] , "WE") && ft_strcmp(cub->text[0] ,"EA") &&\
-		  ft_strcmp(cub->text[0] , "C") && ft_strcmp(cub->text[0] , "F")))
-		 	printerror_message("invalid texture!\n");
-		check_duplicate(cub, cub->text[0]);
-		if (!ft_strcmp(cub->text[0] , "C") || !ft_strcmp(cub->text[0] , "F"))
-			check_color(cub->text[1]);
-		else {
+	int		i;
+	int		len_str;
+	char	*scpy;
 
-			// printf("texture == [%s]\n", cub->text[1]);
-			check_opening(cub->text[1]);
-		}
+	len_str = ft_strlen((char *)s1);
+	scpy = malloc((len_str + 1) * sizeof(char));
+	if (!scpy)
+		return (NULL);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		scpy[i] = s1[i];
 		i++;
 	}
-	duplicate(cub);
+	scpy[i] = '\0';
+	return (scpy);
 }
+
+void parse_texture_path(t_cub *cub, char *line)
+{
+    char **split = ft_split(line, ' ');
+    if (split && split[1] && split[2] == NULL)
+    {
+        char *texture_path = ft_strdup(split[1]);
+        if (ft_strcmp(split[0], "NO") == 0)
+            cub->north_texture_path = texture_path;
+        else if (ft_strcmp(split[0], "SO") == 0)
+            cub->south_texture_path = texture_path;
+        else if (ft_strcmp(split[0], "WE") == 0)
+            cub->west_texture_path = texture_path;
+        else if (ft_strcmp(split[0], "EA") == 0)
+            cub->east_texture_path = texture_path;
+        else
+        {
+            free(texture_path);
+            printerror_message("Invalid texture type!\n");
+        }
+
+        // Free individual strings
+        for (int i = 0; split[i] != NULL; i++) {
+            free(split[i]);
+        }
+
+        // Free the split array itself
+        free(split);
+    }
+    else
+    {
+        printerror_message("Invalid texture line!\n");
+    }
+}
+
+
+// void	check_texture_color(t_cub *cub)
+// {
+// 	int i = 0;
+// 	cub->no = 0;
+// 	cub->so = 0;
+// 	cub->we = 0;
+// 	cub->ea = 0;
+// 	cub->c = 0;
+// 	cub->f = 0;
+// 	while (i < 6)
+// 	{
+// 		cub->text = ft_split(cub->all_map[i], ' ');
+// 		// printf("texture == [%s] /// i == [%d]\n", cub->text[1], i);
+// 		if (cub->text[2] != NULL || (ft_strcmp(cub->text[0] , "NO") && ft_strcmp(cub->text[0] , "SO") &&\
+// 		 ft_strcmp(cub->text[0] , "WE") && ft_strcmp(cub->text[0] ,"EA") &&\
+// 		  ft_strcmp(cub->text[0] , "C") && ft_strcmp(cub->text[0] , "F")))
+// 		 	printerror_message("invalid texture!\n");
+// 		check_duplicate(cub, cub->text[0]);
+// 		if (!ft_strcmp(cub->text[0] , "C") || !ft_strcmp(cub->text[0] , "F"))
+// 			check_color(cub->text[1]);
+// 		else {
+// 			check_opening(cub->text[1]);
+// 		}
+// 		i++;
+// 	}
+// 	duplicate(cub);
+// }
+
+

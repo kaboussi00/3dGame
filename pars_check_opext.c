@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:52 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/17 15:02:30 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:21:09 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	check_opening(char *file)
 	int	fd;
 
 	fd = open(file, O_RDWR);
-	printf("tex == %s\n", file);
 	if (fd == -1)
 		printerror_message("can't open file1\n");
     close(fd);

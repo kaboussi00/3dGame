@@ -6,20 +6,23 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/17 14:52:10 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/17 18:08:43 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void    init_textures(t_cub *cub)
-{
-    cub->east.img = mlx_xpm_file_to_image(cub->mlx, "./12.xpm", &cub->east.width, &cub->east.height);
-    cub->east.addr = mlx_get_data_addr(cub->east.img, \
-            &cub->east.bits_per_pixel, \
-            &cub->east.line_length, &cub->east.endian);
-    cub->east_table = (unsigned int*)cub->east.addr;
-}
+// void    init_textures(t_cub *cub)
+// {
+//    cub->east.img = mlx_xpm_file_to_image(cub->mlx, cub->south_texture_path, &cub->east.width, &cub->east.height);
+//     // Similar lines for other textures (north, south, west)
+//     if (cub->east.img == NULL)
+//         printerror_message("Failed to load textures!\n");
+//     cub->east.addr = mlx_get_data_addr(cub->east.img, \
+//             &cub->east.bits_per_pixel, \
+//             &cub->east.line_length, &cub->east.endian);
+//     cub->east_table = (unsigned int*)cub->east.addr;
+// }
 
 
 int handleMouse(int x, int y, t_cub *cub)
@@ -52,9 +55,7 @@ int main(int ac, char **av)
     cub->img.img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
     cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, \
     &cub->img.line_length, &cub->img.endian);
-    init_textures(cub);
-    render(cub);
-    // mlx_loop_hook(cub->mlx, &render, cub);
+    mlx_loop_hook(cub->mlx, &render, cub);
     mlx_hook(cub->mlx_window, 2, 0L, &keyPress, cub);
 	mlx_hook(cub->mlx_window, 17, 0L, &myExit_prs, cub);
 	mlx_hook(cub->mlx_window, 3, 0L, &keyReleases, cub);

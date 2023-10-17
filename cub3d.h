@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/17 11:30:10 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/17 18:16:59 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,10 @@ typedef struct s_cub
 	int wall;
 	char **all_map;
 	char **text;
+	char *north_texture_path;
+    char *south_texture_path;
+    char *west_texture_path;
+    char *east_texture_path;
 	char **map;
 	char **copie;
 	int no;
@@ -114,12 +118,19 @@ typedef struct s_cub
 	double x_new;
 	double y_new;
     t_img img;
-    t_img east;
+    t_img east_img;
+    t_img west_img;
+    t_img south_img;
+    t_img north_img;
+
 	t_player player;
 	t_ray	*rayData;
 
 	// textures
-	unsigned int*	east_table;
+	unsigned int* east_table;
+    unsigned int* west_table;
+    unsigned int* south_table;
+    unsigned int* north_table;
 }   t_cub;
 
 
@@ -202,5 +213,6 @@ void closest_dis(t_ray *rayData, t_cub *cub);
 ////// draw all ////
 void drawceil(t_cub *cub);
 void drawfloor(t_cub *cub);
+void parse_texture_path(t_cub *cub, char *line);
 
 #endif
