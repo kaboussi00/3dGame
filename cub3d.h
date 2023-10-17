@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/16 13:14:02 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:30:10 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int width;
+	int height;
 }	t_img;
 
 typedef struct s_player

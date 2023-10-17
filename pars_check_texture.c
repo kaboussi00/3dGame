@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_texture.c                                    :+:      :+:    :+:   */
+/*   pars_check_texture.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:45 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/09/19 15:09:47 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:06:09 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,11 @@ void	check_texture_color(t_cub *cub)
 		check_duplicate(cub, cub->text[0]);
 		if (!ft_strcmp(cub->text[0] , "C") || !ft_strcmp(cub->text[0] , "F"))
 			check_color(cub->text[1]);
-		else
+		else {
+
+			// printf("texture == [%s]\n", cub->text[1]);
 			check_opening(cub->text[1]);
+		}
 		i++;
 	}
 	duplicate(cub);

@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/15 14:04:12 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:52:10 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void    init_textures(t_cub *cub)
 {
-    int width, height;
-
-    cub->east.img = mlx_xpm_file_to_image(cub->mlx, "./textures/east.xpm", &width, &height);
+    cub->east.img = mlx_xpm_file_to_image(cub->mlx, "./12.xpm", &cub->east.width, &cub->east.height);
     cub->east.addr = mlx_get_data_addr(cub->east.img, \
             &cub->east.bits_per_pixel, \
             &cub->east.line_length, &cub->east.endian);
