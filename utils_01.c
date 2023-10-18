@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_01.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:21 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/08 14:44:53 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:45:28 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void initial_variable(t_cub *cub)
 	cub->line = 0;
 	cub->player.walk_direction = 0;
 	cub->player.turn_direction = 0;
-	cub->player.move_speed = 6.0;
+	cub->player.move_speed = 10.0;
 	cub->player.rotationangle = M_PI_2;
 	cub->player.rotation_speed = 10.0 * (M_PI / 180);
 }

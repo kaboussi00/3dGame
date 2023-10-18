@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   REN_Player_Keys.c                                  :+:      :+:    :+:   */
+/*   ren_player_keys.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:06 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/01 13:35:02 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/18 10:08:38 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	myExit_prs(t_cub *cub)
 	exit(0);
 }
 
-int	keyPress(int code, t_cub *cub)
+int keyPress(int code, t_cub *cub)
 {
 	if (code == 53)
-		exit (0);
+		exit(0);
 	if (code == 1 || code == 13)
 	{
 		if (code == 1)
@@ -29,6 +29,7 @@ int	keyPress(int code, t_cub *cub)
 		if (code == 13)
 			cub->player.walk_direction = 1;
 		moveWalkPlayer(cub);
+		render(cub);
 	}
 	if (code == 0 || code == 2)
 	{
@@ -37,6 +38,7 @@ int	keyPress(int code, t_cub *cub)
 		if (code == 2)
 			cub->player.side_direction = -1;
 		moveSidePlayer(cub);
+		render(cub);
 	}
 	if (code == 123 || code == 124)
 	{
@@ -45,10 +47,11 @@ int	keyPress(int code, t_cub *cub)
 		if (code == 124)
 			cub->player.turn_direction = 1;
 		rotationAngle(cub);
+		render(cub);
 	}
-	render(cub);
 	return (0);
 }
+
 
 int keyReleases(int code, t_cub *cub)
 {

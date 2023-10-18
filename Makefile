@@ -11,8 +11,10 @@ OBJS = $(SRCS:%.c=%.o)
 
 RM = rm -rf
 
+# -fsanitize=address -g
+
 MLX_DIR = minilibx_opengl
-CFLAGS_LNX = -Wall -Wextra -Werror -I$(MLX_DIR) -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -lm
+CFLAGS_LNX = -Wall -Wextra -Werror  -I$(MLX_DIR) -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -lm
 
 CC = cc
 

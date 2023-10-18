@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ren_player_move.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:45:42 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/08 15:34:33 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:58:39 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void rotationAngle(t_cub *cub)
 {
-	//update rotation angle
-	
+    // printf("Rotation Angle: %f\n", cub->player.rotationangle);
 	cub->player.rotationangle += cub->player.turn_direction * cub->player.rotation_speed;
 	if (cub->player.rotationangle >= 360 * (M_PI / 180))
 		cub->player.rotationangle -= 360 * (M_PI / 180);

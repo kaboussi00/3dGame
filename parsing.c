@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:46 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/17 17:40:05 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:14:44 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 // }
 void parse(t_cub *cub, char *file)
 {
+    cub->east_table = NULL;
+    cub->west_table = NULL;
+    cub->north_table = NULL;
+    cub->south_table = NULL;
     check_extension(file);
     check_opening(file);
     count_map(cub, file);
