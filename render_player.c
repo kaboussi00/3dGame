@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:29:10 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/19 16:53:59 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:04:02 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void drawWall(t_cub *cub)
 
         // Calculate projected wall height
         double new_dis = distance * cos(alpha);
-        double height = (500 / new_dis) * 100;
+        double height = (500 / new_dis) * 110;
         int start = (HEIGHT / 2) - (height / 2);
         int end = start + height;
         // printf("height == %f\n", height);
@@ -103,7 +103,7 @@ void drawWall(t_cub *cub)
 
 int	render(t_cub *cub)
 {
-    fillWindow(cub);
+    // fillWindow(cub);
 	mlx_clear_window(cub->mlx, cub->mlx_window);
 	CastRays(cub);
     drawWall(cub);
