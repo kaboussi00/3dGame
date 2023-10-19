@@ -6,39 +6,11 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:29:10 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/18 11:57:14 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:53:59 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int player_is_in_north(double rotationangle)
-{
-    if (rotationangle >= 3 * M_PI / 2 || rotationangle < M_PI / 4)
-        return 1;
-    return 0;
-}
-
-int player_is_in_south(double rotationangle)
-{
-    if (rotationangle >= 135 && rotationangle < 225)
-        return 1;
-    return 0;
-}
-
-int player_is_in_west(double rotationangle)
-{
-    if (rotationangle >= 225 && rotationangle < 315)
-        return 1;
-    return 0;
-}
-
-int player_is_in_east(double rotationangle)
-{
-    if (rotationangle >= 45 && rotationangle < 135)
-        return 1;
-    return 0;
-}
 
 void fillWindow(t_cub *cub)
 {
@@ -53,11 +25,6 @@ void fillWindow(t_cub *cub)
 
 unsigned int *get_table(t_cub *cub, int x)
 {
-    // printf("x :: %d\n", x);
-    // printf("rayRight:: %d\n", cub->rayData[x].rayRight);
-    // printf("rayLeft:: %d\n", cub->rayData[x].rayLeft);
-    // printf("rayUp:: %d\n", cub->rayData[x].rayUp);
-    // printf("rayDown:: %d\n", cub->rayData[x].rayDown);
     if (cub->rayData[x].vertical == 1 && cub->rayData[x].rayRight)
         return cub->east_table;
     else if (cub->rayData[x].vertical == 1 && cub->rayData[x].rayLeft)
@@ -68,8 +35,22 @@ unsigned int *get_table(t_cub *cub, int x)
         return cub->south_table;
 }
 
+
+double hitVer(t_ray *ray) {
+    double distance;
+    if (ray->dis_H < ray->dis_V) {
+         distance = ray->dis_H;
+         ray->vertical = 0;
+    } else {
+        distance = ray->dis_V;
+        ray->vertical = 1;
+    }
+    return distance;
+}
+
 void drawWall(t_cub *cub)
 {
+
     for (int x = 0; x < WIDTH; x++)
     {
         double alpha = normalizingAngle(cub->rayData[x].angle - cub->player.rotationangle);
@@ -77,19 +58,14 @@ void drawWall(t_cub *cub)
         int textureIndex = 0;
 
         // Determine whether the ray hit a vertical or horizontal wall
-        if (cub->rayData[x].dis_H < cub->rayData[x].dis_V) {
-             distance = cub->rayData[x].dis_H;
-             cub->rayData[x].vertical = 0;
-        } else {
-            distance = cub->rayData[x].dis_V;
-            cub->rayData[x].vertical = 1;
-        }
+        distance = hitVer(&cub->rayData[x]);
 
         // Calculate projected wall height
         double new_dis = distance * cos(alpha);
-        double height = (HEIGHT / new_dis) * SCALE;
+        double height = (500 / new_dis) * 100;
         int start = (HEIGHT / 2) - (height / 2);
         int end = start + height;
+        // printf("height == %f\n", height);
 
         // Ensure the start and end points are within screen bounds
         if (end > HEIGHT) end = HEIGHT;
@@ -100,8 +76,10 @@ void drawWall(t_cub *cub)
             own_mlx_pixel_put(cub, x, y, 0x696969);
         for (int y = 0; y <= start; y++)
             own_mlx_pixel_put(cub, x, y, 0x87CEEB);
+
         // Draw wall texture
-        double textureStep = 64 / height;
+        double texX;
+        double textureStep = (float)cub->north_img.height / height;
         double texturePos = (start - (HEIGHT / 2) + (height / 2)) * textureStep;
         unsigned int *table = get_table(cub, x);
         if (!table)
@@ -109,26 +87,19 @@ void drawWall(t_cub *cub)
             printerror_message("table :: empty\n");
             exit(1);
         }
+        if (cub->rayData[x].vertical)
+            texX = fmod(cub->rayData[x].y_ver , 64);
+        else
+            texX = fmod(cub->rayData[x].x_hor , 64);
         for (int y = start; y < end; y++)
         {
             // Get the texture color based on texture index and texture coordinates
-            unsigned int color;
-            if (cub->rayData[x].vertical)
-            {
-                int texX = (int)cub->rayData[x].y_ver % 64;
-                color = table[(int)(texturePos) * 64 + texX];
-            } 
-            else
-            {
-                int texX = (int)cub->rayData[x].x_hor % 64;
-                color = table[(int)(texturePos) * 64 + texX];
-            }
+            int h = ((int)texturePos * cub->north_img.height) + (texX * (cub->north_img.width / 64));
             texturePos += textureStep;
-            own_mlx_pixel_put(cub, x, y, color);
+            own_mlx_pixel_put(cub, x, y, table[h]);
         }
     }
 }
-
 
 int	render(t_cub *cub)
 {

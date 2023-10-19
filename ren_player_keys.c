@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:06 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/18 10:08:38 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:43:05 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	myExit_prs(t_cub *cub)
 
 int keyPress(int code, t_cub *cub)
 {
+	// printf("%d\n", code);
 	if (code == 53)
 		exit(0);
 	if (code == 1 || code == 13)
@@ -34,9 +35,9 @@ int keyPress(int code, t_cub *cub)
 	if (code == 0 || code == 2)
 	{
 		if (code == 0)
-			cub->player.side_direction = 1;
-		if (code == 2)
 			cub->player.side_direction = -1;
+		if (code == 2)
+			cub->player.side_direction = 1;
 		moveSidePlayer(cub);
 		render(cub);
 	}

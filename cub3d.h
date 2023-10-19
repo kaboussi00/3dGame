@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/18 11:09:12 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:48:15 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@
 #include <math.h>
 #include "get_next_line/get_next_line.h"
 
-#define SZ 30
+#define SZ 64
 #define MOUSE_SENSITIVITY 0.009
-#define WIDTH 1000
-#define HEIGHT 500
+#define WIDTH 	1000
+#define HEIGHT 	500
 #define NUM_RAYS (WIDTH / 1) // number of rays to cast
 #define FOV (60 * (M_PI / 180)) // filed of view angle in degress
-#define SCALE 50
+#define SCALE 70
+
+
 typedef struct s_img
 {
 	void	*img;
@@ -42,6 +44,7 @@ typedef struct s_img
 
 typedef struct s_player
 {
+	double	distance_to_plane;
 	double 	xInwindow;
 	double 	yInwindow;
 	double	side_direction ; // (= 0) -1 if left, +1 if right
