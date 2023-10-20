@@ -5,7 +5,7 @@ SRCS = main.c parsing.c pars_check_char.c pars_check_opext.c pars_check_texture.
 	ren_minimap.c ren_player_drow.c ren_player_keys.c ren_player_move.c \
 	raycasting.c ray_render_hor.c ray_render_ver.c ray_distance.c \
 	ray_utils.c utils_split.c utils_00.c utils_01.c drawall.c \
-	get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+	get_next_line/get_next_line.c get_next_line/get_next_line_utils.c needs_draw.c
 
 OBJS = $(SRCS:%.c=%.o)
 

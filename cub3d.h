@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/19 16:48:15 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:37:44 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,8 +214,10 @@ void closest_dis(t_ray *rayData, t_cub *cub);
 
 
 ////// draw all ////
-void drawceil(t_cub *cub);
-void drawfloor(t_cub *cub);
+unsigned int *get_table(t_cub *cub, int x);
+double hitVer(t_ray *ray);
+void     draw_floor_ceiling(t_cub *cub, int start, int end, int x);
+void    draw_wall_with_textures(t_cub *cub, int start, int end, double height, int x);
 void parse_texture_path(t_cub *cub, char *line);
 
 #endif
