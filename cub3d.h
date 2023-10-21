@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 18:28:03 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/21 18:34:32 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ typedef struct s_cub
 	char			*east_texture_path;
 	// char			*color_floor;
 	// char			*color_ceiling;
-	unsigned int	ecolor_floor[3];
-	unsigned int	ecolor_ceiling[3];
+	unsigned int	color_floor[3];
+	unsigned int	color_ceiling[3];
 	char			**map;
 	char			**copie;
 	int				no;

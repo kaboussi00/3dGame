@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:45 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 18:07:34 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/21 18:45:26 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ char	*ft_strdup(const char *s1)
 void parse_texture_path(t_cub *cub, char *line)
 {
     char **split;
+    char **rgb;
 
 	split = ft_split(line, ' ');
     if (split && split[1] && split[2] == NULL)
@@ -90,10 +91,21 @@ void parse_texture_path(t_cub *cub, char *line)
             cub->west_texture_path = texture_path;
         else if (ft_strcmp(split[0], "EA") == 0)
             cub->east_texture_path = texture_path;
-        // else if (ft_strcmp(split[0], "F") == 0)
-        //     cub->color_floor = texture_path;
-        // else if (ft_strcmp(split[0], "C") == 0)
-        //     cub->color_ceiling = texture_path;
+        else if (ft_strcmp(split[0], "F") == 0)
+		{
+			rgb = ft_split(split[1], ',');
+            cub->color_floor[0] = atoi(rgb[0]);
+            cub->color_floor[1] =  atoi(rgb[1]);
+            cub->color_floor[2] =  atoi(rgb[2]);
+
+		}
+        else if (ft_strcmp(split[0], "C") == 0)
+		{
+			char **rgb2 = ft_split(split[1], ',');
+            cub->color_ceiling[0] = atoi(rgb2[0]);
+            cub->color_ceiling[1] =  atoi(rgb2[1]);
+            cub->color_ceiling[2] =  atoi(rgb2[2]);
+		}
         else
         {
             free(texture_path);

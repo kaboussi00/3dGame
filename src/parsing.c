@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:46 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 18:09:08 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/21 18:32:53 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void parse(t_cub *cub, char *file)
     parse_texture_path(cub, cub->all_map[1]);
     parse_texture_path(cub, cub->all_map[2]); 
     parse_texture_path(cub, cub->all_map[3]);
-    // parse_texture_path(cub, cub->all_map[4]);
-    // parse_texture_path(cub, cub->all_map[5]);
+    parse_texture_path(cub, cub->all_map[4]);
+    parse_texture_path(cub, cub->all_map[5]);
     new_map(cub);
     check_char(cub);
     check_not_char(cub);

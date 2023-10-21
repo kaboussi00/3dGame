@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 18:07:51 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/21 18:46:02 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int ac, char **av)
 		printerror_message("invalid arg\n");
 	initial_variable(cub);
 	parse(cub, av[1]);
-    // printf("C == %s\n F == %s\n", cub->color_ceiling, cub->color_floor);
 	player_position(cub);
 	cub->mlx = mlx_init();
 	cub->mlx_window = mlx_new_window(cub->mlx, WIDTH, HEIGHT, "my map <3");
