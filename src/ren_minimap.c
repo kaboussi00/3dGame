@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:47:18 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 16:17:30 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/21 17:33:41 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,33 +46,27 @@ void    ft_put_color(t_cub *cub, int x, int y, int color)
 
 void render_minimap(t_cub *cub)
 {
+    int pixel_color;
+    int x;
+    int y;
+
     cub->i = 0;
     while (cub->i < cub->line - 6)
     {
         cub->j = 0;
         while (cub->j < cub->len)
         {
-            int pixel_color;
             if (cub->map[cub->i][cub->j] == '1')
-                pixel_color = 0x1f0b09;
+                pixel_color = 0x5D5447;
             else if (cub->map[cub->i][cub->j] == '0')
-                pixel_color = 0x63413f;
-            else if (cub->map[cub->i][cub->j] == 'W')
-                pixel_color = 0x63413f;
-
-            // Scale up the pixel size by a factor of 10
-            int scaled_i = cub->i * SZ;
-            int scaled_j = cub->j * SZ;
-
-            // Draw a 10x10 square for each pixel of the minimap
-            for (int y = scaled_i; y < scaled_i + SZ; y++)
+                pixel_color = 0xFFFDEB;
+            y = (cub->i * SZ);
+            while (y++ < (cub->i * SZ) + SZ)
             {
-                for (int x = scaled_j; x < scaled_j + SZ; x++)
-                {
+                x = (cub->j * SZ);
+                while (x++ < (cub->j * SZ) + SZ)
                     own_mlx_pixel_put(cub, x * MINI_SCALE, y * MINI_SCALE, pixel_color);
-                }
             }
-
             cub->j++;
         }
         cub->i++;

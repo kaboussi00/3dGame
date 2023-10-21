@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:52:09 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 16:26:35 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/21 17:11:13 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,14 @@ void render_player(t_cub *cub, int rayon)
 	double  new_x;
 
 	i = 0;
-	// rayon = 4;
 	while(i < rayon)
 	{
 		degr = 0;
 		while(degr < 360)
 		{
-			// printf("y = %f x = %f\n", (cub->player.yInwindow + new_y), (cub->player.xInwindow + new_x));
 			new_x = i * cos(degr * M_PI / 180);
 			new_y = i * sin(degr * M_PI / 180);
-			own_mlx_pixel_put(cub, (cub->player.yInwindow + new_y) * MINI_SCALE, (cub->player.xInwindow + new_x) * MINI_SCALE, 0xfafafa);
+			own_mlx_pixel_put(cub, (cub->player.yInwindow + new_y) * MINI_SCALE, (cub->player.xInwindow + new_x) * MINI_SCALE, 0xFF0000);
 			degr++;
 		}
 		i++;

@@ -12,28 +12,29 @@
 
 #include "../cub3d.h"
 
-
-void drawceil(t_cub *cub)
+void	drawceil(t_cub *cub)
 {
-    int skyColor = 0x87CEEB; 
-        for (int x = 0; x < WIDTH; x++)
-        {
-         for (int y = 0; y < HEIGHT / 2; y++)
-         {
-            own_mlx_pixel_put(cub, x, y, skyColor);
-         }
-     }
+	int	skyColor;
+
+	skyColor = 0x87CEEB;
+	for (int x = 0; x < WIDTH; x++)
+	{
+		for (int y = 0; y < HEIGHT / 2; y++)
+		{
+			own_mlx_pixel_put(cub, x, y, skyColor);
+		}
+	}
 }
 
-void drawfloor(t_cub *cub)
+void	drawfloor(t_cub *cub)
 {
-    int earthcolor = 0x81ff76;
+	int earthcolor = 0x81ff76;
 
-    for (int x = 0; x < WIDTH; x++)
-    {
-         for (int y = HEIGHT / 2; y < HEIGHT; y++)
-        {
-            own_mlx_pixel_put(cub, x, y, earthcolor);
-        }
-    }
+	for (int x = 0; x < WIDTH; x++)
+	{
+		for (int y = HEIGHT / 2; y < HEIGHT; y++)
+		{
+			own_mlx_pixel_put(cub, x, y, earthcolor);
+		}
+	}
 }

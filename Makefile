@@ -6,7 +6,7 @@
 #    By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/21 15:34:59 by rel-isma          #+#    #+#              #
-#    Updated: 2023/10/21 15:52:14 by rel-isma         ###   ########.fr        #
+#    Updated: 2023/10/21 17:05:55 by rel-isma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS = src/main.c src/parsing.c src/pars_check_char.c src/pars_check_opext.c src
 	src/ren_minimap.c src/ren_player_drow.c src/ren_player_keys.c src/ren_player_move.c \
 	src/raycasting.c src/ray_render_hor.c src/ray_render_ver.c src/ray_distance.c \
 	src/ray_utils.c src/utils_split.c src/utils_00.c src/utils_01.c src/drawall.c \
-	src/get_next_line/get_next_line.c src/get_next_line/get_next_line_utils.c src/needs_draw.c
+	src/get_next_line/get_next_line.c src/get_next_line/get_next_line_utils.c src/needs_draw.c src/init_textures.c
 
 OBJS = $(SRCS:%.c=obj/%.o)
 

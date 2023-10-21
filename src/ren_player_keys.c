@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:06 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 16:58:58 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/21 17:44:12 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ int handleMouse(int x, int y, t_cub *cub)
 
 int	myExit_prs(t_cub *cub)
 {
-	(void)cub;
+	mlx_destroy_window(cub->mlx, cub->mlx_window);
 	exit(0);
+	return (0);
 }
 
 int keyPress(int code, t_cub *cub)

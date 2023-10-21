@@ -6,27 +6,27 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 16:29:38 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/21 18:28:03 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
 # include "src/get_next_line/get_next_line.h"
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 # define SZ 64
 # define MOUSE_SENSITIVITY 0.009
 # define WIDTH 1000
 # define HEIGHT 500
-# define NUM_RAYS (WIDTH / 1)    // number of rays to cast
-# define FOV (60 * (M_PI / 180)) // filed of view angle in degress
+# define NUM_RAYS (WIDTH / 1)
+# define FOV (60 * (M_PI / 180))
 # define SCALE 70
 # define MINI_SCALE 0.15
 
@@ -46,13 +46,13 @@ typedef struct s_player
 	double			distance_to_plane;
 	double			xInwindow;
 	double			yInwindow;
-	double 			side_direction; // (= 0) -1 if left, +1 if right
-	double 			turn_direction; // (= 0) -1 if left, +1 if right
-	double 			walk_direction; // (= 0) -1 if back, +1 if front
-	double 			rotationangle;  //(= ) N ^, W <, E >, S.
-	double 			rayangle;       //(= ) N ^, W <, E >, S.
-	double 			move_speed;     //(3.0 speed of player in mini-map)
-	double 			rotation_speed; //(=3*(M_PI / 180))
+	double 			side_direction;
+	double 			turn_direction;
+	double 			walk_direction;
+	double 			rotationangle;
+	double 			rayangle;
+	double 			move_speed;
+	double 			rotation_speed;
 	double			move_step;
 	double			posXinmap;
 	double			posYinmap;
@@ -101,6 +101,10 @@ typedef struct s_cub
 	char			*south_texture_path;
 	char			*west_texture_path;
 	char			*east_texture_path;
+	// char			*color_floor;
+	// char			*color_ceiling;
+	unsigned int	ecolor_floor[3];
+	unsigned int	ecolor_ceiling[3];
 	char			**map;
 	char			**copie;
 	int				no;
@@ -214,6 +218,7 @@ void				draw_floor_ceiling(t_cub *cub, int start, int end, int x);
 void				draw_wall_with_textures(t_cub *cub, int start, int end,
 						double height, int x);
 void				parse_texture_path(t_cub *cub, char *line);
-int 				handleMouse(int x, int y, t_cub *cub);
+int					handleMouse(int x, int y, t_cub *cub);
+void				init_textures(t_cub *cub);
 
 #endif
