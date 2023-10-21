@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 18:46:02 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/21 22:54:29 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 	mlx_hook(cub->mlx_window, 17, 0L, &myExit_prs, cub);
 	mlx_hook(cub->mlx_window, 3, 0L, &keyReleases, cub);
 	mlx_hook(cub->mlx_window, 2, 0L, &keyPress, cub);
-	// mlx_hook(cub->mlx_window, 6, 0, &handleMouse, cub);
+	mlx_hook(cub->mlx_window, 6, 0, &handleMouse, cub);
 	mlx_loop(cub->mlx);
 	return (0);
 }

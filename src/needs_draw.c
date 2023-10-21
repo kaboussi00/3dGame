@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/21 15:47:51 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/21 22:03:40 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void	draw_floor_ceiling(t_cub *cub, int start, int end, int x)
 	y = 0;
 	while (y <= start)
 	{
-		own_mlx_pixel_put(cub, x, y, 0x87CEEB);
+		own_mlx_pixel_put(cub, x, y, cub->color_ceiling);
 		y++;
 	}
 	y = end;
 	while (y < HEIGHT)
 	{
-		own_mlx_pixel_put(cub, x, y, 0x696969);
+		own_mlx_pixel_put(cub, x, y, cub->color_floor);
 		y++;
 	}
 }

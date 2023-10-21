@@ -6,11 +6,16 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:45 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 18:45:26 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/21 22:04:20 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int rgb_to_int(int r, int g, int b)
+{
+    return (r << 16) | (g << 8) | b;
+}
 
 void	check_duplicate(t_cub	*cub, char *text)
 {
@@ -34,6 +39,13 @@ void	check_color(char *str)
 	int n;
 	char **s;
 
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ',' && str[i + 1] == '\0')
+			printerror_message("invalid color\n");
+		i++;
+	}
 	i = 0;
 	s = ft_split(str, ',');	
 	if (s[0]== NULL || s[1] == NULL || s[2]== NULL || s[3] != NULL)
@@ -94,17 +106,12 @@ void parse_texture_path(t_cub *cub, char *line)
         else if (ft_strcmp(split[0], "F") == 0)
 		{
 			rgb = ft_split(split[1], ',');
-            cub->color_floor[0] = atoi(rgb[0]);
-            cub->color_floor[1] =  atoi(rgb[1]);
-            cub->color_floor[2] =  atoi(rgb[2]);
-
+			cub->color_floor = rgb_to_int(atoi(rgb[0]), atoi(rgb[1]), atoi(rgb[2]));
 		}
         else if (ft_strcmp(split[0], "C") == 0)
 		{
 			char **rgb2 = ft_split(split[1], ',');
-            cub->color_ceiling[0] = atoi(rgb2[0]);
-            cub->color_ceiling[1] =  atoi(rgb2[1]);
-            cub->color_ceiling[2] =  atoi(rgb2[2]);
+			cub->color_ceiling = rgb_to_int(atoi(rgb2[0]), atoi(rgb2[1]), atoi(rgb2[2]));
 		}
         else
         {

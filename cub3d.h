@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 18:34:32 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/21 22:56:51 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <unistd.h>
 
 # define SZ 64
-# define MOUSE_SENSITIVITY 0.009
+# define MOUSE_SENSITIVITY 0.005
 # define WIDTH 1000
 # define HEIGHT 500
 # define NUM_RAYS (WIDTH / 1)
@@ -101,10 +101,8 @@ typedef struct s_cub
 	char			*south_texture_path;
 	char			*west_texture_path;
 	char			*east_texture_path;
-	// char			*color_floor;
-	// char			*color_ceiling;
-	unsigned int	color_floor[3];
-	unsigned int	color_ceiling[3];
+	unsigned int	color_floor;
+	unsigned int	color_ceiling;
 	char			**map;
 	char			**copie;
 	int				no;
@@ -123,12 +121,12 @@ typedef struct s_cub
 	int				left;
 	double			x_new;
 	double			y_new;
+	int door_state;
 	t_img			img;
 	t_img			east_img;
 	t_img			west_img;
 	t_img			south_img;
 	t_img			north_img;
-
 	t_player		player;
 	t_ray			*rayData;
 
