@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:10 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 15:47:51 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/22 16:12:13 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	printerror_message(char *str)
 {
 	write(1, "Error\n", 6);
 	ft_putstr(str);
-	exit(0);
+	exit(1);
 }
 
 void	ft_putstr(char *s)

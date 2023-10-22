@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:52:09 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/22 14:16:15 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/22 16:00:52 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	player_position(t_cub *cub)
 {
-	// position in window
 	cub->player.xInwindow = cub->pos_i * SZ + (SZ / 2);
 	cub->player.yInwindow = cub->pos_j * SZ + (SZ / 2);
 }
