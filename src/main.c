@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 22:54:29 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:14:34 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	main(int ac, char **av)
 	cub->mlx_window = mlx_new_window(cub->mlx, WIDTH, HEIGHT, "my map <3");
 	cub->img.img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
-		&cub->img.line_length, &cub->img.endian);
+			&cub->img.line_length, &cub->img.endian);
 	init_textures(cub);
 	mlx_loop_hook(cub->mlx, &render, cub);
-	mlx_hook(cub->mlx_window, 17, 0L, &myExit_prs, cub);
-	mlx_hook(cub->mlx_window, 3, 0L, &keyReleases, cub);
-	mlx_hook(cub->mlx_window, 2, 0L, &keyPress, cub);
-	mlx_hook(cub->mlx_window, 6, 0, &handleMouse, cub);
+	mlx_hook(cub->mlx_window, 17, 0L, &my_exit_prs, cub);
+	mlx_hook(cub->mlx_window, 3, 0L, &key_releases, cub);
+	mlx_hook(cub->mlx_window, 2, 0L, &key_press, cub);
+	mlx_hook(cub->mlx_window, 6, 0, &handle_mouse, cub);
 	mlx_loop(cub->mlx);
 	return (0);
 }

@@ -24,7 +24,7 @@ void	check_extension(char *str)
 		printerror_message("extension error\n");
 	if (str[i - 1] != 'u')
 		printerror_message("extension error\n");
-	if (str[i -2] != 'c' )
+	if (str[i - 2] != 'c')
 		printerror_message("extension error\n");
 	if (str[i - 3] != '.')
 		printerror_message("extension error\n");
@@ -37,5 +37,5 @@ void	check_opening(char *file)
 	fd = open(file, O_RDWR);
 	if (fd == -1)
 		printerror_message("can't open file1\n");
-    close(fd);
+	close(fd);
 }

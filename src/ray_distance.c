@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:42:12 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 15:47:51 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:02:22 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 double	distance(double x, double y, double x1, double y1)
 {
-	double distance;
+	double	distance;
 
-	distance = sqrt(pow(x1 - x, 2)+ pow(y1 - y, 2));
+	distance = sqrt(pow(x1 - x, 2) + pow(y1 - y, 2));
 	return (distance);
 }
 
-void closest_dis(t_ray *rayData, t_cub *cub)
+void	closest_dis(t_ray *ray_data, t_cub *cub)
 {
 	double x;
 	double y;
-	double xH1;
-	double yH1;
-	double xV1;
-	double yV1;
+	double x_h1;
+	double y_h1;
+	double x_v1;
+	double y_v1;
 
 	x = cub->player.xInwindow;
 	y = cub->player.yInwindow;
-	xH1 = rayData->x_hor;
-	yH1 = rayData->y_hor;
-	xV1 = rayData->x_ver;
-	yV1 = rayData->y_ver;
-	rayData->dis_H = distance(x, y, xH1, yH1);
-	rayData->dis_V = distance(x, y, xV1, yV1);
+	x_h1 = ray_data->x_hor;
+	y_h1 = ray_data->y_hor;
+	x_v1 = ray_data->x_ver;
+	y_v1 = ray_data->y_ver;
+	ray_data->dis_H = distance(x, y, x_h1, y_h1);
+	ray_data->dis_V = distance(x, y, x_v1, y_v1);
 }

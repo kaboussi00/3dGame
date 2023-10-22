@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/21 22:03:40 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:51:10 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 unsigned int	*get_table(t_cub *cub, int x)
 {
-	if (cub->rayData[x].vertical == 1 && cub->rayData[x].rayRight)
+	if (cub->ray_data[x].vertical == 1 && cub->ray_data[x].rayRight)
 		return (cub->east_table);
-	else if (cub->rayData[x].vertical == 1 && cub->rayData[x].rayLeft)
+	else if (cub->ray_data[x].vertical == 1 && cub->ray_data[x].rayLeft)
 		return (cub->west_table);
-	else if (cub->rayData[x].vertical == 0 && cub->rayData[x].rayUp)
+	else if (cub->ray_data[x].vertical == 0 && cub->ray_data[x].rayUp)
 		return (cub->north_table);
 	else
 		return (cub->south_table);
 }
 
-double	hitVer(t_ray *ray)
+double	hit_ver(t_ray *ray)
 {
 	double	distance;
 
@@ -59,23 +59,28 @@ void	draw_floor_ceiling(t_cub *cub, int start, int end, int x)
 	}
 }
 
-void	draw_wall_with_textures(t_cub *cub, int start, int end, double height,
-		int x)
+void	draw_wall_with_textures(t_cub *cub, double height, int x)
 {
-	double texX;
-	double textureStep = (float)cub->north_img.height / height;
-	double texturePos = (start - (HEIGHT / 2) + (height / 2)) * textureStep;
-	unsigned int *table = get_table(cub, x);
-	if (cub->rayData[x].vertical)
-		texX = fmod(cub->rayData[x].y_ver, 64);
+	int				y;
+	int				h;
+	double			tex_x;
+	double			texture_step;
+	double			texture_pos;
+
+	cub->table = get_table(cub, x);
+	texture_step = (float)cub->north_img.height / height;
+	texture_pos = (cub->start - (HEIGHT / 2) + (height / 2)) * texture_step;
+	if (cub->ray_data[x].vertical)
+		tex_x = fmod(cub->ray_data[x].y_ver, 64);
 	else
-		texX = fmod(cub->rayData[x].x_hor, 64);
-	for (int y = start; y < end; y++)
+		tex_x = fmod(cub->ray_data[x].x_hor, 64);
+	y = cub->start;
+	while (y < cub->end)
 	{
-		// Get the texture color based on texture index and texture coordinates
-		int h = ((int)texturePos * cub->north_img.height) + (texX
-			* (cub->north_img.width / 64));
-		texturePos += textureStep;
-		own_mlx_pixel_put(cub, x, y, table[h]);
+		h = ((int)texture_pos * cub->north_img.height) + (tex_x
+				* (cub->north_img.width / 64));
+		own_mlx_pixel_put(cub, x, y, cub->table[h]);
+		texture_pos += texture_step;
+		y++;
 	}
 }

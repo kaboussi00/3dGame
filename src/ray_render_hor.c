@@ -6,48 +6,50 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:38:53 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 15:47:51 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:04:08 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	convert_into_mapH(t_ray *rayData, t_cub *cub)
+void	convert_into_map_h(t_ray *ray_data, t_cub *cub)
 {
-	double y;
+	double	y;
 
-	while (rayData->x_hor >= 0 && rayData->x_hor <= (cub->line - 6) * SZ
-		&& rayData->y_hor >= 0 && rayData->y_hor <= cub->len * SZ)
+	while (ray_data->x_hor >= 0 && ray_data->x_hor <= (cub->line - 6) * SZ
+		&& ray_data->y_hor >= 0 && ray_data->y_hor <= cub->len * SZ)
 	{
-		y = rayData->y_hor;
-		if (rayData->rayUp)
-			y = rayData->y_hor - 1;
-		if (cub->map[(int)(rayData->x_hor / SZ)][(int)(y / SZ)] != '1'
-			&& cub->map[(int)(rayData->x_hor / SZ)][(int)(y / SZ)] != ' ')
+		y = ray_data->y_hor;
+		if (ray_data->rayUp)
+			y = ray_data->y_hor - 1;
+		if (cub->map[(int)(ray_data->x_hor / SZ)][(int)(y / SZ)] != '1'
+			&& cub->map[(int)(ray_data->x_hor / SZ)][(int)(y / SZ)] != ' ')
 		{
-			rayData->x_hor += rayData->x_Step_H;
-			rayData->y_hor += rayData->y_Step_H;
+			ray_data->x_hor += ray_data->x_Step_H;
+			ray_data->y_hor += ray_data->y_Step_H;
 		}
 		else
-			break;
+			break ;
 	}
 }
 
-void CheckWall__Hor(t_ray *rayData, t_cub *cub)
+void	check_wall__hor(t_ray *ray_data, t_cub *cub)
 {
-	rayData->x_hor = cub->player.xInwindow;
-	rayData->y_hor = cub->player.yInwindow;
-	rayData->yIntercept_H = floor(rayData->y_hor / SZ) * SZ;
-	if (rayData->rayDown)
-		rayData->yIntercept_H += SZ;
-	rayData->xIntercept_H = rayData->x_hor + ((rayData->yIntercept_H - rayData->y_hor) / tan(rayData->angle));
-	rayData->y_Step_H = SZ;
-	if (rayData->rayUp)
-		rayData->y_Step_H *= -1;
-	rayData->x_Step_H = SZ / tan(rayData->angle);
-	if ((rayData->rayLeft && rayData->x_Step_H > 0) || (rayData->rayRight && rayData->x_Step_H < 0))
-		rayData->x_Step_H *= -1;
-	rayData->x_hor = rayData->xIntercept_H;
-	rayData->y_hor = rayData->yIntercept_H;
-	convert_into_mapH(rayData, cub);
+	ray_data->x_hor = cub->player.xInwindow;
+	ray_data->y_hor = cub->player.yInwindow;
+	ray_data->yIntercept_H = floor(ray_data->y_hor / SZ) * SZ;
+	if (ray_data->rayDown)
+		ray_data->yIntercept_H += SZ;
+	ray_data->xIntercept_H = ray_data->x_hor + ((ray_data->yIntercept_H
+			- ray_data->y_hor) / tan(ray_data->angle));
+	ray_data->y_Step_H = SZ;
+	if (ray_data->rayUp)
+		ray_data->y_Step_H *= -1;
+	ray_data->x_Step_H = SZ / tan(ray_data->angle);
+	if ((ray_data->rayLeft && ray_data->x_Step_H > 0) || (ray_data->rayRight
+			&& ray_data->x_Step_H < 0))
+		ray_data->x_Step_H *= -1;
+	ray_data->x_hor = ray_data->xIntercept_H;
+	ray_data->y_hor = ray_data->yIntercept_H;
+	convert_into_map_h(ray_data, cub);
 }

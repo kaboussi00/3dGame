@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:21 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 15:47:51 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:17:40 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (!s1 && !s2)
 		return (0);
-	p = (char *)malloc (ft_strlen (s1) + ft_strlen (s2) + 1);
+	p = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!p)
 		return (0);
 	i = 0;
@@ -60,7 +60,7 @@ char	**ft_free(char **p)
 	return (NULL);
 }
 
-void initial_variable(t_cub *cub)
+void	initial_variable(t_cub *cub)
 {
 	cub->i = 0;
 	cub->j = 0;
@@ -69,6 +69,6 @@ void initial_variable(t_cub *cub)
 	cub->player.walk_direction = 0;
 	cub->player.turn_direction = 0;
 	cub->player.move_speed = 20.0;
-	cub->player.rotationangle = M_PI_2;
+	cub->player.rotation_angle = M_PI_2;
 	cub->player.rotation_speed = 20.0 * (M_PI / 180);
 }

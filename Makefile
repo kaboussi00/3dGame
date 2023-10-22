@@ -6,7 +6,7 @@
 #    By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/21 15:34:59 by rel-isma          #+#    #+#              #
-#    Updated: 2023/10/21 17:05:55 by rel-isma         ###   ########.fr        #
+#    Updated: 2023/10/22 15:08:27 by rel-isma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS = src/main.c src/parsing.c src/pars_check_char.c src/pars_check_opext.c src
 	src/pars_check_wall.c src/pars_press_map.c src/pars_my_map.c src/render_player.c \
 	src/ren_minimap.c src/ren_player_drow.c src/ren_player_keys.c src/ren_player_move.c \
 	src/raycasting.c src/ray_render_hor.c src/ray_render_ver.c src/ray_distance.c \
-	src/ray_utils.c src/utils_split.c src/utils_00.c src/utils_01.c src/drawall.c \
+	src/ray_utils.c src/utils_split.c src/utils_00.c src/utils_01.c  src/parse_textures.c\
 	src/get_next_line/get_next_line.c src/get_next_line/get_next_line_utils.c src/needs_draw.c src/init_textures.c
 
 OBJS = $(SRCS:%.c=obj/%.o)
@@ -52,3 +52,8 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re 
+
+push:
+	git add .
+	git commit -m "cub3d"
+	git push

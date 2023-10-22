@@ -14,14 +14,14 @@
 
 void	printerror_message(char *str)
 {
-	write (1, "Error\n", 6);
+	write(1, "Error\n", 6);
 	ft_putstr(str);
 	exit(0);
 }
 
 void	ft_putstr(char *s)
 {
-	int		i;
+	int	i;
 
 	if (!s)
 		return ;
@@ -33,19 +33,19 @@ void	ft_putstr(char *s)
 	}
 }
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-        i++;
-    return(i);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
 int	ft_strcmp(const char *str1, const char *str2)
 {
-	int			i;
+	int	i;
 
 	i = 0;
 	while (str1[i] != '\0' || str2[i] != '\0')
@@ -66,17 +66,17 @@ int	ft_atoi(char *str)
 	s = 1;
 	i = 0;
 	n = 0;
-    if (!str)
-    {
-        printerror_message("invalid color\n");
-    }
+	if (!str)
+	{
+		printerror_message("invalid color\n");
+	}
 	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == ' '))
 		i++;
 	if (str[i] < 48 || str[i] > 57)
 		printerror_message("invalid color\n");
 	while (str[i] >= '0' && str[i] <= '9')
 		n = (n * 10) + str[i++] - 48;
-    if ((str[i] < 48 || str[i] > 57) && str[i])
-		printerror_message("invalid color\n"); 
+	if ((str[i] < 48 || str[i] > 57) && str[i])
+		printerror_message("invalid color\n");
 	return ((n * s));
 }

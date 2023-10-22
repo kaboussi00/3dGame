@@ -35,8 +35,8 @@ static int	calcule_mot(char const *str, char c)
 
 static int	calcule_lettre(char const *str, char c)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;

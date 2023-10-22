@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 22:56:51 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/22 15:02:24 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_player
 	double 			side_direction;
 	double 			turn_direction;
 	double 			walk_direction;
-	double 			rotationangle;
+	double 			rotation_angle;
 	double 			rayangle;
 	double 			move_speed;
 	double 			rotation_speed;
@@ -95,16 +95,6 @@ typedef struct s_cub
 	int				len;
 	int				fd;
 	int				wall;
-	char			**all_map;
-	char			**text;
-	char			*north_texture_path;
-	char			*south_texture_path;
-	char			*west_texture_path;
-	char			*east_texture_path;
-	unsigned int	color_floor;
-	unsigned int	color_ceiling;
-	char			**map;
-	char			**copie;
 	int				no;
 	int				so;
 	int				we;
@@ -113,28 +103,43 @@ typedef struct s_cub
 	int				c;
 	int				pos_i;
 	int				pos_j;
-	void			*mlx;
-	void			*mlx_window;
 	int				up;
 	int				down;
 	int				right;
 	int				left;
+	int				start;
+	int				end;
 	double			x_new;
 	double			y_new;
-	int door_state;
+	double			distance;
+	double			new_dis;
+	double			alpha;
+	char			**all_map;
+	char			**text;
+	char			*north_texture_path;
+	char			*south_texture_path;
+	char			*west_texture_path;
+	char			*east_texture_path;
+	char			**map;
+	char			**copie;
+	void			*mlx;
+	void			*mlx_window;
 	t_img			img;
 	t_img			east_img;
 	t_img			west_img;
 	t_img			south_img;
 	t_img			north_img;
 	t_player		player;
-	t_ray			*rayData;
+	t_ray			*ray_data;
 
 	// textures
+	unsigned int	color_floor;
+	unsigned int	color_ceiling;
 	unsigned int	*east_table;
 	unsigned int	*west_table;
 	unsigned int	*south_table;
 	unsigned int	*north_table;
+	unsigned int	*table;
 }					t_cub;
 
 /////////////////
@@ -186,37 +191,37 @@ void				render_minimap(t_cub *cub);
 
 void				render_player(t_cub *cub, int rayon);
 void				player_position(t_cub *cub);
-void				drowLine(t_cub *cub);
-int					myExit_prs(t_cub *cub);
-int					keyReleases(int code, t_cub *cub);
-int					keyPress(int code, t_cub *cub);
-void				rotationAngle(t_cub *cub);
-void				moveWalkPlayer(t_cub *cub);
-void				moveSidePlayer(t_cub *cub);
+void				drow_line(t_cub *cub);
+int					my_exit_prs(t_cub *cub);
+int					key_releases(int code, t_cub *cub);
+int					key_press(int code, t_cub *cub);
+void				rotation_angle(t_cub *cub);
+void				move_walk_player(t_cub *cub);
+void				move_side_player(t_cub *cub);
 int					render(t_cub *cub);
 
 //////////////////
 //.<Raycasting.>//
 //////////////////
 
-void				CastRays(t_cub *cub);
-void				CheckWall__Ver(t_ray *rayData, t_cub *cub);
-void				convert_into_mapV(t_ray *rayData, t_cub *cub);
-void				CheckWall__Hor(t_ray *rayData, t_cub *cub);
-void				setDirections(t_ray *rayData);
-void				drowLineRay(t_cub *cub, double x1, double y1);
-double				normalizingAngle(double angle);
+void				cast_rays(t_cub *cub);
+void				check_wall__ver(t_ray *ray_data, t_cub *cub);
+void				convert_into_map_v(t_ray *ray_data, t_cub *cub);
+void				check_wall__hor(t_ray *ray_data, t_cub *cub);
+void				set_directions(t_ray *ray_data);
+void				drow_line_ray(t_cub *cub, double x1, double y1);
+double				normalizing_angle(double angle);
 double				distance(double x, double y, double x1, double y1);
-void				closest_dis(t_ray *rayData, t_cub *cub);
+void				closest_dis(t_ray *ray_data, t_cub *cub);
 
 ////// draw all ////
 unsigned int		*get_table(t_cub *cub, int x);
-double				hitVer(t_ray *ray);
+double				hit_ver(t_ray *ray);
 void				draw_floor_ceiling(t_cub *cub, int start, int end, int x);
-void				draw_wall_with_textures(t_cub *cub, int start, int end,
-						double height, int x);
+void				draw_wall_with_textures(t_cub *cub, double height, int x);
 void				parse_texture_path(t_cub *cub, char *line);
-int					handleMouse(int x, int y, t_cub *cub);
+int					handle_mouse(int x, int y, t_cub *cub);
 void				init_textures(t_cub *cub);
+
 
 #endif

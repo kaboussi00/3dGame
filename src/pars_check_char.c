@@ -28,7 +28,7 @@ void	check_not_char(t_cub *cub)
 	}
 }
 
-void	check_char(t_cub	*cub)
+void	check_char(t_cub *cub)
 {
 	cub->i = 0;
 	cub->p = 0;
@@ -37,16 +37,18 @@ void	check_char(t_cub	*cub)
 		cub->j = 0;
 		while (cub->j < cub->len - 1)
 		{
-			if (cub->map[cub->i][cub->j] == 'W' || cub->map[cub->i][cub->j] == 'E' \
-            || cub->map[cub->i][cub->j] == 'S' || cub->map[cub->i][cub->j] == 'A')
+			if (cub->map[cub->i][cub->j] == 'W'
+				|| cub->map[cub->i][cub->j] == 'E'
+				|| cub->map[cub->i][cub->j] == 'S'
+				|| cub->map[cub->i][cub->j] == 'A')
 			{
 				cub->p += 1;
 				cub->pos_i = cub->i;
 				cub->pos_j = cub->j;
 			}
-            cub->j++;
+			cub->j++;
 		}
-        cub->i++;
+		cub->i++;
 	}
 	if (cub->p != 1)
 		printerror_message("more or less than one player\n");
