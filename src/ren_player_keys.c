@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:06 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/22 14:17:07 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/22 17:41:12 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ int	my_exit_prs(t_cub *cub)
 	return (0);
 }
 
+void	ft_helper(int code, t_cub *cub)
+{
+	if (code == 123 || code == 124)
+	{
+		if (code == 123)
+			cub->player.turn_direction = -1;
+		if (code == 124)
+			cub->player.turn_direction = 1;
+		rotation_angle(cub);
+		render(cub);
+	}
+}
+
 int	key_press(int code, t_cub *cub)
 {
 	if (code == 53)
@@ -57,15 +70,7 @@ int	key_press(int code, t_cub *cub)
 		move_side_player(cub);
 		render(cub);
 	}
-	if (code == 123 || code == 124)
-	{
-		if (code == 123)
-			cub->player.turn_direction = -1;
-		if (code == 124)
-			cub->player.turn_direction = 1;
-		rotation_angle(cub);
-		render(cub);
-	}
+	ft_helper(code, cub);
 	return (0);
 }
 

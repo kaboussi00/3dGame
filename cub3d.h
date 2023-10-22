@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/22 15:02:24 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/22 17:33:37 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,6 +222,9 @@ void				draw_wall_with_textures(t_cub *cub, double height, int x);
 void				parse_texture_path(t_cub *cub, char *line);
 int					handle_mouse(int x, int y, t_cub *cub);
 void				init_textures(t_cub *cub);
+void				parse_texture_color(t_cub *cub, char *line);
+char	*ft_strdup(const char *s1);
+int	rgb_to_int(int r, int g, int b);
 
 
 #endif
