@@ -6,7 +6,7 @@
 #    By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/21 15:34:59 by rel-isma          #+#    #+#              #
-#    Updated: 2023/10/23 21:04:19 by rel-isma         ###   ########.fr        #
+#    Updated: 2023/10/23 23:09:15 by rel-isma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,5 +55,5 @@ re: fclean all
 
 push:
 	git add .
-	git commit -m "cub3d"
+	git commit -m "finsh mini map now fix prse"
 	git push
