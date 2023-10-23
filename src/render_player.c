@@ -6,11 +6,27 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:29:10 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/22 14:46:44 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/23 22:56:57 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	draw_rays_minimap(t_cub *cub)
+{
+	int		i;
+	double	newX;
+	double	newY;
+
+	i = 0;
+	while (i < NUM_RAYS)
+	{
+		newX = 100 + cos(cub->ray_data[i].angle) * 20;
+		newY = 75  + sin(cub->ray_data[i].angle) * 20;
+		drow_line_ray(cub, newX, newY);
+		i++;
+	}
+}
 
 void	draw_cub3d(t_cub *cub)
 {
@@ -39,22 +55,13 @@ void	draw_cub3d(t_cub *cub)
 
 int	render(t_cub *cub)
 {
-	int	i;
-
-	i = 0;
 	mlx_clear_window(cub->mlx, cub->mlx_window);
 	cast_rays(cub);
 	draw_cub3d(cub);
 	render_minimap(cub);
 	render_player(cub, SZ / 4);
-	while (i < NUM_RAYS)
-	{
-		if (cub->ray_data[i].dis_H > cub->ray_data[i].dis_V)
-			drow_line_ray(cub, cub->ray_data[i].x_ver, cub->ray_data[i].y_ver);
-		else
-			drow_line_ray(cub, cub->ray_data[i].x_hor, cub->ray_data[i].y_hor);
-		i++;
-	}
+	draw_rays_minimap(cub);
+	free(cub->ray_data);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_window, cub->img.img, 0, 0);
 	return (0);
 }

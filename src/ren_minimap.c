@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:47:18 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 17:33:41 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/23 23:00:45 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,32 +45,47 @@ void	ft_put_color(t_cub *cub, int x, int y, int color)
 	}
 }
 
+
+unsigned int	get_color(t_cub *cub, double start_x, double start_y)
+{
+	unsigned int color;
+
+	color = 0x703a0a;
+	int i = (int)(start_x / 64);
+	int j = (int)(start_y / 64);
+	if ((i >= 0 && i < cub->line - 6) && (j >= 0 && j < cub->len))
+	{
+		if (cub->map[i][j] == '0' || cub->map[i][j] == 'W' ||
+			cub->map[i][j] == 'E' || cub->map[i][j] == 'S' ||
+			cub->map[i][j] == 'N')
+			color = 0xFFFFFF;
+			return (color);
+	}
+	return (color);
+}
+
 void	render_minimap(t_cub *cub)
 {
-	int	pixel_color;
-	int	x;
-	int	y;
+	unsigned int	color;
+	double			start_x;
+	double			start_y;
+	int 			e;
+	int 			f;
 
-	cub->i = 0;
-	while (cub->i < cub->line - 6)
+	start_x = (int)(cub->player.xInwindow) - 100;
+	e = 0;
+	while (e < 200)
 	{
-		cub->j = 0;
-		while (cub->j < cub->len)
+	    start_y = (int)(cub->player.yInwindow) - 75;
+		f = 0;
+		while (f < 150)
 		{
-			if (cub->map[cub->i][cub->j] == '1')
-				pixel_color = 0x5D5447;
-			else if (cub->map[cub->i][cub->j] == '0')
-				pixel_color = 0xFFFDEB;
-			y = (cub->i * SZ);
-			while (y++ < (cub->i * SZ) + SZ)
-			{
-				x = (cub->j * SZ);
-				while (x++ < (cub->j * SZ) + SZ)
-					own_mlx_pixel_put(cub, x * MINI_SCALE, y * MINI_SCALE,
-						pixel_color);
-			}
-			cub->j++;
+			color = get_color(cub, start_x, start_y);
+			own_mlx_pixel_put(cub, e + 5 , f + 5, color);
+			start_y++;
+			f++;
 		}
-		cub->i++;
+		start_x++;
+		e++;
 	}
 }

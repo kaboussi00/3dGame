@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:54 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 15:47:51 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:42:54 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	press_map(t_cub *cub, char *file)
 	{
 		if (read_line[0] != '\n')
 			cub->all_map[cub->i++] = read_line;
+		else
+			free(read_line);
 		if (cub->i > 6)
 		{
 			if (cub->len <= ft_str_line(read_line))

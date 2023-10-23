@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 11:11:27 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/22 14:10:30 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/23 23:06:36 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	drow_line_ray(t_cub *cub, double x1, double y1)
 	double	y;
 
 	// draw line
-	x0 = cub->player.xInwindow;
-	y0 = cub->player.yInwindow;
+	x0 = 100;
+	y0 = 75;
 	x = x1 - x0;
 	y = y1 - y0;
 	if (fabs(x) > fabs(y))
@@ -44,13 +44,13 @@ void	drow_line_ray(t_cub *cub, double x1, double y1)
 	cub->v = 0;
 	while (cub->v < step)
 	{
-		own_mlx_pixel_put(cub, (int)round(y0) * MINI_SCALE, (int)round(x0)
-			* MINI_SCALE, 0xf5756c);
+		own_mlx_pixel_put(cub, (int)round(x0), (int)round(y0),  0xf5756c);
 		x0 += inx;
 		y0 += iny;
 		cub->v++;
 	}
 }
+
 
 void	down_right(t_ray *ray_data)
 {
