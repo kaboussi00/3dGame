@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/22 17:33:37 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:33:08 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,29 +60,29 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	double			x_hor;
-	double			y_hor;
-	double			x_ver;
-	double			y_ver;
-	double			angle;
-	double			xIntercept_H;
-	double			yIntercept_H;
-	double			xIntercept_V;
-	double			yIntercept_V;
-	double			dis_H;
-	double			dis_V;
-	double			x_Step_H;
-	double			y_Step_H;
-	double			x_Step_V;
-	double			y_Step_V;
-	double			x_Wallhit;
-	double			y_Wallhit;
-	int				rayUp;
-	int				rayDown;
-	int				rayLeft;
-	int				rayRight;
-	int				vertical;
-}					t_ray;
+	double		x_hor;
+	double		y_hor;
+	double		x_ver;
+	double		y_ver;
+	double		angle;
+	double		xIntercept_H;
+	double		yIntercept_H;
+	double		xIntercept_V;
+	double		yIntercept_V;
+	double		dis_H;
+	double		dis_V;
+	double		x_Step_H;
+	double		y_Step_H;
+	double		x_Step_V;
+	double		y_Step_V;
+	double		x_Wallhit;
+	double		y_Wallhit;
+	int			rayUp;
+	int			rayDown;
+	int			rayLeft;
+	int			rayRight;
+	int			vertical;
+}				t_ray;
 
 typedef struct s_cub
 {
@@ -132,7 +132,6 @@ typedef struct s_cub
 	t_player		player;
 	t_ray			*ray_data;
 
-	// textures
 	unsigned int	color_floor;
 	unsigned int	color_ceiling;
 	unsigned int	*east_table;
