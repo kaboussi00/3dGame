@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:37 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 15:47:51 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:08:20 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ char	*charge_space(char c, int len)
 
 void	new_map(t_cub *cub)
 {
-	int size;
-	int l;
-	int x;
-	int y;
-	char *str;
+	int		size;
+	int		l;
+	int		x;
+	int		y;
+	char	*str;
 
 	cub->i = 6;
 	cub->j = 0;

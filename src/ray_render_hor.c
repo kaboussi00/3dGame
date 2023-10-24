@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:38:53 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/22 14:04:08 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:03:24 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_wall__hor(t_ray *ray_data, t_cub *cub)
 	if (ray_data->rayDown)
 		ray_data->yIntercept_H += SZ;
 	ray_data->xIntercept_H = ray_data->x_hor + ((ray_data->yIntercept_H
-			- ray_data->y_hor) / tan(ray_data->angle));
+				- ray_data->y_hor) / tan(ray_data->angle));
 	ray_data->y_Step_H = SZ;
 	if (ray_data->rayUp)
 		ray_data->y_Step_H *= -1;

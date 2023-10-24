@@ -6,13 +6,11 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:45 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/24 13:15:56 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:02:21 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-
 
 void	check_duplicate(t_cub *cub, char *text)
 {
@@ -33,8 +31,6 @@ void	check_duplicate(t_cub *cub, char *text)
 void	check_color(char *str)
 {
 	int		i;
-	// int		n;
-	// char	**s;
 
 	i = 0;
 	while (str[i])

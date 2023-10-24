@@ -6,7 +6,7 @@
 #    By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/21 15:34:59 by rel-isma          #+#    #+#              #
-#    Updated: 2023/10/24 14:40:21 by rel-isma         ###   ########.fr        #
+#    Updated: 2023/10/24 15:09:39 by rel-isma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,5 +55,5 @@ re: fclean all
 
 push:
 	git add .
-	git commit -m "finsh mini map and mouse"
+	git commit -m "finsh mini map and mouse and norm"
 	git push

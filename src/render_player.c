@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:29:10 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/24 14:32:48 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:56:52 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 void	draw_rays_minimap(t_cub *cub)
 {
 	int		i;
-	double	newX;
-	double	newY;
+	double	new_x;
+	double	new_y;
 
 	i = 0;
 	while (i < NUM_RAYS)
 	{
-		newX = 100 + cos(cub->ray_data[i].angle) * 20;
-		newY = 75  + sin(cub->ray_data[i].angle) * 20;
-		drow_line_ray(cub, newX, newY);
+		new_x = 100 + cos(cub->ray_data[i].angle) * 20;
+		new_y = 75 + sin(cub->ray_data[i].angle) * 20;
+		drow_line_ray(cub, new_x, new_y);
 		i++;
 	}
 }

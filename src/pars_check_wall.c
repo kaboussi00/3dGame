@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:39 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 15:47:51 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:09:02 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ void	copie_with_spaces(t_cub *cub)
 
 void	check_wall(t_cub *cub)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
+
 	x = 0;
 	while (cub->copie[x])
 	{

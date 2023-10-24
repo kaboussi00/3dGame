@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 07:04:47 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/23 18:31:08 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:07:48 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	cast_rays(t_cub *cub)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	cub->ray_data = malloc(sizeof(t_ray) * NUM_RAYS);
 	if (!cub->ray_data)
 		return ;
