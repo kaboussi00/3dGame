@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/22 17:33:37 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:39:43 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ typedef struct s_player
 	double			distance_to_plane;
 	double			xInwindow;
 	double			yInwindow;
-	double 			side_direction;
-	double 			turn_direction;
-	double 			walk_direction;
-	double 			rotation_angle;
-	double 			rayangle;
-	double 			move_speed;
-	double 			rotation_speed;
+	double			side_direction;
+	double			turn_direction;
+	double			walk_direction;
+	double			rotation_angle;
+	double			rayangle;
+	double			move_speed;
+	double			rotation_speed;
 	double			move_step;
 	double			posXinmap;
 	double			posYinmap;
@@ -223,8 +223,8 @@ void				parse_texture_path(t_cub *cub, char *line);
 int					handle_mouse(int x, int y, t_cub *cub);
 void				init_textures(t_cub *cub);
 void				parse_texture_color(t_cub *cub, char *line);
-char	*ft_strdup(const char *s1);
-int	rgb_to_int(int r, int g, int b);
-
+char				*ft_strdup(const char *s1);
+int					rgb_to_int(int r, int g, int b);
+void				free_splite(char **split);
 
 #endif

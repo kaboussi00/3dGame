@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:52:09 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/23 22:54:06 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:32:28 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	render_player(t_cub *cub, int rayon)
 	double	new_y;
 	double	new_x;
 
-	rayon = 4;
+	rayon = 6;
 	i = 0;
 	while (i < rayon)
 	{

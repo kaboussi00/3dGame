@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 14:54:55 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/23 18:05:42 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:14:04 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	parse_texture_path(t_cub *cub, char *line)
 	else
 		return (free_splite(split),
 			printerror_message("Invalid texture path!\n"));
+	free_splite(split);
 }
 
 void	ft_parse_color(char *str, t_cub *cub, char **split, int flg)
