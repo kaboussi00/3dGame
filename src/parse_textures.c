@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 14:54:55 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/24 14:14:04 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/25 05:50:51 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ void	parse_texture_path(t_cub *cub, char *line)
 			cub->west_texture_path = texture_path;
 		else if (ft_strcmp(split[0], "EA") == 0)
 			cub->east_texture_path = texture_path;
+		else if (ft_strcmp(split[0], "F") == 0)
+			parse_texture_color(cub, line);
+		else if (ft_strcmp(split[0], "C") == 0)
+			parse_texture_color(cub, line);
 		else
 			return (free(texture_path), free_splite(split),
 				printerror_message("Invalid texture path!\n"));
@@ -58,18 +62,27 @@ void	ft_parse_color(char *str, t_cub *cub, char **split, int flg)
 {
 	char	**rgb;
 
+    printf("%s\n", str);
 	rgb = ft_split(str, ',');
 	if (!rgb)
 		return (free_splite(split),
 			printerror_message("Invalid color!\n"));
 	if (flg)
 	{
+        if (atoi(rgb[0]) >= 0 && atoi(rgb[0]) <= 255 && atoi(rgb[1]) >= 0 && atoi(rgb[1]) <= 255 \
+            && atoi(rgb[2]) >= 0 && atoi(rgb[2]) <= 255)
+            (write(2, "ERORR", 6), exit(1));
 		cub->color_floor = rgb_to_int(atoi(rgb[0]), atoi(rgb[1]),
 				atoi(rgb[2]));
 	}
 	else
+    {
+        if (atoi(rgb[0]) >= 0 && atoi(rgb[0]) <= 255 && atoi(rgb[1]) >= 0 && atoi(rgb[1]) <= 255 \
+            && atoi(rgb[2]) >= 0 && atoi(rgb[2]) <= 255)
+            (write(2, "ERORR", 6), exit(1));
 		cub->color_ceiling = rgb_to_int(atoi(rgb[0]), atoi(rgb[1]),
 				atoi(rgb[2]));
+    }
 	free_splite(rgb);
 }
 

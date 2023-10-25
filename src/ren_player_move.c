@@ -24,29 +24,35 @@ void	rotation_angle(t_cub *cub)
 
 int	check_wall_walk(t_cub *cub)
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
 
-	x = cub->player.xInwindow + cos(cub->player.rotation_angle)* cub->player.move_step;
-	y = cub->player.yInwindow + sin(cub->player.rotation_angle)* cub->player.move_step;
-	if ((cub->map[(int)((x) / SZ)][(int)((y) / SZ)] != '1'
-		&& cub->map[(int)((x) / SZ)][(int)((y) / SZ)] != ' ') && ((int)(cub->map[(int)cub->player.xInwindow / SZ][(int)y / SZ] != '1') &&  cub->map[(int)x / SZ][(int)cub->player.yInwindow / SZ] != '1'))
-		return(1);
+	x = cub->player.xInwindow + cos(cub->player.rotation_angle)
+		* cub->player.move_step;
+	y = cub->player.yInwindow + sin(cub->player.rotation_angle)
+		* cub->player.move_step;
+	if ((cub->map[(int)((x) / SZ)][(int)((y) / SZ)] != '1' && cub->map[(int)((x)
+				/ SZ)][(int)((y) / SZ)] != ' ')
+		&& ((int)(cub->map[(int)cub->player.xInwindow / SZ][(int)y / SZ] != '1')
+			&& cub->map[(int)x / SZ][(int)cub->player.yInwindow / SZ] != '1'))
+		return (1);
 	return (0);
 }
 
 int	check_wall_side(t_cub *cub)
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
 
-	x = cub->player.xInwindow + cos(cub->player.rotation_angle + M_PI_2) *\
-	 cub->player.move_step;
-	y = cub->player.yInwindow + sin(cub->player.rotation_angle + M_PI_2)*\
-	 cub->player.move_step;
-	if ((cub->map[(int)((x) / SZ)][(int)((y) / SZ)] != '1'
-		&& cub->map[(int)((x) / SZ)][(int)((y) / SZ)] != ' ') && (((int)cub->map[(int)cub->player.xInwindow / SZ][(int)y / SZ] != '1') &&  cub->map[(int)x / SZ][(int)cub->player.yInwindow / SZ] != '1'))
-		return(1);
+	x = cub->player.xInwindow + cos(cub->player.rotation_angle + M_PI_2)
+		* cub->player.move_step;
+	y = cub->player.yInwindow + sin(cub->player.rotation_angle + M_PI_2)
+		* cub->player.move_step;
+	if ((cub->map[(int)((x) / SZ)][(int)((y) / SZ)] != '1' && cub->map[(int)((x)
+				/ SZ)][(int)((y) / SZ)] != ' ')
+		&& (((int)cub->map[(int)cub->player.xInwindow / SZ][(int)y / SZ] != '1')
+			&& cub->map[(int)x / SZ][(int)cub->player.yInwindow / SZ] != '1'))
+		return (1);
 	return (0);
 }
 
