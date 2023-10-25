@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/24 14:17:34 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/25 01:35:30 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	main(int ac, char **av)
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
 			&cub->img.line_length, &cub->img.endian);
 	init_textures(cub);
-	mlx_loop_hook(cub->mlx, &render, cub);
+	render(cub);
+	// mlx_loop_hook(cub->mlx, &render, cub);
 	mlx_hook(cub->mlx_window, 17, 0L, &my_exit_prs, cub);
 	mlx_hook(cub->mlx_window, 3, 0L, &key_releases, cub);
 	mlx_hook(cub->mlx_window, 2, 0L, &key_press, cub);

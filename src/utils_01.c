@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:21 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/22 14:17:40 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/25 01:21:36 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	initial_variable(t_cub *cub)
 	cub->line = 0;
 	cub->player.walk_direction = 0;
 	cub->player.turn_direction = 0;
-	cub->player.move_speed = 20.0;
+	cub->player.move_speed = 30.0;
 	cub->player.rotation_angle = M_PI_2;
-	cub->player.rotation_speed = 20.0 * (M_PI / 180);
+	cub->player.rotation_speed = 30.0 * (M_PI / 180);
 }
