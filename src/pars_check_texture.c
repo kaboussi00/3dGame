@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:45 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/25 05:39:41 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/25 23:09:32 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,14 @@ void	check_texture_color(t_cub *cub)
 		cub->text = ft_split(cub->all_map[i], ' ');
 		if (!cub->text)
 			printerror_message("invalid texture!!!\n");
-		// printf("what == %s\n", cub->text[0]);
-		// printf("path == %s\n", cub->text[1]);
 		if (cub->text[1] == NULL)
-					printerror_message("invalid texture path!\n");
+			printerror_message("invalid texture path!\n");
 		check_duplicate(cub, cub->text[0]);
 		if (!ft_strcmp(cub->text[0], "C") || !ft_strcmp(cub->text[0], "F"))
 			check_color(cub->text[1]);
 		else
 			check_opening(cub->text[1]);
 		free_splite(cub->text);
-		cub->text = NULL;
 		i++;
 	}
 	duplicate(cub);
