@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_check_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:58 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/25 23:11:52 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:17:17 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,30 @@ void	check_not_char(t_cub *cub)
 		cub->j = 0;
 		while (cub->j < cub->len - 1)
 		{
-			if (!ft_strchr("10WSEN ", cub->map[cub->i][cub->j]))
+			if (!ft_strchr("10WSEND ", cub->map[cub->i][cub->j]))
 				printerror_message("not valid character\n");
 			cub->j++;
+		}
+		cub->i++;
+	}
+}
+
+int	check_doors(t_cub *cub)
+{
+	cub->i = 0;
+	while (cub->i < cub->line - 6)
+	{
+		cub->j = 0;
+		while (cub->j < cub->len - 1)
+		{
+			if (cub->map[cub->i][cub->j] == 'D' &&\
+			((cub->map[cub->i][cub->j - 1] == '1'\
+			&& cub->map[cub->i][cub->j + 1] == '1') \
+			|| (cub->map[cub->i - 1][cub->j] \
+			== '1' && cub->map[cub->i + 1][cub->j] == '1')))
+				cub->j++;
+			else
+				printerror_message ("invalid  door !!\n");
 		}
 		cub->i++;
 	}

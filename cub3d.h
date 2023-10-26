@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/26 12:36:09 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:24:24 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define MOUSE_SENSITIVITY 0.005
 # define WIDTH 1000
 # define HEIGHT 500
-# define NUM_RAYS (WIDTH / 1)
+# define NUM_RAYS WIDTH
 # define FOV (60 * (M_PI / 180))
 # define MINI_SCALE 0.15
 
@@ -176,6 +176,12 @@ void				copie_with_spaces(t_cub *cub);
 void				check_wall(t_cub *cub);
 
 /////////////////
+////<parsbonus>//
+/////////////////
+
+int					check_doors(t_cub *cub);
+
+/////////////////
 //<RenderM_map>//
 /////////////////
 
@@ -212,7 +218,9 @@ double				normalizing_angle(double angle);
 double				distance(double x, double y, double x1, double y1);
 void				closest_dis(t_ray *ray_data, t_cub *cub);
 
+
 ////// draw all ////
+
 unsigned int		*get_table(t_cub *cub, int x);
 double				hit_ver(t_ray *ray);
 void				draw_floor_ceiling(t_cub *cub, int start, int end, int x);
@@ -224,7 +232,7 @@ void				parse_texture_color(t_cub *cub, char *line);
 char				*ft_strdup(const char *s1);
 int					rgb_to_int(int r, int g, int b);
 void				free_splite(char **split);
-int	    ft_isdigit(int c);
-void parse_line_color(char *str);
+int	    			ft_isdigit(int c);
+void				parse_line_color(char *str);
 
 #endif

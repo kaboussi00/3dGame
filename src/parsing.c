@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:46 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/25 23:03:21 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:13:15 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	parse(t_cub *cub, char *file)
 	check_not_char(cub);
 	copie_with_spaces(cub);
 	check_wall(cub);
+	check_doors(cub);
 }
