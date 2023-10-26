@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/26 18:35:53 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/27 00:26:02 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,27 +59,65 @@ void	draw_floor_ceiling(t_cub *cub, int start, int end, int x)
 	}
 }
 
-void	draw_wall_with_textures(t_cub *cub, double height, int x)
-{
-	int				y;
-	int				h;
-	double			tex_x;
-	double			texture_step;
-	double			texture_pos;
 
-	cub->table = get_table(cub, x);
-	texture_step = (float)cub->north_img.height / height;
-	texture_pos = (cub->start - (HEIGHT / 2) + (height / 2)) * texture_step;
+int check_door(t_cub *cub, int x, int y)
+{
+    double dist;
+    if (x >= 0 && x < cub->line - 6 && y >= 0 && y < cub->len - 1)
+    {
+        if (cub->map[x][y] == 'D')
+        {
+            dist = distance(cub->player.posXinmap, cub->player.posYinmap, x * SZ, y * SZ);
+            // printf("%f\n", dist);
+            if (dist <= CLOSE_DISTANCE_THRESHOLD)
+            {
+                cub->map[x][y] = 'C';
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
+
+
+void draw_wall_with_textures(t_cub *cub, double height, int x)
+{
+	int y;
+	int h;
+	double tex_x;
+	double texture_step;
+	double texture_pos;
+
 	if (cub->ray_data[x].vertical)
 		tex_x = fmod(cub->ray_data[x].y_ver, cub->north_img.height);
 	else
 		tex_x = fmod(cub->ray_data[x].x_hor, cub->north_img.height);
+
+	// Check if the ray intersects with a door on both sides
+	int door1 = check_door(cub, (int)(cub->ray_data[x].x_hor / SZ), (int)(cub->ray_data[x].y_hor / SZ));
+	int door2 = check_door(cub, (int)((cub->ray_data[x].x_hor - 1) / SZ), (int)(cub->ray_data[x].y_hor / SZ));
+	if (door1 || door2)
+		cub->table = cub->door_closed_texture;
+	else
+		cub->table = get_table(cub, x);
+	texture_step = (double)cub->north_img.height / height;
+    texture_pos = ((cub->start - (HEIGHT / 2) + (height / 2)) * texture_step);
+    if (texture_pos < 0)
+        texture_pos = 0;
+    if (texture_pos >= cub->north_img.height)
+        texture_pos = cub->north_img.height - 1;
 	y = cub->start;
 	while (y < cub->end)
 	{
-		h = ((int)texture_pos * cub->north_img.height) + (tex_x);
+		h = ((int)texture_pos % cub->north_img.height) * cub->north_img.width + (int)tex_x;
 		own_mlx_pixel_put(cub, x, y, cub->table[h]);
 		texture_pos += texture_step;
 		y++;
 	}
 }
+

@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:38:53 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/24 15:03:24 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/26 22:36:05 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	convert_into_map_h(t_ray *ray_data, t_cub *cub)
 		if (ray_data->rayUp)
 			y = ray_data->y_hor - 1;
 		if (cub->map[(int)(ray_data->x_hor / SZ)][(int)(y / SZ)] != '1'
-			&& cub->map[(int)(ray_data->x_hor / SZ)][(int)(y / SZ)] != ' ')
+			&& cub->map[(int)(ray_data->x_hor / SZ)][(int)(y / SZ)] != ' ' \
+            && cub->map[(int)(ray_data->x_hor / SZ)][(int)(y / SZ)] != 'D')
 		{
 			ray_data->x_hor += ray_data->x_Step_H;
 			ray_data->y_hor += ray_data->y_Step_H;

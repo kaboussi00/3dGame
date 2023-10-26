@@ -6,11 +6,12 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 07:04:47 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/24 15:07:48 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/26 23:12:45 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
 
 void	cast_rays(t_cub *cub)
 {
@@ -33,3 +34,4 @@ void	cast_rays(t_cub *cub)
 		i++;
 	}
 }
+

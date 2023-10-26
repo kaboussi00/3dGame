@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:58 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/26 18:36:01 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/26 21:39:00 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,14 @@ void	check_char(t_cub *cub)
 {
 	cub->i = 0;
 	cub->p = 0;
+    cub->door_states =  0;
 	while (cub->i < cub->line - 6)
 	{
 		cub->j = 0;
 		while (cub->j < cub->len - 1)
 		{
+            if  (cub->map[cub->i][cub->j] == 'D')
+                   cub->door_states++;
 			if (cub->map[cub->i][cub->j] == 'W'
 				|| cub->map[cub->i][cub->j] == 'E'
 				|| cub->map[cub->i][cub->j] == 'S'
