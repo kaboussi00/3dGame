@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/27 00:26:02 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/27 00:29:28 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,37 +87,54 @@ int check_door(t_cub *cub, int x, int y)
 
 void draw_wall_with_textures(t_cub *cub, double height, int x)
 {
-	int y;
-	int h;
-	double tex_x;
-	double texture_step;
-	double texture_pos;
+    int y;
+    int h;
+    double tex_x;
+    double texture_step;
+    double texture_pos;
 
-	if (cub->ray_data[x].vertical)
-		tex_x = fmod(cub->ray_data[x].y_ver, cub->north_img.height);
-	else
-		tex_x = fmod(cub->ray_data[x].x_hor, cub->north_img.height);
+    // Calculate texture coordinates based on ray intersection
+    if (cub->ray_data[x].vertical)
+        tex_x = fmod(cub->ray_data[x].y_ver, cub->north_img.height);
+    else
+        tex_x = fmod(cub->ray_data[x].x_hor, cub->north_img.height);
 
-	// Check if the ray intersects with a door on both sides
-	int door1 = check_door(cub, (int)(cub->ray_data[x].x_hor / SZ), (int)(cub->ray_data[x].y_hor / SZ));
-	int door2 = check_door(cub, (int)((cub->ray_data[x].x_hor - 1) / SZ), (int)(cub->ray_data[x].y_hor / SZ));
-	if (door1 || door2)
-		cub->table = cub->door_closed_texture;
-	else
-		cub->table = get_table(cub, x);
-	texture_step = (double)cub->north_img.height / height;
+    // Check if the ray intersects with a door on both sides
+    int door1 = check_door(cub, (int)(cub->ray_data[x].x_hor / SZ), (int)(cub->ray_data[x].y_hor / SZ));
+    int door2 = check_door(cub, (int)((cub->ray_data[x].x_hor - 1) / SZ), (int)(cub->ray_data[x].y_hor / SZ));
+
+    // Prioritize rendering the door over the wall
+    if (door1 && door2) {
+        cub->table = cub->door_closed_texture;
+    } else if (door1) {
+        cub->table = cub->door_closed_texture;
+    } else if (door2) {
+        cub->table = cub->door_closed_texture;
+    } else {
+        cub->table = get_table(cub, x);
+    }
+
+    // Calculate texture mapping step and initial position
+    texture_step = (double)cub->north_img.height / height;
     texture_pos = ((cub->start - (HEIGHT / 2) + (height / 2)) * texture_step);
-    if (texture_pos < 0)
-        texture_pos = 0;
-    if (texture_pos >= cub->north_img.height)
-        texture_pos = cub->north_img.height - 1;
-	y = cub->start;
-	while (y < cub->end)
-	{
-		h = ((int)texture_pos % cub->north_img.height) * cub->north_img.width + (int)tex_x;
-		own_mlx_pixel_put(cub, x, y, cub->table[h]);
-		texture_pos += texture_step;
-		y++;
-	}
+
+    // Clamp texture_pos to valid range [0, cub->north_img.height - 1]
+    texture_pos = fmin(fmax(texture_pos, 0), cub->north_img.height - 1);
+
+    // Loop through the wall slice and draw pixels with textures
+    y = cub->start;
+    while (y < cub->end)
+    {
+        // Calculate texture index based on texture_pos and tex_x
+        h = ((int)texture_pos % cub->north_img.height) * cub->north_img.width + (int)tex_x;
+
+        // Draw the pixel with the corresponding texture color
+        own_mlx_pixel_put(cub, x, y, cub->table[h]);
+
+        // Update texture_pos for the next pixel in the wall slice
+        texture_pos += texture_step;
+        y++;
+    }
 }
+
 
