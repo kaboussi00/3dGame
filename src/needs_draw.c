@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/25 02:08:19 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:13:42 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,13 @@ void	draw_wall_with_textures(t_cub *cub, double height, int x)
 	texture_step = (float)cub->north_img.height / height;
 	texture_pos = (cub->start - (HEIGHT / 2) + (height / 2)) * texture_step;
 	if (cub->ray_data[x].vertical)
-		tex_x = fmod(cub->ray_data[x].y_ver, 64);
+		tex_x = fmod(cub->ray_data[x].y_ver, cub->north_img.height);
 	else
-		tex_x = fmod(cub->ray_data[x].x_hor, 64);
+		tex_x = fmod(cub->ray_data[x].x_hor, cub->north_img.height);
 	y = cub->start;
 	while (y < cub->end)
 	{
-		h = ((int)texture_pos * cub->north_img.height) + (tex_x
-				* (cub->north_img.width / 64));
+		h = ((int)texture_pos * cub->north_img.height) + (tex_x);
 		own_mlx_pixel_put(cub, x, y, cub->table[h]);
 		texture_pos += texture_step;
 		y++;

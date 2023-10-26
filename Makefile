@@ -6,7 +6,7 @@
 #    By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/21 15:34:59 by rel-isma          #+#    #+#              #
-#    Updated: 2023/10/25 05:51:54 by rel-isma         ###   ########.fr        #
+#    Updated: 2023/10/25 23:16:47 by rel-isma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CC = cc
 SRCS = src/main.c src/parsing.c src/pars_check_char.c src/pars_check_opext.c src/pars_check_texture.c \
 	src/pars_check_wall.c src/pars_press_map.c src/pars_my_map.c src/render_player.c \
 	src/ren_minimap.c src/ren_player_drow.c src/ren_player_keys.c src/ren_player_move.c \
-	src/raycasting.c src/ray_render_hor.c src/ray_render_ver.c src/ray_distance.c src/needs2.c \
+	src/raycasting.c src/ray_render_hor.c src/ray_render_ver.c src/ray_distance.c src/needs2.c src/needs3.c\
 	src/ray_utils.c src/utils_split.c src/utils_00.c src/utils_01.c  src/parse_textures.c\
 	src/get_next_line/get_next_line.c src/get_next_line/get_next_line_utils.c src/needs_draw.c src/init_textures.c
 
@@ -55,5 +55,5 @@ re: fclean all
 
 push:
 	git add .
-	git commit -m "finsh::"
+	git commit -m "check file TODO"
 	git push

@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:29:10 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/24 14:56:52 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:17:23 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	draw_cub3d(t_cub *cub)
 		height = (500 / cub->new_dis) * 110;
 		cub->start = (HEIGHT / 2) - (height / 2);
 		cub->end = cub->start + height;
-		if (cub->end > HEIGHT)
-			cub->end = HEIGHT;
+		if (cub->end >= HEIGHT)
+			cub->end = HEIGHT - 1;
 		if (cub->start < 0)
 			cub->start = 0;
 		draw_floor_ceiling(cub, cub->start, cub->end, x);

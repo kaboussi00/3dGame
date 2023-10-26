@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/25 08:02:35 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:36:09 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define HEIGHT 500
 # define NUM_RAYS (WIDTH / 1)
 # define FOV (60 * (M_PI / 180))
-# define SCALE 70
 # define MINI_SCALE 0.15
 
 typedef struct s_img
@@ -225,5 +224,7 @@ void				parse_texture_color(t_cub *cub, char *line);
 char				*ft_strdup(const char *s1);
 int					rgb_to_int(int r, int g, int b);
 void				free_splite(char **split);
+int	    ft_isdigit(int c);
+void parse_line_color(char *str);
 
 #endif
