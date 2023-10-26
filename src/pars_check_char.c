@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:58 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/26 14:17:17 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:15:11 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	check_not_char(t_cub *cub)
 	}
 }
 
-int	check_doors(t_cub *cub)
+void	check_doors(t_cub *cub)
 {
 	cub->i = 0;
 	while (cub->i < cub->line - 6)
@@ -36,14 +36,18 @@ int	check_doors(t_cub *cub)
 		cub->j = 0;
 		while (cub->j < cub->len - 1)
 		{
-			if (cub->map[cub->i][cub->j] == 'D' &&\
-			((cub->map[cub->i][cub->j - 1] == '1'\
-			&& cub->map[cub->i][cub->j + 1] == '1') \
-			|| (cub->map[cub->i - 1][cub->j] \
-			== '1' && cub->map[cub->i + 1][cub->j] == '1')))
-				cub->j++;
+			if (cub->map[cub->i][cub->j] == 'D')
+			{
+				if ((cub->map[cub->i][cub->j - 1] == '1' \
+				&& cub->map[cub->i][cub->j + 1] == '1') || 
+				(cub->map[cub->i - 1][cub->j] == '1' \
+				&& cub->map[cub->i + 1][cub->j] == '1'))
+					cub->j++;
+				else
+					printerror_message ("invalid  door !!\n");
+			}
 			else
-				printerror_message ("invalid  door !!\n");
+				cub->j++;	
 		}
 		cub->i++;
 	}
@@ -61,7 +65,7 @@ void	check_char(t_cub *cub)
 			if (cub->map[cub->i][cub->j] == 'W'
 				|| cub->map[cub->i][cub->j] == 'E'
 				|| cub->map[cub->i][cub->j] == 'S'
-				|| cub->map[cub->i][cub->j] == 'A')
+				|| cub->map[cub->i][cub->j] == 'N')
 			{
 				cub->p += 1;
 				cub->pos_i = cub->i;

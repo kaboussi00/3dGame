@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/26 13:24:24 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:52:49 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ void				check_wall(t_cub *cub);
 ////<parsbonus>//
 /////////////////
 
-int					check_doors(t_cub *cub);
+void				check_doors(t_cub *cub);
 
 /////////////////
 //<RenderM_map>//
