@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_check_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:58 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/26 14:17:17 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:36:01 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,27 @@ int	check_doors(t_cub *cub)
 		cub->j = 0;
 		while (cub->j < cub->len - 1)
 		{
-			if (cub->map[cub->i][cub->j] == 'D' &&\
-			((cub->map[cub->i][cub->j - 1] == '1'\
-			&& cub->map[cub->i][cub->j + 1] == '1') \
-			|| (cub->map[cub->i - 1][cub->j] \
-			== '1' && cub->map[cub->i + 1][cub->j] == '1')))
-				cub->j++;
-			else
-				printerror_message ("invalid  door !!\n");
+			if (cub->map[cub->i][cub->j] == 'D')
+			{
+				if ((cub->map[cub->i][cub->j - 1] == '1' 
+                    && cub->map[cub->i][cub->j + 1] == '1')
+					|| (cub->map[cub->i - 1][cub->j] == '1'
+                    && cub->map[cub->i + 1][cub->j] == '1'))
+				{
+                    cub->pos_door_x = cub->i;
+                    cub->pos_door_y = cub->j;
+				}
+				else
+					printerror_message("Invalid door placement!\n");
+			}
+			cub->j++;
 		}
 		cub->i++;
 	}
+	return (0);
 }
+
+
 
 void	check_char(t_cub *cub)
 {

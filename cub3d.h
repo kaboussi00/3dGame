@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/26 13:24:24 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:58:09 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ typedef struct s_cub
 	int				c;
 	int				pos_i;
 	int				pos_j;
+	int				pos_door_x;
+	int				pos_door_y;
 	int				up;
 	int				down;
 	int				right;
@@ -128,6 +130,8 @@ typedef struct s_cub
 	t_img			west_img;
 	t_img			south_img;
 	t_img			north_img;
+    t_img           door_closed_img;
+    t_img           door_open_img;
 	t_player		player;
 	t_ray			*ray_data;
 
@@ -137,6 +141,9 @@ typedef struct s_cub
 	unsigned int	*west_table;
 	unsigned int	*south_table;
 	unsigned int	*north_table;
+    int             *door_states;
+    unsigned int	*door_closed_texture;
+    unsigned int	*door_open_texture;
 	unsigned int	*table;
 }					t_cub;
 
