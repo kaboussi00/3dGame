@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_distance.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:42:12 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/24 15:04:23 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/27 20:38:36 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,13 @@ void	closest_dis(t_ray *ray_data, t_cub *cub)
 	double	y;
 	double	x_h1;
 	double	y_h1;
-	double	x_v1;
-	double	y_v1;
 
-	x = cub->player.xInwindow;
-	y = cub->player.yInwindow;
+	x = cub->player.x_inwindow;
+	y = cub->player.y_inwindow;
 	x_h1 = ray_data->x_hor;
 	y_h1 = ray_data->y_hor;
-	x_v1 = ray_data->x_ver;
-	y_v1 = ray_data->y_ver;
-	ray_data->dis_H = distance(x, y, x_h1, y_h1);
-	ray_data->dis_V = distance(x, y, x_v1, y_v1);
+	cub->x_v1 = ray_data->x_ver;
+	cub->y_v1 = ray_data->y_ver;
+	ray_data->dis_h = distance(x, y, x_h1, y_h1);
+	ray_data->dis_v = distance(x, y, cub->x_v1, cub->y_v1);
 }

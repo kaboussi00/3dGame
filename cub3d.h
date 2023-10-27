@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/27 20:17:37 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/27 20:49:04 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # define WIDTH 1000
 # define HEIGHT 500
 # define NUM_RAYS WIDTH
-# define FOV (60 * (M_PI / 180))
 # define MINI_SCALE 0.15
 
 typedef struct s_img
@@ -43,8 +42,8 @@ typedef struct s_img
 typedef struct s_player
 {
 	double			distance_to_plane;
-	double			xInwindow;
-	double			yInwindow;
+	double			x_inwindow;
+	double			y_inwindow;
 	double			side_direction;
 	double			turn_direction;
 	double			walk_direction;
@@ -53,8 +52,8 @@ typedef struct s_player
 	double			move_speed;
 	double			rotation_speed;
 	double			move_step;
-	double			posXinmap;
-	double			posYinmap;
+	double			posx_inmap;
+	double			posy_inmap;
 }					t_player;
 
 typedef struct s_ray
@@ -64,27 +63,39 @@ typedef struct s_ray
 	double		x_ver;
 	double		y_ver;
 	double		angle;
-	double		xIntercept_H;
-	double		yIntercept_H;
-	double		xIntercept_V;
-	double		yIntercept_V;
-	double		dis_H;
-	double		dis_V;
-	double		x_Step_H;
-	double		y_Step_H;
-	double		x_Step_V;
-	double		y_Step_V;
-	double		x_Wallhit;
-	double		y_Wallhit;
-	int			rayUp;
-	int			rayDown;
-	int			rayLeft;
-	int			rayRight;
+	double		x_intercept_h;
+	double		y_intercept_h;
+	double		x_intercept_v;
+	double		y_intercept_v;
+	double		dis_h;
+	double		dis_v;
+	double		x_step_h;
+	double		y_step_h;
+	double		x_step_v;
+	double		y_step_v;
+	int			ray_up;
+	int			ray_down;
+	int			ray_left;
+	int			ray_right;
 	int			vertical;
 }				t_ray;
 
 typedef struct s_cub
 {
+	int				size;
+	int				l;
+	int				xx;
+	int				yy;
+	char			*str;
+	double			y_v1;
+	double			x_v1;
+	double			x0;
+	double			y0;
+	double			inx;
+	double			iny;
+	int				step;
+	double			x;
+	double			y;
 	int				i;
 	int				j;
 	int				v;
@@ -113,6 +124,7 @@ typedef struct s_cub
 	double			distance;
 	double			new_dis;
 	double			alpha;
+	double			fov;
 	char			**all_map;
 	char			**text;
 	char			*north_texture_path;
@@ -130,7 +142,6 @@ typedef struct s_cub
 	t_img			north_img;
 	t_player		player;
 	t_ray			*ray_data;
-
 	unsigned int	color_floor;
 	unsigned int	color_ceiling;
 	unsigned int	*east_table;
@@ -233,7 +244,7 @@ void				parse_texture_color(t_cub *cub, char *line);
 char				*ft_strdup(const char *s1);
 int					rgb_to_int(int r, int g, int b);
 void				free_splite(char **split);
-int	    			ft_isdigit(int c);
+int					ft_isdigit(int c);
 void				parse_line_color(char *str);
 
 #endif
