@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:47:18 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/25 01:26:42 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/27 18:33:52 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,48 +45,101 @@ void	ft_put_color(t_cub *cub, int x, int y, int color)
 	}
 }
 
-unsigned int	get_color(t_cub *cub, double start_x, double start_y)
-{
-	unsigned int	color;
-	int				i;
-	int				j;
-
-	color = 0x703a0a;
-	i = (int)(start_x / 64);
-	j = (int)(start_y / 64);
-	if ((i >= 0 && i < cub->line - 6) && (j >= 0 && j < cub->len))
-	{
-		if (cub->map[i][j] == '0' || cub->map[i][j] == 'W'
-			|| cub->map[i][j] == 'E' || cub->map[i][j] == 'S'
-			|| cub->map[i][j] == 'N')
-			color = 0xFFFFFF;
-		return (color);
-	}
-	return (color);
-}
-
 void	render_minimap(t_cub *cub)
 {
-	unsigned int	color;
-	double			start_x;
-	double			start_y;
-	int				e;
-	int				f;
+	int	pixel_color;
+	int	x;
+	int	y;
 
-	start_x = (int)(cub->player.xInwindow) - 100;
-	e = 0;
-	while (e < 200)
+	cub->i = 0;
+	while (cub->i < cub->line - 6)
 	{
-		start_y = (int)(cub->player.yInwindow) - 75;
-		f = 0;
-		while (f < 150)
+		cub->j = 0;
+		while (cub->j < cub->len)
 		{
-			color = get_color(cub, start_x, start_y);
-			own_mlx_pixel_put(cub, e + 5, f + 5, color);
-			start_y++;
-			f++;
+			if (cub->map[cub->i][cub->j] == '1')
+				pixel_color = 0x5D5447;
+			if (cub->map[cub->i][cub->j] == 'D')
+				pixel_color = 0xfc4e03;
+			else if (cub->map[cub->i][cub->j] == '0')
+				pixel_color = 0xFFFDEB;
+			y = (cub->i * SZ);
+			while (y++ < (cub->i * SZ) + SZ)
+			{
+				x = (cub->j * SZ);
+				while (x++ < (cub->j * SZ) + SZ)
+					own_mlx_pixel_put(cub, x * MINI_SCALE, y * MINI_SCALE,
+						pixel_color);
+			}
+			cub->j++;
 		}
-		start_x++;
-		e++;
+		cub->i++;
 	}
 }
+
+// void	ft_put_color(t_cub *cub, int x, int y, int color)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = x;
+// 	while (i < x + SZ)
+// 	{
+// 		j = y;
+// 		while (j < y + SZ)
+// 		{
+// 			if (i % SZ == 0 || j % SZ == 0)
+// 				own_mlx_pixel_put(cub, j, i, 0x000000);
+// 			else
+// 				own_mlx_pixel_put(cub, j, i, color);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
+
+// unsigned int	get_color(t_cub *cub, double start_x, double start_y)
+// {
+// 	unsigned int	color;
+// 	int				i;
+// 	int				j;
+
+// 	color = 0x703a0a;
+// 	i = (int)(start_x / 64);
+// 	j = (int)(start_y / 64);
+// 	if ((i >= 0 && i < cub->line - 6) && (j >= 0 && j < cub->len))
+// 	{
+// 		if (cub->map[i][j] == '0' || cub->map[i][j] == 'W'
+// 			|| cub->map[i][j] == 'E' || cub->map[i][j] == 'S'
+// 			|| cub->map[i][j] == 'N')
+// 			color = 0xFFFFFF;
+// 		return (color);
+// 	}
+// 	return (color);
+// }
+
+// void	render_minimap(t_cub *cub)
+// {
+// 	unsigned int	color;
+// 	double			start_x;
+// 	double			start_y;
+// 	int				e;
+// 	int				f;
+
+// 	start_x = (int)(cub->player.xInwindow) - 100;
+// 	e = 0;
+// 	while (e < 200)
+// 	{
+// 		start_y = (int)(cub->player.yInwindow) - 75;
+// 		f = 0;
+// 		while (f < 150)
+// 		{
+// 			color = get_color(cub, start_x, start_y);
+// 			own_mlx_pixel_put(cub, e + 5, f + 5, color);
+// 			start_y++;
+// 			f++;
+// 		}
+// 		start_x++;
+// 		e++;
+// 	}
+// }

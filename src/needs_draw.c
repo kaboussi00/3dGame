@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/27 00:59:11 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/27 19:57:56 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,20 +73,15 @@ int check_door(t_cub *cub, int x, int y)
                 cub->map[x][y] = 'C';
                 return 0;
             }
-            if (dist >= CLOSE_DISTANCE_THRESHOLD)
-            {
-                cub->map[x][y] = 'D';
-                return 1;
-            }
             else
             {
+                cub->map[x][y] = 'D';
                 return 1;
             }
         }
     }
     return 0;
 }
-
 
 
 void draw_wall_with_textures(t_cub *cub, double height, int x)
@@ -96,26 +91,27 @@ void draw_wall_with_textures(t_cub *cub, double height, int x)
     double tex_x;
     double texture_step;
     double texture_pos;
+    int map_x;
+    int map_y;
 
     if (cub->ray_data[x].vertical)
         tex_x = fmod(cub->ray_data[x].y_ver, cub->north_img.height);
     else
         tex_x = fmod(cub->ray_data[x].x_hor, cub->north_img.height);
-
-    int door1 = check_door(cub, (int)(cub->ray_data[x].x_hor / SZ), (int)(cub->ray_data[x].y_hor / SZ));
-    // printf("door1 =%d\n", door1);
-    int door2 = check_door(cub, (int)((cub->ray_data[x].x_hor - 1) / SZ), (int)(cub->ray_data[x].y_hor / SZ));
-    // printf("door2 =%d\n", door2);
-
-    if (door1 && door2) {
+    map_x = (int)(cub->ray_data[x].x_hor / SZ);
+    map_y = (int)(cub->ray_data[x].y_hor / SZ);
+    int door1 = check_door(cub, map_x, map_y);
+    map_x = (int)(cub->ray_data[x].x_ver / SZ);
+    map_y = (int)(cub->ray_data[x].y_ver / SZ);
+    int door2 = check_door(cub, map_x, map_y);
+    if (door1 && door2)
         cub->table = cub->door_closed_texture;
-    } else if (door1) {
+    if (door1)
         cub->table = cub->door_closed_texture;
-    } else if (door2) {
+    else if (door2)
         cub->table = cub->door_closed_texture;
-    } else {
+    else
         cub->table = get_table(cub, x);
-    }
 
     texture_step = (double)cub->north_img.height / height;
     texture_pos = ((cub->start - (HEIGHT / 2) + (height / 2)) * texture_step);
@@ -125,11 +121,9 @@ void draw_wall_with_textures(t_cub *cub, double height, int x)
     y = cub->start;
     while (y < cub->end)
     {
-        h = ((int)texture_pos % cub->north_img.height) * cub->north_img.width + (int)tex_x;
+        h = ((int)texture_pos * cub->north_img.height) + (tex_x);
         own_mlx_pixel_put(cub, x, y, cub->table[h]);
         texture_pos += texture_step;
         y++;
     }
 }
-
-

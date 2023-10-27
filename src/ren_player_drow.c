@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:52:09 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/24 15:00:03 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/27 18:27:54 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,29 @@ void	player_position(t_cub *cub)
 	cub->player.yInwindow = cub->pos_j * SZ + (SZ / 2);
 }
 
+// void	render_player(t_cub *cub, int rayon)
+// {
+// 	double	i;
+// 	double	degr;
+// 	double	new_y;
+// 	double	new_x;
+
+// 	rayon = 6;
+// 	i = 0;
+// 	while (i < rayon)
+// 	{
+// 		degr = 0;
+// 		while (degr < 360)
+// 		{
+// 			new_x = i * cos(degr * M_PI / 180);
+// 			new_y = i * sin(degr * M_PI / 180);
+// 			own_mlx_pixel_put(cub, (100 + new_y), (75 + new_x), 0xFF0000);
+// 			degr++;
+// 		}
+// 		i++;
+// 	}
+// }
+
 void	render_player(t_cub *cub, int rayon)
 {
 	double	i;
@@ -25,7 +48,6 @@ void	render_player(t_cub *cub, int rayon)
 	double	new_y;
 	double	new_x;
 
-	rayon = 6;
 	i = 0;
 	while (i < rayon)
 	{
@@ -34,9 +56,43 @@ void	render_player(t_cub *cub, int rayon)
 		{
 			new_x = i * cos(degr * M_PI / 180);
 			new_y = i * sin(degr * M_PI / 180);
-			own_mlx_pixel_put(cub, (100 + new_y), (75 + new_x), 0xFF0000);
+			own_mlx_pixel_put(cub, (cub->player.yInwindow + new_y) * MINI_SCALE,
+				(cub->player.xInwindow + new_x) * MINI_SCALE, 0xFF0000);
 			degr++;
 		}
 		i++;
+	}
+}
+
+void	drow_line(t_cub *cub)
+{
+	// drow line
+	double x0;
+	double y0;
+	double x1;
+	double y1;
+	double inx;
+	double iny;
+	int step;
+
+	x0 = cub->player.xInwindow;
+	y0 = cub->player.yInwindow;
+	x1 = x0 + cos(cub->player.rotation_angle) * 50;
+	y1 = y0 + sin(cub->player.rotation_angle) * 50;
+	double x = x1 - x0;
+	double y = y1 - y0;
+	if (fabs(x) > fabs(y))
+		step = fabs(x);
+	else
+		step = fabs(y);
+	inx = x / step;
+	iny = y / step;
+	cub->v = 0;
+	while (cub->v < step)
+	{
+		own_mlx_pixel_put(cub, (int)round(y0), (int)round(x0), 0xf5756c);
+		x0 += inx;
+		y0 += iny;
+		cub->v++;
 	}
 }
