@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/27 00:05:32 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/27 00:56:40 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define NUM_RAYS WIDTH
 # define FOV (60 * (M_PI / 180))
 # define MINI_SCALE 0.15
-# define CLOSE_DISTANCE_THRESHOLD 80
+# define CLOSE_DISTANCE_THRESHOLD 303
 
 
 typedef struct s_img

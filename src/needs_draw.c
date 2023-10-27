@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/27 00:29:28 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/27 00:59:11 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,15 @@ int check_door(t_cub *cub, int x, int y)
         if (cub->map[x][y] == 'D')
         {
             dist = distance(cub->player.posXinmap, cub->player.posYinmap, x * SZ, y * SZ);
-            // printf("%f\n", dist);
             if (dist <= CLOSE_DISTANCE_THRESHOLD)
             {
                 cub->map[x][y] = 'C';
                 return 0;
+            }
+            if (dist >= CLOSE_DISTANCE_THRESHOLD)
+            {
+                cub->map[x][y] = 'D';
+                return 1;
             }
             else
             {
@@ -93,17 +97,16 @@ void draw_wall_with_textures(t_cub *cub, double height, int x)
     double texture_step;
     double texture_pos;
 
-    // Calculate texture coordinates based on ray intersection
     if (cub->ray_data[x].vertical)
         tex_x = fmod(cub->ray_data[x].y_ver, cub->north_img.height);
     else
         tex_x = fmod(cub->ray_data[x].x_hor, cub->north_img.height);
 
-    // Check if the ray intersects with a door on both sides
     int door1 = check_door(cub, (int)(cub->ray_data[x].x_hor / SZ), (int)(cub->ray_data[x].y_hor / SZ));
+    // printf("door1 =%d\n", door1);
     int door2 = check_door(cub, (int)((cub->ray_data[x].x_hor - 1) / SZ), (int)(cub->ray_data[x].y_hor / SZ));
+    // printf("door2 =%d\n", door2);
 
-    // Prioritize rendering the door over the wall
     if (door1 && door2) {
         cub->table = cub->door_closed_texture;
     } else if (door1) {
@@ -114,24 +117,16 @@ void draw_wall_with_textures(t_cub *cub, double height, int x)
         cub->table = get_table(cub, x);
     }
 
-    // Calculate texture mapping step and initial position
     texture_step = (double)cub->north_img.height / height;
     texture_pos = ((cub->start - (HEIGHT / 2) + (height / 2)) * texture_step);
 
-    // Clamp texture_pos to valid range [0, cub->north_img.height - 1]
     texture_pos = fmin(fmax(texture_pos, 0), cub->north_img.height - 1);
 
-    // Loop through the wall slice and draw pixels with textures
     y = cub->start;
     while (y < cub->end)
     {
-        // Calculate texture index based on texture_pos and tex_x
         h = ((int)texture_pos % cub->north_img.height) * cub->north_img.width + (int)tex_x;
-
-        // Draw the pixel with the corresponding texture color
         own_mlx_pixel_put(cub, x, y, cub->table[h]);
-
-        // Update texture_pos for the next pixel in the wall slice
         texture_pos += texture_step;
         y++;
     }
