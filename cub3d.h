@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/26 15:52:49 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/27 20:17:37 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,7 @@ void				check_texture_color(t_cub *cub);
 void				new_map(t_cub *cub);
 char				*charge_space(char c, int len);
 void				check_char(t_cub *cub);
+void				set_rotation(t_cub *cub);
 void				check_not_char(t_cub *cub);
 void				copie_with_spaces(t_cub *cub);
 void				check_wall(t_cub *cub);

@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:58 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/26 16:15:11 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/27 20:18:50 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,24 @@ void	check_doors(t_cub *cub)
 					printerror_message ("invalid  door !!\n");
 			}
 			else
-				cub->j++;	
+				cub->j++;
 		}
 		cub->i++;
 	}
 }
+
+void	set_rotation(t_cub *cub)
+{
+	if (cub->map[cub->i][cub->j] == 'W')
+		cub->player.rotation_angle = M_PI;
+	else if (cub->map[cub->i][cub->j] == 'E')
+		cub->player.rotation_angle = 0;
+	else if (cub->map[cub->i][cub->j] == 'S')
+		cub->player.rotation_angle = M_PI_2;
+	else if (cub->map[cub->i][cub->j] == 'N')
+		cub->player.rotation_angle = 3 * M_PI_2;
+}
+
 
 void	check_char(t_cub *cub)
 {
@@ -67,6 +80,7 @@ void	check_char(t_cub *cub)
 				|| cub->map[cub->i][cub->j] == 'S'
 				|| cub->map[cub->i][cub->j] == 'N')
 			{
+				set_rotation(cub);
 				cub->p += 1;
 				cub->pos_i = cub->i;
 				cub->pos_j = cub->j;
