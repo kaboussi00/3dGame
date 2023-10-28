@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_my_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:37 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/24 15:08:20 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/27 20:34:29 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,40 +27,31 @@ char	*charge_space(char c, int len)
 	return (p);
 }
 
-void	new_map(t_cub *cub)
+void	new_map(t_cub *c)
 {
-	int		size;
-	int		l;
-	int		x;
-	int		y;
-	char	*str;
-
-	cub->i = 6;
-	cub->j = 0;
-	cub->map = malloc(sizeof(char *) * (cub->line - 5));
-	if (!cub->map)
+	c->i = 5;
+	c->j = 0;
+	c->map = malloc(sizeof(char *) * (c->line - 5));
+	if (!c->map)
 		return ;
-	while (cub->i < cub->line)
+	while (++c->i < c->line)
 	{
-		cub->map[cub->j] = malloc(sizeof(char) * (cub->len + 1));
-		size = ft_str_line(cub->all_map[cub->i]);
-		x = 0;
-		y = 0;
-		l = cub->len - size;
-		while (cub->all_map[cub->i][x] && cub->all_map[cub->i][x] != '\n')
+		c->map[c->j] = malloc(sizeof(char) * (c->len + 1));
+		c->size = ft_str_line(c->all_map[c->i]);
+		c->xx = 0;
+		c->yy = 0;
+		c->l = c->len - c->size;
+		while (c->all_map[c->i][c->xx] && c->all_map[c->i][c->xx] != '\n')
+			c->map[c->j][c->yy++] = c->all_map[c->i][c->xx++];
+		c->map[c->j][c->yy] = '\0';
+		if (c->size < c->len)
 		{
-			cub->map[cub->j][y++] = cub->all_map[cub->i][x++];
+			c->str = charge_space(' ', c->l);
+			c->map[c->j] = ft_strjoin(c->map[c->j], c->str);
+			free(c->str);
+			c->str = NULL;
 		}
-		cub->map[cub->j][y] = '\0';
-		if (size < cub->len)
-		{
-			str = charge_space(' ', l);
-			cub->map[cub->j] = ft_strjoin(cub->map[cub->j], str);
-			free(str);
-			str = NULL;
-		}
-		cub->i++;
-		cub->j++;
+		c->j++;
 	}
-	cub->map[cub->j] = NULL;
+	c->map[c->j] = NULL;
 }

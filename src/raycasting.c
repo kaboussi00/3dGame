@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 07:04:47 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/26 23:12:45 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:29:26 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	cast_rays(t_cub *cub)
 	cub->ray_data = malloc(sizeof(t_ray) * NUM_RAYS);
 	if (!cub->ray_data)
 		return ;
-	cub->player.rayangle = cub->player.rotation_angle - (FOV / 2);
+	cub->player.rayangle = cub->player.rotation_angle - (cub->fov / 2);
 	while (i < NUM_RAYS)
 	{
 		cub->player.rayangle = normalizing_angle(cub->player.rayangle);
@@ -29,7 +29,7 @@ void	cast_rays(t_cub *cub)
 		check_wall__hor(&cub->ray_data[i], cub);
 		check_wall__ver(&cub->ray_data[i], cub);
 		closest_dis(&cub->ray_data[i], cub);
-		cub->player.rayangle += FOV / NUM_RAYS;
+		cub->player.rayangle += cub->fov / NUM_RAYS;
 		i++;
 	}
 }

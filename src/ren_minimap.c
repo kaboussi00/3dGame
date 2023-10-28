@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:47:18 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 21:00:28 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:29:37 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ void	render_minimap(t_cub *cub)
 	int				e;
 	int				f;
 
-	start_x = (int)(cub->player.xInwindow) - 100;
+	start_x = (int)(cub->player.x_inwindow) - 100;
 	e = 0;
 	while (e < 200)
 	{
-		start_y = (int)(cub->player.yInwindow) - 75;
+		start_y = (int)(cub->player.y_inwindow) - 75;
 		f = 0;
 		while (f < 150)
 		{

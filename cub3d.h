@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 20:45:35 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:31:12 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # define WIDTH 1000
 # define HEIGHT 500
 # define NUM_RAYS WIDTH
-# define FOV (60 * (M_PI / 180))
 # define MINI_SCALE 0.15
 # define CLOSE_DISTANCE_THRESHOLD 200
 # define CLOSE 300
@@ -45,8 +44,8 @@ typedef struct s_img
 typedef struct s_player
 {
 	double			distance_to_plane;
-	double			xInwindow;
-	double			yInwindow;
+	double			x_inwindow;
+	double			y_inwindow;
 	double			side_direction;
 	double			turn_direction;
 	double			walk_direction;
@@ -55,8 +54,8 @@ typedef struct s_player
 	double			move_speed;
 	double			rotation_speed;
 	double			move_step;
-	double			posXinmap;
-	double			posYinmap;
+	double			posx_inmap;
+	double			posy_inmap;
 }					t_player;
 
 typedef struct s_ray
@@ -90,6 +89,20 @@ typedef struct s_ray
 
 typedef struct s_cub
 {
+	int				size;
+	int				l;
+	int				xx;
+	int				yy;
+	char			*str;
+	double			y_v1;
+	double			x_v1;
+	double			x0;
+	double			y0;
+	double			inx;
+	double			iny;
+	int				step;
+	double			x;
+	double			y;
 	int				i;
 	int				j;
 	int				v;
@@ -120,6 +133,7 @@ typedef struct s_cub
 	double			distance;
 	double			new_dis;
 	double			alpha;
+	double			fov;
 	char			**all_map;
 	char			**text;
 	char			*north_texture_path;
@@ -187,6 +201,7 @@ void				check_texture_color(t_cub *cub);
 void				new_map(t_cub *cub);
 char				*charge_space(char c, int len);
 void				check_char(t_cub *cub);
+void				set_rotation(t_cub *cub);
 void				check_not_char(t_cub *cub);
 void				copie_with_spaces(t_cub *cub);
 void				check_wall(t_cub *cub);

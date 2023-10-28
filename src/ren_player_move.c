@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:45:42 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 06:47:05 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:29:51 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ int	check_wall_walk(t_cub *cub)
 	double	x;
 	double	y;
 
-	x = cub->player.xInwindow + cos(cub->player.rotation_angle)
+	x = cub->player.x_inwindow + cos(cub->player.rotation_angle)
 		* cub->player.move_step;
-	y = cub->player.yInwindow + sin(cub->player.rotation_angle)
+	y = cub->player.y_inwindow + sin(cub->player.rotation_angle)
 		* cub->player.move_step;
 	if ((cub->map[(int)((x) / SZ)][(int)((y) / SZ)] != '1' && cub->map[(int)((x)
 				/ SZ)][(int)((y) / SZ)] != ' ')
-		&& ((int)(cub->map[(int)cub->player.xInwindow / SZ][(int)y / SZ] != '1')
-			&& cub->map[(int)x / SZ][(int)cub->player.yInwindow / SZ] != '1'))
+		&& ((int)(cub->map[(int)cub->player.x_inwindow / SZ][(int)y / SZ] != '1')
+			&& cub->map[(int)x / SZ][(int)cub->player.y_inwindow / SZ] != '1'))
 		return (1);
 	return (0);
 }
@@ -44,14 +44,14 @@ int	check_wall_side(t_cub *cub)
 	double	x;
 	double	y;
 
-	x = cub->player.xInwindow + cos(cub->player.rotation_angle + M_PI_2)
+	x = cub->player.x_inwindow + cos(cub->player.rotation_angle + M_PI_2)
 		* cub->player.move_step;
-	y = cub->player.yInwindow + sin(cub->player.rotation_angle + M_PI_2)
+	y = cub->player.y_inwindow + sin(cub->player.rotation_angle + M_PI_2)
 		* cub->player.move_step;
 	if ((cub->map[(int)((x) / SZ)][(int)((y) / SZ)] != '1' && cub->map[(int)((x)
 				/ SZ)][(int)((y) / SZ)] != ' ')
-		&& (((int)cub->map[(int)cub->player.xInwindow / SZ][(int)y / SZ] != '1')
-			&& cub->map[(int)x / SZ][(int)cub->player.yInwindow / SZ] != '1'))
+		&& (((int)cub->map[(int)cub->player.x_inwindow / SZ][(int)y / SZ] != '1')
+			&& cub->map[(int)x / SZ][(int)cub->player.y_inwindow / SZ] != '1'))
 		return (1);
 	return (0);
 }
@@ -59,17 +59,17 @@ int	check_wall_side(t_cub *cub)
 void	move_walk_player(t_cub *cub)
 {
 	cub->player.move_step = cub->player.walk_direction * cub->player.move_speed;
-	cub->player.posXinmap = cub->player.xInwindow
+	cub->player.posx_inmap = cub->player.x_inwindow
 		+ cos(cub->player.rotation_angle) * cub->player.move_step;
-	cub->player.posYinmap = cub->player.yInwindow
+	cub->player.posy_inmap = cub->player.y_inwindow
 		+ sin(cub->player.rotation_angle) * cub->player.move_step;
 	if (check_wall_walk(cub))
 	{
 		cub->player.move_step = cub->player.walk_direction
 			* cub->player.move_speed;
-		cub->player.xInwindow += cos(cub->player.rotation_angle)
+		cub->player.x_inwindow += cos(cub->player.rotation_angle)
 			* cub->player.move_step;
-		cub->player.yInwindow += sin(cub->player.rotation_angle)
+		cub->player.y_inwindow += sin(cub->player.rotation_angle)
 			* cub->player.move_step;
 	}
 }
@@ -77,17 +77,17 @@ void	move_walk_player(t_cub *cub)
 void	move_side_player(t_cub *cub)
 {
 	cub->player.move_step = cub->player.side_direction * cub->player.move_speed;
-	cub->player.posXinmap = cub->player.xInwindow
+	cub->player.posx_inmap = cub->player.x_inwindow
 		+ cos(cub->player.rotation_angle + M_PI_2) * cub->player.move_step;
-	cub->player.posYinmap = cub->player.yInwindow
+	cub->player.posy_inmap = cub->player.y_inwindow
 		+ sin(cub->player.rotation_angle + M_PI_2) * cub->player.move_step;
 	if (check_wall_side(cub))
 	{
 		cub->player.move_step = cub->player.side_direction
 			* cub->player.move_speed;
-		cub->player.xInwindow += cos(cub->player.rotation_angle + M_PI_2)
+		cub->player.x_inwindow += cos(cub->player.rotation_angle + M_PI_2)
 			* cub->player.move_step;
-		cub->player.yInwindow += sin(cub->player.rotation_angle + M_PI_2)
+		cub->player.y_inwindow += sin(cub->player.rotation_angle + M_PI_2)
 			* cub->player.move_step;
 	}
 }

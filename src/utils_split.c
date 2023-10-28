@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_split.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:01 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/21 15:47:51 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/27 20:29:15 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,6 @@ static char	*ft_charge(char const *str, char c, int len)
 	p[k] = '\0';
 	return (p);
 }
-
-// static char	**ft_free(char **p, int j)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < j)
-// 	{
-// 		free(p[i]);
-// 		i++;
-// 	}
-// 	free(p);
-// 	return (NULL);
-// }
 
 char	**ft_split(char const *s, char c)
 {

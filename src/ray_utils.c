@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 11:11:27 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 12:17:39 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:29:20 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,48 +22,41 @@ double	normalizing_angle(double angle)
 
 void	drow_line_ray(t_cub *cub, double x1, double y1)
 {
-	double	x0;
-	double	y0;
-	double	inx;
-	double	iny;
-	int		step;
-	double	x;
-	double	y;
-
-	x0 = 100;
-	y0 = 75;
-	x = x1 - x0;
-	y = y1 - y0;
-	if (fabs(x) > fabs(y))
-		step = fabs(x);
+	cub->x0 = 100;
+	cub->y0 = 75;
+	cub->x = x1 - cub->x0;
+	cub->y = y1 - cub->y0;
+	if (fabs(cub->x) > fabs(cub->y))
+		cub->step = fabs(cub->x);
 	else
-		step = fabs(y);
-	inx = x / step;
-	iny = y / step;
+		cub->step = fabs(cub->y);
+	cub->inx = cub->x / cub->step;
+	cub->iny = cub->y / cub->step;
 	cub->v = 0;
-	while (cub->v < step)
+	while (cub->v < cub->step)
 	{
-		own_mlx_pixel_put(cub, (int)round(x0), (int)round(y0), 0xf5756c);
-		x0 += inx;
-		y0 += iny;
+		own_mlx_pixel_put(cub, (int)round(cub->x0)\
+		, (int)round(cub->y0), 0xf5756c);
+		cub->x0 += cub->inx;
+		cub->y0 += cub->iny;
 		cub->v++;
 	}
 }
 
 void	down_right(t_ray *ray_data)
 {
-	ray_data->rayUp = 0;
-	ray_data->rayLeft = 0;
-	ray_data->rayRight = 1;
-	ray_data->rayDown = 1;
+	ray_data->ray_up = 0;
+	ray_data->ray_left = 0;
+	ray_data->ray_right = 1;
+	ray_data->ray_down = 1;
 }
 
 void	down_left(t_ray *ray_data)
 {
-	ray_data->rayUp = 0;
-	ray_data->rayLeft = 1;
-	ray_data->rayRight = 0;
-	ray_data->rayDown = 1;
+	ray_data->ray_up = 0;
+	ray_data->ray_left = 1;
+	ray_data->ray_right = 0;
+	ray_data->ray_down = 1;
 }
 
 void	set_directions(t_ray *ray_data)
@@ -79,16 +72,16 @@ void	set_directions(t_ray *ray_data)
 		down_left(ray_data);
 	else if (ra >= M_PI && ra < 3 * M_PI / 2)
 	{
-		ray_data->rayUp = 1;
-		ray_data->rayLeft = 1;
-		ray_data->rayRight = 0;
-		ray_data->rayDown = 0;
+		ray_data->ray_up = 1;
+		ray_data->ray_left = 1;
+		ray_data->ray_right = 0;
+		ray_data->ray_down = 0;
 	}
 	else if (ra >= 3 * M_PI / 2 && ra < 2 * M_PI)
 	{
-		ray_data->rayUp = 1;
-		ray_data->rayLeft = 0;
-		ray_data->rayRight = 1;
-		ray_data->rayDown = 0;
+		ray_data->ray_up = 1;
+		ray_data->ray_left = 0;
+		ray_data->ray_right = 1;
+		ray_data->ray_down = 0;
 	}
 }

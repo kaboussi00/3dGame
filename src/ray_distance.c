@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:42:12 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 07:45:30 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:28:52 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,9 @@ void	closest_dis(t_ray *ray_data, t_cub *cub)
 	double	y;
 	double	x_h1;
 	double	y_h1;
-	double	x_v1;
-	double	y_v1;
 
-	x = cub->player.xInwindow;
-	y = cub->player.yInwindow;
+	x = cub->player.x_inwindow;
+	y = cub->player.y_inwindow;
 	x_h1 = ray_data->x_hor;
 	y_h1 = ray_data->y_hor;
 	x_v1 = ray_data->x_ver;

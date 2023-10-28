@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:58 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 20:44:05 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:27:32 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,31 @@ void	check_not_char(t_cub *cub)
 	}
 }
 
+void	check_doors(t_cub *cub)
+{
+	cub->i = 0;
+	while (cub->i < cub->line - 6)
+	{
+		cub->j = 0;
+		while (cub->j < cub->len - 1)
+		{
+			if (cub->map[cub->i][cub->j] == 'D')
+			{
+				if ((cub->map[cub->i][cub->j - 1] == '1' \
+				&& cub->map[cub->i][cub->j + 1] == '1') || 
+				(cub->map[cub->i - 1][cub->j] == '1' \
+				&& cub->map[cub->i + 1][cub->j] == '1'))
+					cub->j++;
+				else
+					printerror_message ("invalid  door !!\n");
+			}
+			else
+				cub->j++;
+		}
+		cub->i++;
+	}
+}
+
 void	set_rotation(t_cub *cub)
 {
 	if (cub->map[cub->i][cub->j] == 'W')
@@ -39,6 +64,7 @@ void	set_rotation(t_cub *cub)
 	else if (cub->map[cub->i][cub->j] == 'N')
 		cub->player.rotation_angle = 3 * M_PI_2;
 }
+
 
 void	check_char(t_cub *cub)
 {

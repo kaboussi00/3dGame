@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:21 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 06:47:12 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:30:03 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ void	initial_variable(t_cub *cub)
 	cub->player.move_speed = 30.0;
 	cub->player.rotation_angle = M_PI_2;
 	cub->player.rotation_speed = 30.0 * (M_PI / 180);
+	cub->fov = (60 * (M_PI / 180));
 }

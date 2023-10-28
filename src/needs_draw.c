@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/28 12:43:46 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:26:28 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ unsigned int	*get_table(t_cub *cub, int x)
 	}
 	else if (cub->ray_data[x].vertical == 1 && cub->ray_data[x].rayRight)
 		return (cub->east_table);
-	else if (cub->ray_data[x].vertical == 1 && cub->ray_data[x].rayLeft)
+	else if (cub->ray_data[x].vertical == 1 && cub->ray_data[x].ray_left)
 		return (cub->west_table);
-	else if (cub->ray_data[x].vertical == 0 && cub->ray_data[x].rayUp)
+	else if (cub->ray_data[x].vertical == 0 && cub->ray_data[x].ray_up)
 		return (cub->north_table);
 	else
 		return (cub->south_table);
@@ -59,14 +59,14 @@ double	hit_ver(t_ray *ray)
 {
 	double	distance;
 
-	if (ray->dis_H < ray->dis_V)
+	if (ray->dis_h < ray->dis_v)
 	{
-		distance = ray->dis_H;
+		distance = ray->dis_h;
 		ray->vertical = 0;
 	}
 	else
 	{
-		distance = ray->dis_V;
+		distance = ray->dis_v;
 		ray->vertical = 1;
 	}
 	return (distance);
