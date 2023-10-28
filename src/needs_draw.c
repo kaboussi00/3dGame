@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/27 19:57:56 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 08:17:37 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,32 @@
 
 unsigned int	*get_table(t_cub *cub, int x)
 {
-	if (cub->ray_data[x].vertical == 1 && cub->ray_data[x].rayRight)
+    int map_x;
+    int map_y;
+    double dist;
+
+    if (cub->ray_data[x].flags)
+    {
+        if (cub->ray_data[x].dis_H < cub->ray_data[x].dis_V)
+        {
+            map_y = (int)(cub->ray_data[x].y_hor / SZ);
+            map_x = (int)(cub->ray_data[x].x_hor / SZ);
+        }
+        else
+        {
+            map_x = (int)(cub->ray_data[x].x_ver / SZ);
+            map_y = (int)(cub->ray_data[x].y_ver / SZ);
+        }
+        dist = distance(cub->player.posXinmap, cub->player.posYinmap, map_x * SZ, map_y * SZ);
+        // printf("dist == %f\n", dist);
+        if (dist <= CLOSE_DISTANCE_THRESHOLD)
+        {
+            cub->map[map_x][map_y] = 'C';
+            return (cub->door_closed_texture);
+        }
+        return (cub->door_closed_texture);
+    }
+	else if (cub->ray_data[x].vertical == 1 && cub->ray_data[x].rayRight)
 		return (cub->east_table);
 	else if (cub->ray_data[x].vertical == 1 && cub->ray_data[x].rayLeft)
 		return (cub->west_table);
@@ -22,6 +47,7 @@ unsigned int	*get_table(t_cub *cub, int x)
 		return (cub->north_table);
 	else
 		return (cub->south_table);
+       
 }
 
 double	hit_ver(t_ray *ray)
@@ -60,28 +86,26 @@ void	draw_floor_ceiling(t_cub *cub, int start, int end, int x)
 }
 
 
-int check_door(t_cub *cub, int x, int y)
-{
-    double dist;
-    if (x >= 0 && x < cub->line - 6 && y >= 0 && y < cub->len - 1)
-    {
-        if (cub->map[x][y] == 'D')
-        {
-            dist = distance(cub->player.posXinmap, cub->player.posYinmap, x * SZ, y * SZ);
-            if (dist <= CLOSE_DISTANCE_THRESHOLD)
-            {
-                cub->map[x][y] = 'C';
-                return 0;
-            }
-            else
-            {
-                cub->map[x][y] = 'D';
-                return 1;
-            }
-        }
-    }
-    return 0;
-}
+// int check_door(t_cub *cub, int x, y)
+// {
+//      double dist;
+//     if (cub->ray_data[x].flags)
+//     {
+//         dist = distance(cub->player.posXinmap, cub->player.posYinmap, x * SZ, y * SZ);
+//         if (dist <= CLOSE_DISTANCE_THRESHOLD)
+//         {
+//             cub->map[x][y] = 'C';
+//             return 0;
+//         }
+//         else
+//         {
+//             cub->map[x][y] = 'D';
+//             return 1;
+//         }
+//             return 1;
+//     }
+//     return 0;
+// }
 
 
 void draw_wall_with_textures(t_cub *cub, double height, int x)
@@ -91,33 +115,15 @@ void draw_wall_with_textures(t_cub *cub, double height, int x)
     double tex_x;
     double texture_step;
     double texture_pos;
-    int map_x;
-    int map_y;
 
     if (cub->ray_data[x].vertical)
         tex_x = fmod(cub->ray_data[x].y_ver, cub->north_img.height);
     else
         tex_x = fmod(cub->ray_data[x].x_hor, cub->north_img.height);
-    map_x = (int)(cub->ray_data[x].x_hor / SZ);
-    map_y = (int)(cub->ray_data[x].y_hor / SZ);
-    int door1 = check_door(cub, map_x, map_y);
-    map_x = (int)(cub->ray_data[x].x_ver / SZ);
-    map_y = (int)(cub->ray_data[x].y_ver / SZ);
-    int door2 = check_door(cub, map_x, map_y);
-    if (door1 && door2)
-        cub->table = cub->door_closed_texture;
-    if (door1)
-        cub->table = cub->door_closed_texture;
-    else if (door2)
-        cub->table = cub->door_closed_texture;
-    else
-        cub->table = get_table(cub, x);
-
+    cub->table = get_table(cub, x);
     texture_step = (double)cub->north_img.height / height;
     texture_pos = ((cub->start - (HEIGHT / 2) + (height / 2)) * texture_step);
-
     texture_pos = fmin(fmax(texture_pos, 0), cub->north_img.height - 1);
-
     y = cub->start;
     while (y < cub->end)
     {

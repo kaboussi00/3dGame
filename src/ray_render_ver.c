@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:15:30 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/26 22:36:56 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 07:47:53 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ void	convert_into_map_v(t_ray *ray_data, t_cub *cub)
 		x = ray_data->x_ver;
 		if (ray_data->rayLeft)
 			x--;
+		if (cub->map[(int)(x / SZ)][(int)((ray_data->y_ver / SZ))] == 'D')
+			ray_data->flags_ver = 1;
+		else
+			ray_data->flags_ver = 0;
 		if (cub->map[(int)(x / SZ)][(int)(ray_data->y_ver / SZ)] != '1'
 			&& cub->map[(int)(x / SZ)][(int)(ray_data->y_ver / SZ)] != ' ' \
             && cub->map[(int)(x / SZ)][(int)(ray_data->y_ver / SZ)] != 'D')

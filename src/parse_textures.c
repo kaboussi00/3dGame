@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 14:54:55 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/25 23:01:54 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 05:20:25 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_parse_color(char *str, t_cub *cub, char **split, int flg)
 
 	parse_line_color(str);
 	rgb = ft_split(str, ',');
-	if (!rgb)
+	if (!rgb || rgb[1] == NULL || rgb[2] == NULL)
 		return (free_splite(split), printerror_message("Invalid color!\n"));
 	if (flg)
 	{

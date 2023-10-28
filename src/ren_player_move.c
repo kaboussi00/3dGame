@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ren_player_move.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:45:42 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/24 16:03:30 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/28 06:47:05 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	rotation_angle(t_cub *cub)
 	if (cub->player.rotation_angle < 0)
 		cub->player.rotation_angle += 360 * (M_PI / 180);
 }
+
 
 int	check_wall_walk(t_cub *cub)
 {

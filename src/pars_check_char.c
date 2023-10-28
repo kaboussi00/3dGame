@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:58 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/26 21:39:00 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 03:16:33 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,34 @@ int	check_doors(t_cub *cub)
 }
 
 
+void	set_rotation(t_cub *cub)
+{
+	if (cub->map[cub->i][cub->j] == 'W')
+		cub->player.rotation_angle = M_PI;
+	else if (cub->map[cub->i][cub->j] == 'E')
+		cub->player.rotation_angle = 0;
+	else if (cub->map[cub->i][cub->j] == 'S')
+		cub->player.rotation_angle = M_PI_2;
+	else if (cub->map[cub->i][cub->j] == 'N')
+		cub->player.rotation_angle = 3 * M_PI_2;
+}
+
 
 void	check_char(t_cub *cub)
 {
 	cub->i = 0;
 	cub->p = 0;
-    cub->door_states =  0;
 	while (cub->i < cub->line - 6)
 	{
 		cub->j = 0;
 		while (cub->j < cub->len - 1)
 		{
-            if  (cub->map[cub->i][cub->j] == 'D')
-                   cub->door_states++;
 			if (cub->map[cub->i][cub->j] == 'W'
 				|| cub->map[cub->i][cub->j] == 'E'
 				|| cub->map[cub->i][cub->j] == 'S'
-				|| cub->map[cub->i][cub->j] == 'A')
+				|| cub->map[cub->i][cub->j] == 'N')
 			{
+				set_rotation(cub);
 				cub->p += 1;
 				cub->pos_i = cub->i;
 				cub->pos_j = cub->j;

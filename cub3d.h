@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/27 18:20:23 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 08:10:43 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define NUM_RAYS WIDTH
 # define FOV (60 * (M_PI / 180))
 # define MINI_SCALE 0.15
-# define CLOSE_DISTANCE_THRESHOLD 10
+# define CLOSE_DISTANCE_THRESHOLD 130
 
 
 typedef struct s_img
@@ -83,6 +83,9 @@ typedef struct s_ray
 	int			rayLeft;
 	int			rayRight;
 	int			vertical;
+    int         flags;
+    int         flags_hor;
+    int         flags_ver;
 }				t_ray;
 
 typedef struct s_cub
@@ -136,7 +139,7 @@ typedef struct s_cub
     t_img           door_open_img;
 	t_player		player;
 	t_ray			*ray_data;
-
+int has_door;
 	unsigned int	color_floor;
 	unsigned int	color_ceiling;
 	unsigned int	*east_table;
@@ -184,7 +187,7 @@ void				check_char(t_cub *cub);
 void				check_not_char(t_cub *cub);
 void				copie_with_spaces(t_cub *cub);
 void				check_wall(t_cub *cub);
-
+int	check_wall_door(t_cub *cub);
 /////////////////
 ////<parsbonus>//
 /////////////////
