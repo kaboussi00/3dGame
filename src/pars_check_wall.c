@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_check_wall.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:39 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/24 22:39:03 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 13:10:15 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	copie_with_spaces(t_cub *cub)
 	{
 		x = 1;
 		y = 0;
-		cub->copie[cub->j] = malloc(sizeof(char) * cub->len + 2);
+		cub->copie[cub->j] = malloc(sizeof(char) * cub->len + 3);
 		cub->copie[cub->j][0] = ' ';
 		while (cub->map[cub->i][y])
 			cub->copie[cub->j][x++] = cub->map[cub->i][y++];
