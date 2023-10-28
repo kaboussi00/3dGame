@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/28 21:26:28 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:42:39 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ unsigned int	*ft_get_table_door(t_cub *cub)
 	{
 		map_x = cub->door_positions[i][0];
 		map_y = cub->door_positions[i][1];
-		dist = distance(cub->player.posXinmap, cub->player.posYinmap, map_x
+		dist = distance(cub->player.posx_inmap, cub->player.posy_inmap, map_x
 				* SZ, map_y * SZ);
 		if (dist <= CLOSE_DISTANCE_THRESHOLD && check_door_walk(cub))
 			return (cub->map[map_x][map_y] = 'C', cub->door_closed_texture);
@@ -45,7 +45,7 @@ unsigned int	*get_table(t_cub *cub, int x)
 	{
 		return (ft_get_table_door(cub));
 	}
-	else if (cub->ray_data[x].vertical == 1 && cub->ray_data[x].rayRight)
+	else if (cub->ray_data[x].vertical == 1 && cub->ray_data[x].ray_right)
 		return (cub->east_table);
 	else if (cub->ray_data[x].vertical == 1 && cub->ray_data[x].ray_left)
 		return (cub->west_table);

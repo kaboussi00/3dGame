@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 11:11:27 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 21:29:20 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:46:39 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	drow_line_ray(t_cub *cub, double x1, double y1)
 	cub->v = 0;
 	while (cub->v < cub->step)
 	{
-		own_mlx_pixel_put(cub, (int)round(cub->x0)\
+		own_mlx_pixel_put(cub, (int)round(cub->x0) \
 		, (int)round(cub->y0), 0xf5756c);
 		cub->x0 += cub->inx;
 		cub->y0 += cub->iny;

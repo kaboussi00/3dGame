@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 14:54:55 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/28 20:53:30 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 22:31:49 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,15 @@ void	ft_helper_parse_path(t_cub *cub, char **split, char *line)
 	else if (ft_strcmp(split[0], "EA") == 0)
 		cub->east_texture_path = texture_path;
 	else if (ft_strcmp(split[0], "F") == 0)
+	{
+		free(texture_path);
 		parse_texture_color(cub, line);
+	}
 	else if (ft_strcmp(split[0], "C") == 0)
+	{
+		free(texture_path);
 		parse_texture_color(cub, line);
+	}
 	else
 		return (free(texture_path), free_splite(split),
 			printerror_message("Invalid texture path!\n"));
@@ -59,33 +65,29 @@ void	ft_parse_color(char *str, t_cub *cub, char **split, int flg)
 		return (free_splite(split), printerror_message("Invalid color!\n"));
 	if (flg)
 	{
-		if (atoi(rgb[0]) >= 0 && atoi(rgb[0]) <= 255 && atoi(rgb[1]) >= 0
-			&& atoi(rgb[1]) <= 255 && atoi(rgb[2]) >= 0 && atoi(rgb[2]) <= 255)
-			cub->color_floor = rgb_to_int(atoi(rgb[0]), atoi(rgb[1]),
-					atoi(rgb[2]));
+		if (ft_atoi(rgb[0]) >= 0 && ft_atoi(rgb[0]) <= 255 && ft_atoi(rgb[1]) >= 0
+			&& ft_atoi(rgb[1]) <= 255 && ft_atoi(rgb[2]) >= 0 && ft_atoi(rgb[2]) <= 255)
+			cub->color_floor = rgb_to_int(ft_atoi(rgb[0]), ft_atoi(rgb[1]),
+					ft_atoi(rgb[2]));
 		else
-			printerror_message("Invalid color!\n");
+			return (free_splite(rgb), free_splite(split), printerror_message("Invalid color!\n"));
 	}
 	else
 	{
-		if (atoi(rgb[0]) >= 0 && atoi(rgb[0]) <= 255 && atoi(rgb[1]) >= 0
-			&& atoi(rgb[1]) <= 255 && atoi(rgb[2]) >= 0 && atoi(rgb[2]) <= 255)
-			cub->color_ceiling = rgb_to_int(atoi(rgb[0]), atoi(rgb[1]),
-					atoi(rgb[2]));
+		if (ft_atoi(rgb[0]) >= 0 && ft_atoi(rgb[0]) <= 255 && ft_atoi(rgb[1]) >= 0
+			&& ft_atoi(rgb[1]) <= 255 && ft_atoi(rgb[2]) >= 0 && ft_atoi(rgb[2]) <= 255)
+			cub->color_ceiling = rgb_to_int(ft_atoi(rgb[0]), ft_atoi(rgb[1]),
+					ft_atoi(rgb[2]));
 		else
-			printerror_message("Invalid color!\n");
+			return (free_splite(rgb), free_splite(split), printerror_message("Invalid color!\n"));
 	}
-	free_splite(rgb);
+	return (free_splite(rgb));
 }
 
 void	parse_texture_color(t_cub *cub, char *line)
 {
 	char	**split;
-	char	**rgb;
-	char	**rgb2;
 
-	rgb = NULL;
-	rgb2 = NULL;
 	split = ft_split(line, ' ');
 	if (!split)
 		printerror_message("Invalid color!\n");

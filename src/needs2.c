@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 17:32:42 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/28 12:42:56 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:47:23 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,15 @@ int	check_door_walk(t_cub *cub)
 	double	x;
 	double	y;
 
-	x = cub->player.xInwindow + cos(cub->player.rotation_angle)
+	x = cub->player.x_inwindow + cos(cub->player.rotation_angle)
 		* cub->player.move_step;
-	y = cub->player.yInwindow + sin(cub->player.rotation_angle)
+	y = cub->player.y_inwindow + sin(cub->player.rotation_angle)
 		* cub->player.move_step;
 	if ((cub->map[(int)((x) / SZ)][(int)((y) / SZ)] != 'D' && cub->map[(int)((x)
 				/ SZ)][(int)((y) / SZ)] != ' ')
-		&& ((int)(cub->map[(int)cub->player.xInwindow / SZ][(int)y / SZ] != 'D')
-			&& cub->map[(int)x / SZ][(int)cub->player.yInwindow / SZ] != 'D'))
+		&& ((int)(cub->map[(int)cub->player.x_inwindow
+				/ SZ][(int)y / SZ] != 'D')
+			&& cub->map[(int)x / SZ][(int)cub->player.y_inwindow / SZ] != 'D'))
 		return (1);
 	return (0);
 }

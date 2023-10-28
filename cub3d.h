@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 21:31:12 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:37:36 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,20 @@ typedef struct s_ray
 	double			x_ver;
 	double			y_ver;
 	double			angle;
-	double			xIntercept_H;
-	double			yIntercept_H;
-	double			xIntercept_V;
-	double			yIntercept_V;
-	double			dis_H;
-	double			dis_V;
-	double			x_Step_H;
-	double			y_Step_H;
-	double			x_Step_V;
-	double			y_Step_V;
-	double			x_Wallhit;
-	double			y_Wallhit;
-	int				rayUp;
-	int				rayDown;
-	int				rayLeft;
-	int				rayRight;
+	double			x_intercept_h;
+	double			y_intercept_h;
+	double			x_intercept_v;
+	double			y_intercept_v;
+	double			dis_h;
+	double			dis_v;
+	double			x_step_h;
+	double			y_step_h;
+	double			x_step_v;
+	double			y_step_v;
+	int				ray_up;
+	int				ray_down;
+	int				ray_left;
+	int				ray_right;
 	int				vertical;
 	int				flags;
 	int				flags_hor;

@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:42:12 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 21:28:52 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:46:52 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	closest_dis(t_ray *ray_data, t_cub *cub)
 	y = cub->player.y_inwindow;
 	x_h1 = ray_data->x_hor;
 	y_h1 = ray_data->y_hor;
-	x_v1 = ray_data->x_ver;
-	y_v1 = ray_data->y_ver;
-	ray_data->dis_H = distance(x, y, x_h1, y_h1);
-	ray_data->dis_V = distance(x, y, x_v1, y_v1);
-	if (ray_data->dis_H < ray_data->dis_V)
+	cub->x_v1 = ray_data->x_ver;
+	cub->y_v1 = ray_data->y_ver;
+	ray_data->dis_h = distance(x, y, x_h1, y_h1);
+	ray_data->dis_v = distance(x, y, cub->x_v1, cub->y_v1);
+	if (ray_data->dis_h < ray_data->dis_v)
 		ray_data->flags = ray_data->flags_hor;
 	else
 		ray_data->flags = ray_data->flags_ver;
