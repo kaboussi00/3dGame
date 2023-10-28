@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/27 20:49:04 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/27 21:03:47 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,7 +231,9 @@ double				distance(double x, double y, double x1, double y1);
 void				closest_dis(t_ray *ray_data, t_cub *cub);
 
 
-////// draw all ////
+//////////////////
+////.<draw all.>//
+//////////////////
 
 unsigned int		*get_table(t_cub *cub, int x);
 double				hit_ver(t_ray *ray);
