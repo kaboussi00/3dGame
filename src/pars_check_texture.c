@@ -30,7 +30,7 @@ void	check_duplicate(t_cub *cub, char *text)
 
 void	check_color(char *str)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (str[i])

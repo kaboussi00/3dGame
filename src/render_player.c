@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:29:10 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/27 18:26:58 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 12:17:10 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	draw_cub3d(t_cub *cub)
 	while (x < WIDTH)
 	{
 		cub->alpha = normalizing_angle(cub->ray_data[x].angle
-				- cub->player.rotation_angle);
+			- cub->player.rotation_angle);
 		cub->distance = hit_ver(&cub->ray_data[x]);
 		cub->new_dis = cub->distance * cos(cub->alpha);
 		height = (500 / cub->new_dis) * 110;
@@ -53,24 +53,14 @@ void	draw_cub3d(t_cub *cub)
 	}
 }
 
-
-
 int	render(t_cub *cub)
 {
-    int i = 0;
 	mlx_clear_window(cub->mlx, cub->mlx_window);
 	cast_rays(cub);
 	draw_cub3d(cub);
 	render_minimap(cub);
 	render_player(cub, SZ / 4);
-	while (i < NUM_RAYS)
-	{
-		if (cub->ray_data[i].dis_H > cub->ray_data[i].dis_V)
-			drow_line_ray(cub, cub->ray_data[i].x_ver, cub->ray_data[i].y_ver);
-		else
-			drow_line_ray(cub, cub->ray_data[i].x_hor, cub->ray_data[i].y_hor);
-		i++;
-	}
+	draw_rays_minimap(cub);
 	free(cub->ray_data);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_window, cub->img.img, 0, 0);
 	return (0);

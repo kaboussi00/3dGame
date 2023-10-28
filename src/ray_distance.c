@@ -37,10 +37,8 @@ void	closest_dis(t_ray *ray_data, t_cub *cub)
 	y_v1 = ray_data->y_ver;
 	ray_data->dis_H = distance(x, y, x_h1, y_h1);
 	ray_data->dis_V = distance(x, y, x_v1, y_v1);
-    if (ray_data->dis_H < ray_data->dis_V)
-        ray_data->flags = ray_data->flags_hor;
-    else
-        ray_data->flags = ray_data->flags_ver;
+	if (ray_data->dis_H < ray_data->dis_V)
+		ray_data->flags = ray_data->flags_hor;
+	else
+		ray_data->flags = ray_data->flags_ver;
 }
-
-

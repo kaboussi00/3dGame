@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:46 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/26 14:45:47 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:38:11 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	parse(t_cub *cub, char *file)
 	check_not_char(cub);
 	copie_with_spaces(cub);
 	check_wall(cub);
+	doors_aloc(cub);
 	check_doors(cub);
 }

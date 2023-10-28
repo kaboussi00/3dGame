@@ -14,9 +14,10 @@
 
 int	handle_mouse(int x, int y, t_cub *cub)
 {
-	static int	prev_x = -1;
+	static int	prev_x;
 	int			delta_x;
 
+	prev_x = -1;
 	(void)y;
 	if (prev_x == -1)
 		prev_x = x;

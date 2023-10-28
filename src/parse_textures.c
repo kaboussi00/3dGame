@@ -62,7 +62,7 @@ void	ft_parse_color(char *str, t_cub *cub, char **split, int flg)
 		if (atoi(rgb[0]) >= 0 && atoi(rgb[0]) <= 255 && atoi(rgb[1]) >= 0
 			&& atoi(rgb[1]) <= 255 && atoi(rgb[2]) >= 0 && atoi(rgb[2]) <= 255)
 			cub->color_floor = rgb_to_int(atoi(rgb[0]), atoi(rgb[1]),
-					atoi(rgb[2]));
+				atoi(rgb[2]));
 		else
 			printerror_message("Invalid color!\n");
 	}
@@ -71,7 +71,7 @@ void	ft_parse_color(char *str, t_cub *cub, char **split, int flg)
 		if (atoi(rgb[0]) >= 0 && atoi(rgb[0]) <= 255 && atoi(rgb[1]) >= 0
 			&& atoi(rgb[1]) <= 255 && atoi(rgb[2]) >= 0 && atoi(rgb[2]) <= 255)
 			cub->color_ceiling = rgb_to_int(atoi(rgb[0]), atoi(rgb[1]),
-					atoi(rgb[2]));
+				atoi(rgb[2]));
 		else
 			printerror_message("Invalid color!\n");
 	}

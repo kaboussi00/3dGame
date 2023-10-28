@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 08:10:43 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 12:43:00 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # define NUM_RAYS WIDTH
 # define FOV (60 * (M_PI / 180))
 # define MINI_SCALE 0.15
-# define CLOSE_DISTANCE_THRESHOLD 130
-
+# define CLOSE_DISTANCE_THRESHOLD 200
+# define CLOSE 300
 
 typedef struct s_img
 {
@@ -61,32 +61,32 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	double		x_hor;
-	double		y_hor;
-	double		x_ver;
-	double		y_ver;
-	double		angle;
-	double		xIntercept_H;
-	double		yIntercept_H;
-	double		xIntercept_V;
-	double		yIntercept_V;
-	double		dis_H;
-	double		dis_V;
-	double		x_Step_H;
-	double		y_Step_H;
-	double		x_Step_V;
-	double		y_Step_V;
-	double		x_Wallhit;
-	double		y_Wallhit;
-	int			rayUp;
-	int			rayDown;
-	int			rayLeft;
-	int			rayRight;
-	int			vertical;
-    int         flags;
-    int         flags_hor;
-    int         flags_ver;
-}				t_ray;
+	double			x_hor;
+	double			y_hor;
+	double			x_ver;
+	double			y_ver;
+	double			angle;
+	double			xIntercept_H;
+	double			yIntercept_H;
+	double			xIntercept_V;
+	double			yIntercept_V;
+	double			dis_H;
+	double			dis_V;
+	double			x_Step_H;
+	double			y_Step_H;
+	double			x_Step_V;
+	double			y_Step_V;
+	double			x_Wallhit;
+	double			y_Wallhit;
+	int				rayUp;
+	int				rayDown;
+	int				rayLeft;
+	int				rayRight;
+	int				vertical;
+	int				flags;
+	int				flags_hor;
+	int				flags_ver;
+}					t_ray;
 
 typedef struct s_cub
 {
@@ -126,6 +126,7 @@ typedef struct s_cub
 	char			*south_texture_path;
 	char			*west_texture_path;
 	char			*east_texture_path;
+	char			*path_d;
 	char			**map;
 	char			**copie;
 	void			*mlx;
@@ -135,22 +136,23 @@ typedef struct s_cub
 	t_img			west_img;
 	t_img			south_img;
 	t_img			north_img;
-    t_img           door_closed_img;
-    t_img           door_open_img;
+	t_img			door_img;
 	t_player		player;
 	t_ray			*ray_data;
-int has_door;
+	int				has_door;
 	unsigned int	color_floor;
 	unsigned int	color_ceiling;
 	unsigned int	*east_table;
 	unsigned int	*west_table;
 	unsigned int	*south_table;
 	unsigned int	*north_table;
-    int             door_states;
-    int             *door_pos;
-    unsigned int	*door_closed_texture;
-    unsigned int	*door_open_texture;
+	int				door_states;
+	int				*door_pos;
+	unsigned int	*door_closed_texture;
+	unsigned int	*door_open_texture;
 	unsigned int	*table;
+	int				num_doors;
+	int				**door_positions;
 }					t_cub;
 
 /////////////////
@@ -167,6 +169,7 @@ int					ft_str_line(char *str);
 char				**ft_free(char **p);
 char				**ft_split(char const *s, char c);
 void				initial_variable(t_cub *cub);
+void				doors_aloc(t_cub *cub);
 
 /////////////////
 //..<Parsing>..//
@@ -187,13 +190,13 @@ void				check_char(t_cub *cub);
 void				check_not_char(t_cub *cub);
 void				copie_with_spaces(t_cub *cub);
 void				check_wall(t_cub *cub);
-int	check_wall_door(t_cub *cub);
+int					check_wall_door(t_cub *cub);
 /////////////////
 ////<parsbonus>//
 /////////////////
 
 int					check_doors(t_cub *cub);
-double	            distance(double x, double y, double x1, double y1);
+double				distance(double x, double y, double x1, double y1);
 
 /////////////////
 //<RenderM_map>//
@@ -232,7 +235,6 @@ double				normalizing_angle(double angle);
 double				distance(double x, double y, double x1, double y1);
 void				closest_dis(t_ray *ray_data, t_cub *cub);
 
-
 ////// draw all ////
 
 unsigned int		*get_table(t_cub *cub, int x);
@@ -246,7 +248,9 @@ void				parse_texture_color(t_cub *cub, char *line);
 char				*ft_strdup(const char *s1);
 int					rgb_to_int(int r, int g, int b);
 void				free_splite(char **split);
-int	    			ft_isdigit(int c);
+int					ft_isdigit(int c);
 void				parse_line_color(char *str);
+int					check_door_walk(t_cub *cub);
+void				draw_floor_ceiling(t_cub *cub, int start, int end, int x);
 
 #endif

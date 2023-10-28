@@ -12,7 +12,6 @@
 
 #include "../cub3d.h"
 
-
 void	cast_rays(t_cub *cub)
 {
 	int	i;
@@ -34,4 +33,3 @@ void	cast_rays(t_cub *cub)
 		i++;
 	}
 }
-

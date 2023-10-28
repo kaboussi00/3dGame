@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 17:32:42 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/22 17:33:07 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 12:42:56 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,39 @@ char	*ft_strdup(const char *s1)
 	}
 	scpy[i] = '\0';
 	return (scpy);
+}
+
+int	check_door_walk(t_cub *cub)
+{
+	double	x;
+	double	y;
+
+	x = cub->player.xInwindow + cos(cub->player.rotation_angle)
+		* cub->player.move_step;
+	y = cub->player.yInwindow + sin(cub->player.rotation_angle)
+		* cub->player.move_step;
+	if ((cub->map[(int)((x) / SZ)][(int)((y) / SZ)] != 'D' && cub->map[(int)((x)
+				/ SZ)][(int)((y) / SZ)] != ' ')
+		&& ((int)(cub->map[(int)cub->player.xInwindow / SZ][(int)y / SZ] != 'D')
+			&& cub->map[(int)x / SZ][(int)cub->player.yInwindow / SZ] != 'D'))
+		return (1);
+	return (0);
+}
+
+void	draw_floor_ceiling(t_cub *cub, int start, int end, int x)
+{
+	int	y;
+
+	y = 0;
+	while (y <= start)
+	{
+		own_mlx_pixel_put(cub, x, y, cub->color_ceiling);
+		y++;
+	}
+	y = end;
+	while (y < HEIGHT)
+	{
+		own_mlx_pixel_put(cub, x, y, cub->color_floor);
+		y++;
+	}
 }

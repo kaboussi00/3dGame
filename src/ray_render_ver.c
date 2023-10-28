@@ -27,8 +27,8 @@ void	convert_into_map_v(t_ray *ray_data, t_cub *cub)
 		else
 			ray_data->flags_ver = 0;
 		if (cub->map[(int)(x / SZ)][(int)(ray_data->y_ver / SZ)] != '1'
-			&& cub->map[(int)(x / SZ)][(int)(ray_data->y_ver / SZ)] != ' ' \
-            && cub->map[(int)(x / SZ)][(int)(ray_data->y_ver / SZ)] != 'D')
+			&& cub->map[(int)(x / SZ)][(int)(ray_data->y_ver / SZ)] != ' '
+			&& cub->map[(int)(x / SZ)][(int)(ray_data->y_ver / SZ)] != 'D')
 		{
 			ray_data->x_ver += ray_data->x_Step_V;
 			ray_data->y_ver += ray_data->y_Step_V;
@@ -46,7 +46,7 @@ void	check_wall__ver(t_ray *ray_data, t_cub *cub)
 	if (ray_data->rayRight)
 		ray_data->xIntercept_V += SZ;
 	ray_data->yIntercept_V = ray_data->y_ver + ((ray_data->xIntercept_V
-				- ray_data->x_ver) * tan(ray_data->angle));
+			- ray_data->x_ver) * tan(ray_data->angle));
 	ray_data->x_Step_V = SZ;
 	if (ray_data->rayLeft)
 		ray_data->x_Step_V *= -1;

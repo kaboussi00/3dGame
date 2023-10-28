@@ -22,7 +22,6 @@ void	rotation_angle(t_cub *cub)
 		cub->player.rotation_angle += 360 * (M_PI / 180);
 }
 
-
 int	check_wall_walk(t_cub *cub)
 {
 	double	x;
