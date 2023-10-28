@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:47:18 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 12:22:00 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:00:28 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,10 @@ void	own_mlx_pixel_put(t_cub *cub, int x, int y, int color)
 	if (x >= 0 && x <= WIDTH && y >= 0 && y <= HEIGHT)
 	{
 		pixel = cub->img.addr + (y * cub->img.line_length + x
-			* (cub->img.bits_per_pixel / 8));
+				* (cub->img.bits_per_pixel / 8));
 		*(unsigned int *)pixel = color;
 	}
 }
-
-// void	ft_put_color(t_cub *cub, int x, int y, int color)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = x;
-// 	while (i < x + SZ)
-// 	{
-// 		j = y;
-// 		while (j < y + SZ)
-// 		{
-// 			if (i % SZ == 0 || j % SZ == 0)
-// 				own_mlx_pixel_put(cub, j, i, 0x000000);
-// 			else
-// 				own_mlx_pixel_put(cub, j, i, color);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
 
 void	ft_put_color(t_cub *cub, int x, int y, int color)
 {

@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 14:54:55 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/28 05:20:25 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 20:53:30 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_parse_color(char *str, t_cub *cub, char **split, int flg)
 		if (atoi(rgb[0]) >= 0 && atoi(rgb[0]) <= 255 && atoi(rgb[1]) >= 0
 			&& atoi(rgb[1]) <= 255 && atoi(rgb[2]) >= 0 && atoi(rgb[2]) <= 255)
 			cub->color_floor = rgb_to_int(atoi(rgb[0]), atoi(rgb[1]),
-				atoi(rgb[2]));
+					atoi(rgb[2]));
 		else
 			printerror_message("Invalid color!\n");
 	}
@@ -71,7 +71,7 @@ void	ft_parse_color(char *str, t_cub *cub, char **split, int flg)
 		if (atoi(rgb[0]) >= 0 && atoi(rgb[0]) <= 255 && atoi(rgb[1]) >= 0
 			&& atoi(rgb[1]) <= 255 && atoi(rgb[2]) >= 0 && atoi(rgb[2]) <= 255)
 			cub->color_ceiling = rgb_to_int(atoi(rgb[0]), atoi(rgb[1]),
-				atoi(rgb[2]));
+					atoi(rgb[2]));
 		else
 			printerror_message("Invalid color!\n");
 	}

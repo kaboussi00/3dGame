@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 12:43:00 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 20:45:35 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,5 +252,8 @@ int					ft_isdigit(int c);
 void				parse_line_color(char *str);
 int					check_door_walk(t_cub *cub);
 void				draw_floor_ceiling(t_cub *cub, int start, int end, int x);
+int					check_doors(t_cub *cub);
+int					calculate_number_of_doors(t_cub *cub);
+void				doors_aloc(t_cub *cub);
 
 #endif
