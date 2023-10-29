@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 21:37:36 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/29 20:18:41 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_img
 	int				endian;
 	int				width;
 	int				height;
+	void			*sprits[12];		
 }					t_img;
 
 typedef struct s_player
@@ -149,6 +150,7 @@ typedef struct s_cub
 	t_img			south_img;
 	t_img			north_img;
 	t_img			door_img;
+	t_img			sprite_img;
 	t_player		player;
 	t_ray			*ray_data;
 	int				has_door;
@@ -165,6 +167,7 @@ typedef struct s_cub
 	unsigned int	*table;
 	int				num_doors;
 	int				**door_positions;
+	int				sprite;
 }					t_cub;
 
 /////////////////
@@ -204,6 +207,7 @@ void				check_not_char(t_cub *cub);
 void				copie_with_spaces(t_cub *cub);
 void				check_wall(t_cub *cub);
 int					check_wall_door(t_cub *cub);
+
 /////////////////
 ////<parsbonus>//
 /////////////////
@@ -268,5 +272,13 @@ void				draw_floor_ceiling(t_cub *cub, int start, int end, int x);
 int					check_doors(t_cub *cub);
 int					calculate_number_of_doors(t_cub *cub);
 void				doors_aloc(t_cub *cub);
+
+//////////////////
+///..<Spray>...///
+//////////////////
+
+void				spray(t_cub *cub);
+void				init_img(t_cub *cub);
+
 
 #endif
