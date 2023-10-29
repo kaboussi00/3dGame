@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/29 20:18:41 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/29 20:56:27 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -27,8 +28,7 @@
 # define HEIGHT 500
 # define NUM_RAYS WIDTH
 # define MINI_SCALE 0.15
-# define CLOSE_DISTANCE_THRESHOLD 200
-# define CLOSE 300
+# define VISIBLE_RANGE_THRESHOLD 50
 
 typedef struct s_img
 {
@@ -83,6 +83,7 @@ typedef struct s_ray
 	int				vertical;
 	int				flags;
 	int				flags_hor;
+	bool			door_opened;
 	int				flags_ver;
 }					t_ray;
 
@@ -272,6 +273,8 @@ void				draw_floor_ceiling(t_cub *cub, int start, int end, int x);
 int					check_doors(t_cub *cub);
 int					calculate_number_of_doors(t_cub *cub);
 void				doors_aloc(t_cub *cub);
+void				free_map(t_cub *cub);
+void				ft_get_table_door(t_cub *cub, int flags);
 
 //////////////////
 ///..<Spray>...///

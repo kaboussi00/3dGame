@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:06 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/29 20:44:53 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/29 20:58:32 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	handle_mouse(int x, int y, t_cub *cub)
 int	my_exit_prs(t_cub *cub)
 {
 	mlx_destroy_window(cub->mlx, cub->mlx_window);
+	free_map(cub);
 	exit(0);
 	return (0);
 }
@@ -50,8 +51,18 @@ void	ft_helper(int code, t_cub *cub)
 
 int	key_press(int code, t_cub *cub)
 {
+	if (code == 49 || code == 257)
+	{
+		if (code == 49)
+			ft_get_table_door(cub, 1);
+		else
+			ft_get_table_door(cub, 0);
+	}
 	if (code == 53)
+	{
+		free_map(cub);
 		exit(0);
+	}
 	if (code == 3)
 		spray(cub);
 	if (code == 1 || code == 13)
