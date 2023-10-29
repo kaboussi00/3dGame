@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/29 02:58:46 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/29 11:50:13 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+#include <stdbool.h> // Add this line to include the stdbool.h header
 
 # define SZ 64
 # define MOUSE_SENSITIVITY 0.005
@@ -27,7 +28,7 @@
 # define HEIGHT 500
 # define NUM_RAYS WIDTH
 # define MINI_SCALE 0.15
-# define VISIBLE_RANGE_THRESHOLD 150
+# define VISIBLE_RANGE_THRESHOLD 50
 
 typedef struct s_img
 {
@@ -81,6 +82,7 @@ typedef struct s_ray
 	int				vertical;
 	int				flags;
 	int				flags_hor;
+	bool 			door_opened;
 	int				flags_ver;
 }					t_ray;
 
