@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 20:43:35 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/28 20:52:23 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/28 23:48:02 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	doors_aloc(t_cub *cub)
 	while (i < cub->num_doors)
 	{
 		cub->door_positions[i] = (int *)malloc(2 * sizeof(int));
+		if (!cub->door_positions[i])
+			printerror_message("aloc door!\n");
 		i++;
 	}
 }

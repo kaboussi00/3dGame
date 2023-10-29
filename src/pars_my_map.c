@@ -3,14 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   pars_my_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:37 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/27 20:34:29 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/29 06:09:03 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	free_map(t_cub *cub)
+{
+	int	i;
+
+	i = 0;
+	while (cub->map[i] != NULL)
+	{
+		free(cub->map[i]);
+		i++;
+	}
+	free(cub->map);
+	i = 0;
+	while (cub->copie[i] != NULL)
+	{
+		free(cub->copie[i]);
+		i++;
+	}
+	free(cub->copie);
+	i = 0;
+	while (cub->all_map[i] != NULL)
+	{
+		free(cub->all_map[i]);
+		i++;
+	}
+	free(cub->all_map);
+}
 
 char	*charge_space(char c, int len)
 {
@@ -37,6 +64,8 @@ void	new_map(t_cub *c)
 	while (++c->i < c->line)
 	{
 		c->map[c->j] = malloc(sizeof(char) * (c->len + 1));
+		if (!c->map[c->j])
+			printerror_message("malloc");
 		c->size = ft_str_line(c->all_map[c->i]);
 		c->xx = 0;
 		c->yy = 0;

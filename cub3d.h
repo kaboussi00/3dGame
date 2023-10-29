@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 21:37:36 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/29 02:58:46 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@
 # define HEIGHT 500
 # define NUM_RAYS WIDTH
 # define MINI_SCALE 0.15
-# define CLOSE_DISTANCE_THRESHOLD 200
-# define CLOSE 300
+# define VISIBLE_RANGE_THRESHOLD 150
 
 typedef struct s_img
 {
@@ -268,5 +267,6 @@ void				draw_floor_ceiling(t_cub *cub, int start, int end, int x);
 int					check_doors(t_cub *cub);
 int					calculate_number_of_doors(t_cub *cub);
 void				doors_aloc(t_cub *cub);
+void        free_map(t_cub *cub);
 
 #endif

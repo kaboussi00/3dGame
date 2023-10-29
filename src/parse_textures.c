@@ -65,21 +65,25 @@ void	ft_parse_color(char *str, t_cub *cub, char **split, int flg)
 		return (free_splite(split), printerror_message("Invalid color!\n"));
 	if (flg)
 	{
-		if (ft_atoi(rgb[0]) >= 0 && ft_atoi(rgb[0]) <= 255 && ft_atoi(rgb[1]) >= 0
-			&& ft_atoi(rgb[1]) <= 255 && ft_atoi(rgb[2]) >= 0 && ft_atoi(rgb[2]) <= 255)
+		if (ft_atoi(rgb[0]) >= 0 && ft_atoi(rgb[0]) <= 255
+			&& ft_atoi(rgb[1]) >= 0 && ft_atoi(rgb[1]) <= 255
+			&& ft_atoi(rgb[2]) >= 0 && ft_atoi(rgb[2]) <= 255)
 			cub->color_floor = rgb_to_int(ft_atoi(rgb[0]), ft_atoi(rgb[1]),
-					ft_atoi(rgb[2]));
+				ft_atoi(rgb[2]));
 		else
-			return (free_splite(rgb), free_splite(split), printerror_message("Invalid color!\n"));
+			return (free_splite(rgb), free_splite(split),
+				printerror_message("Invalid color!\n"));
 	}
 	else
 	{
-		if (ft_atoi(rgb[0]) >= 0 && ft_atoi(rgb[0]) <= 255 && ft_atoi(rgb[1]) >= 0
-			&& ft_atoi(rgb[1]) <= 255 && ft_atoi(rgb[2]) >= 0 && ft_atoi(rgb[2]) <= 255)
+		if (ft_atoi(rgb[0]) >= 0 && ft_atoi(rgb[0]) <= 255
+			&& ft_atoi(rgb[1]) >= 0 && ft_atoi(rgb[1]) <= 255
+			&& ft_atoi(rgb[2]) >= 0 && ft_atoi(rgb[2]) <= 255)
 			cub->color_ceiling = rgb_to_int(ft_atoi(rgb[0]), ft_atoi(rgb[1]),
-					ft_atoi(rgb[2]));
+				ft_atoi(rgb[2]));
 		else
-			return (free_splite(rgb), free_splite(split), printerror_message("Invalid color!\n"));
+			return (free_splite(rgb), free_splite(split),
+				printerror_message("Invalid color!\n"));
 	}
 	return (free_splite(rgb));
 }
