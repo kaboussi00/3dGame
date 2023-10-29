@@ -6,7 +6,7 @@
 #    By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/21 15:34:59 by rel-isma          #+#    #+#              #
-#    Updated: 2023/10/29 05:51:11 by rel-isma         ###   ########.fr        #
+#    Updated: 2023/10/29 18:40:43 by rel-isma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,5 +55,5 @@ re: fclean all
 
 push:
 	git add .
-	git commit -m "fix: doors finsh"
+	git commit -m "cub3d: finsh doors"
 	git push

@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:47:18 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 21:29:37 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/29 18:04:27 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ unsigned int	get_color(t_cub *cub, double start_x, double start_y)
 			color = 0xFFFFFF;
 		else if (cub->map[i][j] == 'D')
 			color = 0xf70707;
-		else if (cub->map[i][j] == 'C')
+		else if (cub->map[i][j] == 'd')
 			color = 0x08cf54;
 		return (color);
 	}
