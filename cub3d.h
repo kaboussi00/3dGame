@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 13:12:40 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:50:06 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ char				**ft_free(char **p);
 char				**ft_split(char const *s, char c);
 void				initial_variable(t_cub *cub);
 void				doors_aloc(t_cub *cub);
+void				free_map(t_cub *cub);
 
 /////////////////
 //..<Parsing>..//

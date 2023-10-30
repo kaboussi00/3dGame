@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:58 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 18:14:27 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:48:16 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	check_not_char(t_cub *cub)
 		while (cub->j < cub->len - 1)
 		{
 			if (!ft_strchr("10WSEND ", cub->map[cub->i][cub->j]))
+			{
+				printf("char: %c\n", cub->map[cub->i][cub->j]);
 				printerror_message("not valid character\n");
+			}
 			cub->j++;
 		}
 		cub->i++;

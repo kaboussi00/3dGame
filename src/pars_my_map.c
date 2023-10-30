@@ -3,41 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pars_my_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:37 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 00:11:27 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:28:22 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	free_map(t_cub *cub)
-{
-	int	i;
-
-	i = 0;
-	while (cub->map[i] != NULL)
-	{
-		free(cub->map[i]);
-		i++;
-	}
-	free(cub->map);
-	i = 0;
-	while (cub->copie[i] != NULL)
-	{
-		free(cub->copie[i]);
-		i++;
-	}
-	free(cub->copie);
-	i = 0;
-	while (cub->all_map[i] != NULL)
-	{
-		free(cub->all_map[i]);
-		i++;
-	}
-	free(cub->all_map);
-}
 
 char	*charge_space(char c, int len)
 {
@@ -54,21 +27,21 @@ char	*charge_space(char c, int len)
 	return (p);
 }
 
-void	new_map(t_cub *c)
+void	intializ(t_cub *c)
 {
-	c->i = 6;
-	c->j = 0;
-	c->map = malloc(sizeof(char *) * (c->line - 5));
-	if (!c->map)
-		return ;
+	c->xx = 0;
+	c->yy = 0;
+}
+
+void	new_map_util(t_cub *c)
+{
 	while (c->i < c->line)
 	{
 		c->map[c->j] = malloc(sizeof(char) * (c->len + 1));
 		if (!c->map[c->j])
 			printerror_message("malloc");
 		c->size = ft_str_line(c->all_map[c->i]);
-		c->xx = 0;
-		c->yy = 0;
+		intializ(c);
 		c->l = c->len - c->size;
 		while (c->all_map[c->i][c->xx] && c->all_map[c->i][c->xx] != '\n')
 			c->map[c->j][c->yy++] = c->all_map[c->i][c->xx++];
@@ -87,5 +60,15 @@ void	new_map(t_cub *c)
 		c->j++;
 		c->i++;
 	}
+}
+
+void	new_map(t_cub *c)
+{
+	c->i = 6;
+	c->j = 0;
+	c->map = malloc(sizeof(char *) * (c->line - 5));
+	if (!c->map)
+		return ;
+	new_map_util(c);
 	c->map[c->j] = NULL;
 }
