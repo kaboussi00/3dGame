@@ -6,52 +6,50 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/29 18:37:00 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 01:45:55 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_get_table_door(t_cub *cub, int flags)
+void check_close(t_cub *cub)
+{
+    int x = (int)(cub->player.posx_inmap / SZ);
+    int y = (int)(cub->player.posy_inmap / SZ);
+	printf("w = %d h == %d x = %d\n", cub->map_width, cub->map_height, x);
+    if (cub->map[x + 1][y] == 'D')
+        cub->map[x + 1][y] = 'd';
+    if ( cub->map[x - 1][y] == 'D')
+        cub->map[x - 1][y] = 'd';
+    if (cub->map[x][y + 1] == 'D')
+        cub->map[x][y + 1] = 'd';
+    if (cub->map[x][y - 1] == 'D')
+        cub->map[x][y - 1] = 'd';
+}
+
+void check_open(t_cub *cub)
+{
+    int x = (int)(cub->player.posx_inmap / SZ);
+    int y = (int)(cub->player.posy_inmap / SZ);
+    if ( cub->map[x + 1][y] == 'd')
+        cub->map[x + 1][y] = 'D';
+    if (cub->map[x - 1][y] == 'd')
+        cub->map[x - 1][y] = 'D';
+    if (cub->map[x][y + 1] == 'd')
+        cub->map[x][y + 1] = 'D';
+    if (cub->map[x][y - 1] == 'd')
+        cub->map[x][y - 1] = 'D';
+}
+
+
+
+void	ft_check_status_door(t_cub *cub, int flags)
 {
 	if (flags)
-	{
-		if (cub->map[(int)(cub->player.posx_inmap / 64)
-			+ 1][(int)(cub->player.posy_inmap / 64)] == 'D')
-			cub->map[(int)(cub->player.posx_inmap / 64)
-				+ 1][(int)(cub->player.posy_inmap / 64)] = 'd';
-		if (cub->map[(int)(cub->player.posx_inmap / 64)
-			- 1][(int)(cub->player.posy_inmap / 64)] == 'D')
-			cub->map[(int)(cub->player.posx_inmap / 64)
-				- 1][(int)(cub->player.posy_inmap / 64)] = 'd';
-		if (cub->map[(int)(cub->player.posx_inmap
-				/ 64)][(int)(cub->player.posy_inmap / 64) + 1] == 'D')
-			cub->map[(int)(cub->player.posx_inmap
-					/ 64)][(int)(cub->player.posy_inmap / 64) + 1] = 'd';
-		if (cub->map[(int)(cub->player.posx_inmap
-				/ 64)][(int)(cub->player.posy_inmap / 64) - 1] == 'D')
-			cub->map[(int)(cub->player.posx_inmap
-					/ 64)][(int)(cub->player.posy_inmap / 64) - 1] = 'd';
-	}
+		check_close(cub);
 	else
-	{
-		if (cub->map[(int)(cub->player.posx_inmap / 64)
-			+ 1][(int)(cub->player.posy_inmap / 64)] == 'd')
-			cub->map[(int)(cub->player.posx_inmap / 64)
-				+ 1][(int)(cub->player.posy_inmap / 64)] = 'D';
-		if (cub->map[(int)(cub->player.posx_inmap / 64)
-			- 1][(int)(cub->player.posy_inmap / 64)] == 'd')
-			cub->map[(int)(cub->player.posx_inmap / 64)
-				- 1][(int)(cub->player.posy_inmap / 64)] = 'D';
-		if (cub->map[(int)(cub->player.posx_inmap
-				/ 64)][(int)(cub->player.posy_inmap / 64) + 1] == 'd')
-			cub->map[(int)(cub->player.posx_inmap
-					/ 64)][(int)(cub->player.posy_inmap / 64) + 1] = 'D';
-		if (cub->map[(int)(cub->player.posx_inmap
-				/ 64)][(int)(cub->player.posy_inmap / 64) - 1] == 'd')
-			cub->map[(int)(cub->player.posx_inmap
-					/ 64)][(int)(cub->player.posy_inmap / 64) - 1] = 'D';
-	}
+		check_open(cub);
+
 }
 
 unsigned int	*get_table(t_cub *cub, int x)

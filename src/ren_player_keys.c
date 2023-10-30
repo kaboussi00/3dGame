@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:06 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/29 17:35:58 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/29 20:57:16 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,13 @@ int	key_press(int code, t_cub *cub)
 	if (code == 49 || code == 257)
 	{
 		if (code == 49)
-			ft_get_table_door(cub, 1);
-		else
-			ft_get_table_door(cub, 0);
+			ft_check_status_door(cub, 1);
+		else if (code == 257)
+			ft_check_status_door(cub, 0);
 	}
 	if (code == 53)
 	{
+		mlx_destroy_window(cub->mlx, cub->mlx_window);
 		free_map(cub);
 		exit(0);
 	}

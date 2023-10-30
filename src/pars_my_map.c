@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:37 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/29 06:09:03 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 00:11:27 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ char	*charge_space(char c, int len)
 
 void	new_map(t_cub *c)
 {
-	c->i = 5;
+	c->i = 6;
 	c->j = 0;
 	c->map = malloc(sizeof(char *) * (c->line - 5));
 	if (!c->map)
 		return ;
-	while (++c->i < c->line)
+	while (c->i < c->line)
 	{
 		c->map[c->j] = malloc(sizeof(char) * (c->len + 1));
 		if (!c->map[c->j])
@@ -76,11 +76,16 @@ void	new_map(t_cub *c)
 		if (c->size < c->len)
 		{
 			c->str = charge_space(' ', c->l);
+			if (!c->str)
+				return;
 			c->map[c->j] = ft_strjoin(c->map[c->j], c->str);
+			if (!c->map[c->j])
+				return;
 			free(c->str);
 			c->str = NULL;
 		}
 		c->j++;
+		c->i++;
 	}
 	c->map[c->j] = NULL;
 }

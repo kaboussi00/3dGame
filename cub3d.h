@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/29 18:37:33 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/29 21:23:51 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ typedef struct s_cub
 	double			x;
 	double			y;
 	int				i;
+	int map_width;
+	int map_height;
 	int				j;
 	int				v;
 	int				o;
@@ -270,6 +272,6 @@ int					check_doors(t_cub *cub);
 int					calculate_number_of_doors(t_cub *cub);
 void				doors_aloc(t_cub *cub);
 void				free_map(t_cub *cub);
-void				ft_get_table_door(t_cub *cub, int flags);
+void				ft_check_status_door(t_cub *cub, int flags);
 
 #endif
