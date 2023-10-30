@@ -16,7 +16,6 @@ void	player_position(t_cub *cub)
 {
 	cub->player.x_inwindow = cub->pos_i * SZ + (SZ / 2);
 	cub->player.y_inwindow = cub->pos_j * SZ + (SZ / 2);
-
 }
 
 void	render_player(t_cub *cub, int rayon)

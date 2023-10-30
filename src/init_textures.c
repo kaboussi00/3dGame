@@ -14,58 +14,55 @@
 
 void	init_textures_helper(t_cub *cub)
 {
-	cub->door_img.img = mlx_xpm_file_to_image(cub->mlx,
-			"./doc2.xpm", &cub->door_img.width,
-			&cub->door_img.height);
+	cub->door_img.img = mlx_xpm_file_to_image(cub->mlx, "./doc2.xpm",
+		&cub->door_img.width, &cub->door_img.height);
 	if (cub->door_img.img == NULL)
 		return (printerror_message("Failed to load texture!\n"), exit(1));
 	cub->door_img.addr = mlx_get_data_addr(cub->door_img.img,
-			&cub->door_img.bits_per_pixel, &cub->door_img.line_length,
-			&cub->door_img.endian);
+		&cub->door_img.bits_per_pixel, &cub->door_img.line_length,
+		&cub->door_img.endian);
 	cub->door_closed_texture = (unsigned int *)cub->door_img.addr;
 	cub->west_img.img = mlx_xpm_file_to_image(cub->mlx, cub->west_texture_path,
-			&cub->west_img.width, &cub->west_img.height);
+		&cub->west_img.width, &cub->west_img.height);
 	if (cub->west_img.img == NULL)
 		return (printerror_message("Failed to load texture!\n"), exit(1));
 	cub->west_img.addr = mlx_get_data_addr(cub->west_img.img,
-			&cub->west_img.bits_per_pixel, &cub->west_img.line_length,
-			&cub->west_img.endian);
+		&cub->west_img.bits_per_pixel, &cub->west_img.line_length,
+		&cub->west_img.endian);
 	cub->west_table = (unsigned int *)cub->west_img.addr;
 	cub->east_img.img = mlx_xpm_file_to_image(cub->mlx, cub->east_texture_path,
-			&cub->east_img.width, &cub->east_img.height);
+		&cub->east_img.width, &cub->east_img.height);
 	if (cub->east_img.img == NULL)
 		return (printerror_message("Failed to load texture!\n"), exit(1));
 	cub->east_img.addr = mlx_get_data_addr(cub->east_img.img,
-			&cub->east_img.bits_per_pixel, &cub->east_img.line_length,
-			&cub->east_img.endian);
+		&cub->east_img.bits_per_pixel, &cub->east_img.line_length,
+		&cub->east_img.endian);
 	cub->east_table = (unsigned int *)cub->east_img.addr;
 }
 
 void	init_textures(t_cub *cub)
 {
 	cub->north_img.img = mlx_xpm_file_to_image(cub->mlx,
-			cub->north_texture_path, &cub->north_img.width,
-			&cub->north_img.height);
+		cub->north_texture_path, &cub->north_img.width, &cub->north_img.height);
 	if (cub->north_img.img == NULL)
 	{
 		printerror_message("Failed to load texture!\n");
 		exit(1);
 	}
 	cub->north_img.addr = mlx_get_data_addr(cub->north_img.img,
-			&cub->north_img.bits_per_pixel, &cub->north_img.line_length,
-			&cub->north_img.endian);
+		&cub->north_img.bits_per_pixel, &cub->north_img.line_length,
+		&cub->north_img.endian);
 	cub->north_table = (unsigned int *)cub->north_img.addr;
 	cub->south_img.img = mlx_xpm_file_to_image(cub->mlx,
-			cub->south_texture_path, &cub->south_img.width,
-			&cub->south_img.height);
+		cub->south_texture_path, &cub->south_img.width, &cub->south_img.height);
 	if (cub->south_img.img == NULL)
 	{
 		printerror_message("Failed to load texture!\n");
 		exit(1);
 	}
 	cub->south_img.addr = mlx_get_data_addr(cub->south_img.img,
-			&cub->south_img.bits_per_pixel, &cub->south_img.line_length,
-			&cub->south_img.endian);
+		&cub->south_img.bits_per_pixel, &cub->south_img.line_length,
+		&cub->south_img.endian);
 	cub->south_table = (unsigned int *)cub->south_img.addr;
 	init_textures_helper(cub);
 }

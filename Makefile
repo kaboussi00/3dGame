@@ -6,14 +6,14 @@
 #    By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/21 15:34:59 by rel-isma          #+#    #+#              #
-#    Updated: 2023/10/30 02:31:27 by rel-isma         ###   ########.fr        #
+#    Updated: 2023/10/30 02:42:58 by rel-isma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 INC = cub3d.h
 LINK =  -lmlx -framework OpenGL -framework AppKit
-CFLAGS = -Wall -Wextra -Werror  #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror  -fsanitize=address -g
 CC = cc
 
 SRCS = src/main.c src/parsing.c src/pars_check_char.c src/pars_check_opext.c src/pars_check_texture.c \

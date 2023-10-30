@@ -19,7 +19,7 @@ void	own_mlx_pixel_put(t_cub *cub, int x, int y, int color)
 	if (x >= 0 && x <= WIDTH && y >= 0 && y <= HEIGHT)
 	{
 		pixel = cub->img.addr + (y * cub->img.line_length + x
-				* (cub->img.bits_per_pixel / 8));
+			* (cub->img.bits_per_pixel / 8));
 		*(unsigned int *)pixel = color;
 	}
 }

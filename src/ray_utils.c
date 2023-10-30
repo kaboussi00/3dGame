@@ -35,8 +35,8 @@ void	drow_line_ray(t_cub *cub, double x1, double y1)
 	cub->v = 0;
 	while (cub->v < cub->step)
 	{
-		own_mlx_pixel_put(cub, (int)round(cub->x0) \
-		, (int)round(cub->y0), 0xf5756c);
+		own_mlx_pixel_put(cub, (int)round(cub->x0), (int)round(cub->y0),
+			0xf5756c);
 		cub->x0 += cub->inx;
 		cub->y0 += cub->iny;
 		cub->v++;

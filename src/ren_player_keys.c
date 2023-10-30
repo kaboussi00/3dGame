@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:06 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 02:37:49 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 03:03:00 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ int	key_press(int code, t_cub *cub)
 		exit(0);
 	}
 	if (code == 3)
+	{
 		spray(cub);
+		render(cub);
+	}
 	if (code == 1 || code == 13)
 	{
 		if (code == 1)

@@ -77,10 +77,10 @@ void	new_map(t_cub *c)
 		{
 			c->str = charge_space(' ', c->l);
 			if (!c->str)
-				return;
+				return ;
 			c->map[c->j] = ft_strjoin(c->map[c->j], c->str);
 			if (!c->map[c->j])
-				return;
+				return ;
 			free(c->str);
 			c->str = NULL;
 		}

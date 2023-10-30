@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 02:32:04 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 02:42:33 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <unistd.h>
 
 # define SZ 64
-# define MOUSE_SENSITIVITY 0.11
+# define MOUSE_SENSITIVITY 0.001
 # define WIDTH 1000
 # define HEIGHT 500
 # define NUM_RAYS WIDTH
@@ -39,7 +39,7 @@ typedef struct s_img
 	int				endian;
 	int				width;
 	int				height;
-	void			*sprits[12];		
+	void			*sprits[12];
 }					t_img;
 
 typedef struct s_player
@@ -104,8 +104,8 @@ typedef struct s_cub
 	double			x;
 	double			y;
 	int				i;
-	int map_width;
-	int map_height;
+	int				map_width;
+	int				map_height;
 	int				j;
 	int				v;
 	int				o;
@@ -277,7 +277,7 @@ int					calculate_number_of_doors(t_cub *cub);
 void				doors_aloc(t_cub *cub);
 void				free_map(t_cub *cub);
 void				ft_check_status_door(t_cub *cub, int flags);
-int handle_mouse_press(int button, int x, int y, t_cub *cub);
+int					handle_mouse_press(int button, int x, int y, t_cub *cub);
 
 //////////////////
 ///..<Spray>...///
@@ -285,6 +285,5 @@ int handle_mouse_press(int button, int x, int y, t_cub *cub);
 
 void				spray(t_cub *cub);
 void				init_img(t_cub *cub);
-
 
 #endif

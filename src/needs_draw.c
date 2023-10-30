@@ -12,37 +12,39 @@
 
 #include "../cub3d.h"
 
-void check_close(t_cub *cub)
+void	check_close(t_cub *cub)
 {
-    int x = (int)(cub->player.posx_inmap / SZ);
-    int y = (int)(cub->player.posy_inmap / SZ);
+	int	x;
+	int	y;
 
-    if (cub->map[x + 1][y] == 'D')
-        cub->map[x + 1][y] = 'd';
-    if ( cub->map[x - 1][y] == 'D')
-        cub->map[x - 1][y] = 'd';
-    if (cub->map[x][y + 1] == 'D')
-        cub->map[x][y + 1] = 'd';
-    if (cub->map[x][y - 1] == 'D')
-        cub->map[x][y - 1] = 'd';
+	x = (int)(cub->player.posx_inmap / SZ);
+	y = (int)(cub->player.posy_inmap / SZ);
+	if (cub->map[x + 1][y] == 'D')
+		cub->map[x + 1][y] = 'd';
+	if (cub->map[x - 1][y] == 'D')
+		cub->map[x - 1][y] = 'd';
+	if (cub->map[x][y + 1] == 'D')
+		cub->map[x][y + 1] = 'd';
+	if (cub->map[x][y - 1] == 'D')
+		cub->map[x][y - 1] = 'd';
 }
 
-void check_open(t_cub *cub)
+void	check_open(t_cub *cub)
 {
-    int x = (int)(cub->player.posx_inmap / SZ);
-    int y = (int)(cub->player.posy_inmap / SZ);
-	
-    if ( cub->map[x + 1][y] == 'd')
-        cub->map[x + 1][y] = 'D';
-    if (cub->map[x - 1][y] == 'd')
-        cub->map[x - 1][y] = 'D';
-    if (cub->map[x][y + 1] == 'd')
-        cub->map[x][y + 1] = 'D';
-    if (cub->map[x][y - 1] == 'd')
-        cub->map[x][y - 1] = 'D';
+	int	x;
+	int	y;
+
+	x = (int)(cub->player.posx_inmap / SZ);
+	y = (int)(cub->player.posy_inmap / SZ);
+	if (cub->map[x + 1][y] == 'd')
+		cub->map[x + 1][y] = 'D';
+	if (cub->map[x - 1][y] == 'd')
+		cub->map[x - 1][y] = 'D';
+	if (cub->map[x][y + 1] == 'd')
+		cub->map[x][y + 1] = 'D';
+	if (cub->map[x][y - 1] == 'd')
+		cub->map[x][y - 1] = 'D';
 }
-
-
 
 void	ft_check_status_door(t_cub *cub, int flags)
 {
@@ -50,7 +52,6 @@ void	ft_check_status_door(t_cub *cub, int flags)
 		check_close(cub);
 	else
 		check_open(cub);
-
 }
 
 unsigned int	*get_table(t_cub *cub, int x)

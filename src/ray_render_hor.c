@@ -50,7 +50,7 @@ void	check_wall__hor(t_ray *ray_data, t_cub *cub)
 	if (ray_data->ray_down)
 		ray_data->y_intercept_h += SZ;
 	ray_data->x_intercept_h = ray_data->x_hor + ((ray_data->y_intercept_h
-				- ray_data->y_hor) / tan(ray_data->angle));
+			- ray_data->y_hor) / tan(ray_data->angle));
 	ray_data->y_step_h = SZ;
 	if (ray_data->ray_up)
 		ray_data->y_step_h *= -1;

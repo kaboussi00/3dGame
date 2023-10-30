@@ -12,7 +12,7 @@
 
 #include "../cub3d.h"
 
-void	fu()
+void	fu(void)
 {
 	system("leaks cub3d");
 }
@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 	cub->mlx_window = mlx_new_window(cub->mlx, WIDTH, HEIGHT, "my map <3");
 	cub->img.img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
-			&cub->img.line_length, &cub->img.endian);
+		&cub->img.line_length, &cub->img.endian);
 	init_textures(cub);
 	init_img(cub);
 	render(cub);

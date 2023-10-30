@@ -37,7 +37,7 @@ void	draw_cub3d(t_cub *cub)
 	while (x < WIDTH)
 	{
 		cub->alpha = normalizing_angle(cub->ray_data[x].angle
-				- cub->player.rotation_angle);
+			- cub->player.rotation_angle);
 		cub->distance = hit_ver(&cub->ray_data[x]);
 		cub->new_dis = cub->distance * cos(cub->alpha);
 		height = (500 / cub->new_dis) * 110;
@@ -63,6 +63,7 @@ int	render(t_cub *cub)
 	draw_rays_minimap(cub);
 	free(cub->ray_data);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_window, cub->img.img, 0, 0);
-	mlx_put_image_to_window(cub->mlx, cub->mlx_window, cub->img.sprits[cub->sprite], (WIDTH / 2) - 250, (HEIGHT / 2) - 250);
+	mlx_put_image_to_window(cub->mlx, cub->mlx_window,
+		cub->img.sprits[cub->sprite], (WIDTH / 2) - 250, (HEIGHT / 2) - 250);
 	return (0);
 }

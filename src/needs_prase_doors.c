@@ -66,7 +66,7 @@ int	calculate_number_of_doors(t_cub *cub)
 			if (cub->map[cub->i][cub->j] == 'D')
 			{
 				if ((cub->map[cub->i][cub->j - 1] == '1'
-					&& cub->map[cub->i][cub->j + 1] == '1')
+						&& cub->map[cub->i][cub->j + 1] == '1')
 					|| (cub->map[cub->i - 1][cub->j] == '1' && cub->map[cub->i
 						+ 1][cub->j] == '1'))
 					num_door++;
