@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:06 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/29 20:57:16 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 01:51:39 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	key_press(int code, t_cub *cub)
 		free_map(cub);
 		exit(0);
 	}
+	if (code == 3)
+		spray(cub);
 	if (code == 1 || code == 13)
 	{
 		if (code == 1)
@@ -100,6 +102,8 @@ int	key_releases(int code, t_cub *cub)
 		cub->player.turn_direction = 0;
 	if (code == 124)
 		cub->player.turn_direction = 0;
+	if (code == 3)
+		cub->sprite = 0;
 	render(cub);
 	return (0);
 }
