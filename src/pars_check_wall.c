@@ -3,25 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   pars_check_wall.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:39 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 10:17:07 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:36:46 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	allo_cate(t_cub *cub)
+{
+	cub->i = 0;
+	cub->j = 1;
+	cub->copie = malloc(sizeof(char *) * cub->line - 3);
+	if (!cub->copie)
+		printerror_message("allocate error\n");
+}
+
+void	all_ocate(t_cub *cub)
+{
+	cub->copie[cub->j] = malloc(sizeof(char) * cub->len + 3);
+	if (!cub->copie[cub->j])
+		printerror_message("malloc ");
+}
 
 void	copie_with_spaces(t_cub *cub)
 {
 	int	x;
 	int	y;
 
-	cub->i = 0;
-	cub->j = 1;
-	cub->copie = malloc(sizeof(char *) * cub->line - 3);
-	if (!cub->copie)
-		return ;
+	allo_cate(cub);
 	cub->copie[0] = charge_space(' ', cub->len + 2);
 	if (!cub->copie[0])
 		printerror_message("malloc ");
@@ -29,9 +41,7 @@ void	copie_with_spaces(t_cub *cub)
 	{
 		x = 1;
 		y = 0;
-		cub->copie[cub->j] = malloc(sizeof(char) * cub->len + 3);
-		if (!cub->copie[cub->j])
-			printerror_message("malloc ");
+		all_ocate(cub);
 		cub->copie[cub->j][0] = ' ';
 		while (cub->map[cub->i][y])
 			cub->copie[cub->j][x++] = cub->map[cub->i][y++];

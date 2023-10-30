@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 15:55:42 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:13:10 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(int ac, char **av)
 {
 	t_cub	*cub;
 
-	// atexit(fu);
 	cub = malloc(sizeof(t_cub));
 	if (!cub)
 		return (0);
@@ -33,8 +32,8 @@ int	main(int ac, char **av)
 	cub->mlx = mlx_init();
 	cub->mlx_window = mlx_new_window(cub->mlx, WIDTH, HEIGHT, "my map <3");
 	cub->img.img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
-	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
-		&cub->img.line_length, &cub->img.endian);
+	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, \
+	&cub->img.line_length, &cub->img.endian);
 	init_textures(cub);
 	init_img(cub);
 	render(cub);

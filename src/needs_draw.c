@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   needs_draw.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/30 12:14:21 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:28:50 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	draw_wall_with_textures(t_cub *cub, double height, int x)
 		tex_x = fmod(cub->ray_data[x].x_hor, cub->north_img.height);
 	cub->table = get_table(cub, x);
 	texture_step = (double)cub->north_img.height / height;
-	texture_pos = ((cub->start - (int)((HEIGHT / 2) - (height / 2))) * texture_step);
+	texture_pos = ((cub->start - (int)((HEIGHT / 2) - (height / 2))) * \
+	texture_step);
 	y = cub->start;
 	while (y < cub->end)
 	{
