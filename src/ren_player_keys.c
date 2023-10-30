@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:06 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 03:03:00 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:06:34 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_helper(int code, t_cub *cub)
 	}
 }
 
-int	key_press(int code, t_cub *cub)
+void	ft_helper_key(int code, t_cub *cub)
 {
 	if (code == 49 || code == 257)
 	{
@@ -68,6 +68,11 @@ int	key_press(int code, t_cub *cub)
 		spray(cub);
 		render(cub);
 	}
+}
+
+int	key_press(int code, t_cub *cub)
+{
+	ft_helper_key(code, cub);
 	if (code == 1 || code == 13)
 	{
 		if (code == 1)
@@ -87,25 +92,5 @@ int	key_press(int code, t_cub *cub)
 		render(cub);
 	}
 	ft_helper(code, cub);
-	return (0);
-}
-
-int	key_releases(int code, t_cub *cub)
-{
-	if (code == 13)
-		cub->player.walk_direction = 0;
-	if (code == 1)
-		cub->player.walk_direction = 0;
-	if (code == 0)
-		cub->player.side_direction = 0;
-	if (code == 2)
-		cub->player.side_direction = 0;
-	if (code == 123)
-		cub->player.turn_direction = 0;
-	if (code == 124)
-		cub->player.turn_direction = 0;
-	if (code == 3)
-		cub->sprite = 0;
-	render(cub);
 	return (0);
 }

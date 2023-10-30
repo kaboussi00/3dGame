@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:38:53 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/29 12:38:55 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:07:10 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ void	convert_into_map_h(t_ray *ray_data, t_cub *cub)
 			ray_data->y_hor += ray_data->y_step_h;
 		}
 		else
-		{
 			break ;
-		}
 	}
 }
 
@@ -50,7 +48,7 @@ void	check_wall__hor(t_ray *ray_data, t_cub *cub)
 	if (ray_data->ray_down)
 		ray_data->y_intercept_h += SZ;
 	ray_data->x_intercept_h = ray_data->x_hor + ((ray_data->y_intercept_h
-			- ray_data->y_hor) / tan(ray_data->angle));
+				- ray_data->y_hor) / tan(ray_data->angle));
 	ray_data->y_step_h = SZ;
 	if (ray_data->ray_up)
 		ray_data->y_step_h *= -1;

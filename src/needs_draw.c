@@ -6,53 +6,11 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/30 02:04:34 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 12:14:21 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	check_close(t_cub *cub)
-{
-	int	x;
-	int	y;
-
-	x = (int)(cub->player.posx_inmap / SZ);
-	y = (int)(cub->player.posy_inmap / SZ);
-	if (cub->map[x + 1][y] == 'D')
-		cub->map[x + 1][y] = 'd';
-	if (cub->map[x - 1][y] == 'D')
-		cub->map[x - 1][y] = 'd';
-	if (cub->map[x][y + 1] == 'D')
-		cub->map[x][y + 1] = 'd';
-	if (cub->map[x][y - 1] == 'D')
-		cub->map[x][y - 1] = 'd';
-}
-
-void	check_open(t_cub *cub)
-{
-	int	x;
-	int	y;
-
-	x = (int)(cub->player.posx_inmap / SZ);
-	y = (int)(cub->player.posy_inmap / SZ);
-	if (cub->map[x + 1][y] == 'd')
-		cub->map[x + 1][y] = 'D';
-	if (cub->map[x - 1][y] == 'd')
-		cub->map[x - 1][y] = 'D';
-	if (cub->map[x][y + 1] == 'd')
-		cub->map[x][y + 1] = 'D';
-	if (cub->map[x][y - 1] == 'd')
-		cub->map[x][y - 1] = 'D';
-}
-
-void	ft_check_status_door(t_cub *cub, int flags)
-{
-	if (flags)
-		check_close(cub);
-	else
-		check_open(cub);
-}
 
 unsigned int	*get_table(t_cub *cub, int x)
 {
@@ -101,8 +59,7 @@ void	draw_wall_with_textures(t_cub *cub, double height, int x)
 		tex_x = fmod(cub->ray_data[x].x_hor, cub->north_img.height);
 	cub->table = get_table(cub, x);
 	texture_step = (double)cub->north_img.height / height;
-	texture_pos = ((cub->start - (HEIGHT / 2) + (height / 2)) * texture_step);
-	texture_pos = fmin(fmax(texture_pos, 0), cub->north_img.height - 1);
+	texture_pos = ((cub->start - (int)((HEIGHT / 2) - (height / 2))) * texture_step);
 	y = cub->start;
 	while (y < cub->end)
 	{

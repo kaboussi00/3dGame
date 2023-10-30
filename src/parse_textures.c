@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 14:54:55 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/29 18:36:19 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:14:41 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,18 @@ void	parse_texture_path(t_cub *cub, char *line)
 	free_splite(split);
 }
 
+int	ft_check_color(char **rgb)
+{
+	if (ft_atoi(rgb[0]) >= 0 && ft_atoi(rgb[0]) <= 255
+		&& ft_atoi(rgb[1]) >= 0 && ft_atoi(rgb[1]) <= 255
+		&& ft_atoi(rgb[2]) >= 0 && ft_atoi(rgb[2]) <= 255)
+	{
+		return (1);
+	}
+	else
+		return (0);
+}
+
 void	ft_parse_color(char *str, t_cub *cub, char **split, int flg)
 {
 	char	**rgb;
@@ -65,22 +77,18 @@ void	ft_parse_color(char *str, t_cub *cub, char **split, int flg)
 		return (free_splite(split), printerror_message("Invalid color!\n"));
 	if (flg)
 	{
-		if (ft_atoi(rgb[0]) >= 0 && ft_atoi(rgb[0]) <= 255
-			&& ft_atoi(rgb[1]) >= 0 && ft_atoi(rgb[1]) <= 255
-			&& ft_atoi(rgb[2]) >= 0 && ft_atoi(rgb[2]) <= 255)
+		if (ft_check_color(rgb))
 			cub->color_floor = rgb_to_int(ft_atoi(rgb[0]), ft_atoi(rgb[1]),
-				ft_atoi(rgb[2]));
+					ft_atoi(rgb[2]));
 		else
 			return (free_splite(rgb), free_splite(split),
 				printerror_message("Invalid color!\n"));
 	}
 	else
 	{
-		if (ft_atoi(rgb[0]) >= 0 && ft_atoi(rgb[0]) <= 255
-			&& ft_atoi(rgb[1]) >= 0 && ft_atoi(rgb[1]) <= 255
-			&& ft_atoi(rgb[2]) >= 0 && ft_atoi(rgb[2]) <= 255)
+		if (ft_check_color(rgb))
 			cub->color_ceiling = rgb_to_int(ft_atoi(rgb[0]), ft_atoi(rgb[1]),
-				ft_atoi(rgb[2]));
+					ft_atoi(rgb[2]));
 		else
 			return (free_splite(rgb), free_splite(split),
 				printerror_message("Invalid color!\n"));

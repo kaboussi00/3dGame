@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 20:43:35 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/29 11:21:16 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 09:57:29 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	calculate_number_of_doors(t_cub *cub)
 			if (cub->map[cub->i][cub->j] == 'D')
 			{
 				if ((cub->map[cub->i][cub->j - 1] == '1'
-						&& cub->map[cub->i][cub->j + 1] == '1')
+					&& cub->map[cub->i][cub->j + 1] == '1')
 					|| (cub->map[cub->i - 1][cub->j] == '1' && cub->map[cub->i
 						+ 1][cub->j] == '1'))
 					num_door++;

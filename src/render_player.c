@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:29:10 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 02:19:13 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 12:34:28 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	draw_cub3d(t_cub *cub)
 	while (x < WIDTH)
 	{
 		cub->alpha = normalizing_angle(cub->ray_data[x].angle
-			- cub->player.rotation_angle);
+				- cub->player.rotation_angle);
 		cub->distance = hit_ver(&cub->ray_data[x]);
 		cub->new_dis = cub->distance * cos(cub->alpha);
 		height = (500 / cub->new_dis) * 110;

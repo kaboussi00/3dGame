@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 15:15:30 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/29 12:38:37 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 09:59:40 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	check_wall__ver(t_ray *ray_data, t_cub *cub)
 	if (ray_data->ray_right)
 		ray_data->x_intercept_v += SZ;
 	ray_data->y_intercept_v = ray_data->y_ver + ((ray_data->x_intercept_v
-			- ray_data->x_ver) * tan(ray_data->angle));
+				- ray_data->x_ver) * tan(ray_data->angle));
 	ray_data->x_step_v = SZ;
 	if (ray_data->ray_left)
 		ray_data->x_step_v *= -1;
