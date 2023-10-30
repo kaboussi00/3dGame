@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_press_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:54 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 02:44:00 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:52:13 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,21 @@ void	count_map(t_cub *cub, char *file)
 	close(cub->fd);
 }
 
-void	press_map(t_cub *cub, char *file)
+void	opening_allocate(t_cub *cub, char *file)
 {
-	char	*read_line;
-
 	cub->fd = open(file, O_RDWR);
 	if (cub->fd < 0)
 		printerror_message("can't open file\n");
 	cub->all_map = malloc((sizeof(char *)) * (cub->line + 1));
 	if (!cub->all_map)
-		return ;
+		printerror_message("allocation error\n");
+}
+
+void	press_map(t_cub *cub, char *file)
+{
+	char	*read_line;
+
+	opening_allocate(cub, file);
 	cub->i = 0;
 	read_line = get_next_line(cub->fd);
 	while (read_line)
@@ -51,6 +56,8 @@ void	press_map(t_cub *cub, char *file)
 			if (cub->len <= ft_str_line(read_line))
 				cub->len = ft_str_line(read_line);
 		}
+		if (read_line[0] == '\n' && cub->i > 6)
+			printerror_message("invalid map !!");
 		if (read_line[0] != '\n')
 			cub->all_map[cub->i++] = read_line;
 		else
