@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:23:06 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 01:51:39 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 02:37:49 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int	handle_mouse(int x, int y, t_cub *cub)
 {
-	static int	prev_x;
+	static int	prev_x = -1;
 	int			delta_x;
 
-	prev_x = -1;
 	(void)y;
 	if (prev_x == -1)
 		prev_x = x;

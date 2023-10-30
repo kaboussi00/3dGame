@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 01:50:59 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 02:32:04 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <unistd.h>
 
 # define SZ 64
-# define MOUSE_SENSITIVITY 0.005
+# define MOUSE_SENSITIVITY 0.11
 # define WIDTH 1000
 # define HEIGHT 500
 # define NUM_RAYS WIDTH
@@ -277,6 +277,7 @@ int					calculate_number_of_doors(t_cub *cub);
 void				doors_aloc(t_cub *cub);
 void				free_map(t_cub *cub);
 void				ft_check_status_door(t_cub *cub, int flags);
+int handle_mouse_press(int button, int x, int y, t_cub *cub);
 
 //////////////////
 ///..<Spray>...///

@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/30 01:45:55 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 02:04:34 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void check_close(t_cub *cub)
 {
     int x = (int)(cub->player.posx_inmap / SZ);
     int y = (int)(cub->player.posy_inmap / SZ);
-	printf("w = %d h == %d x = %d\n", cub->map_width, cub->map_height, x);
+
     if (cub->map[x + 1][y] == 'D')
         cub->map[x + 1][y] = 'd';
     if ( cub->map[x - 1][y] == 'D')
@@ -31,6 +31,7 @@ void check_open(t_cub *cub)
 {
     int x = (int)(cub->player.posx_inmap / SZ);
     int y = (int)(cub->player.posy_inmap / SZ);
+	
     if ( cub->map[x + 1][y] == 'd')
         cub->map[x + 1][y] = 'D';
     if (cub->map[x - 1][y] == 'd')
