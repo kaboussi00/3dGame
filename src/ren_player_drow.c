@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 10:52:09 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/28 21:29:41 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:30:51 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	player_position(t_cub *cub)
 {
 	cub->player.x_inwindow = cub->pos_i * SZ + (SZ / 2);
 	cub->player.y_inwindow = cub->pos_j * SZ + (SZ / 2);
+	cub->player.posx_inmap = cub->player.x_inwindow;
+	cub->player.posy_inmap = cub->player.y_inwindow;
 }
 
 void	render_player(t_cub *cub, int rayon)
@@ -34,7 +36,8 @@ void	render_player(t_cub *cub, int rayon)
 		{
 			new_x = i * cos(degr * M_PI / 180);
 			new_y = i * sin(degr * M_PI / 180);
-			own_mlx_pixel_put(cub, (100 + new_y), (75 + new_x), 0xFF0000);
+			own_mlx_pixel_put(cub, ((100 + new_y) + 5),
+				((75 + new_x) + 5), 0xFF0000);
 			degr++;
 		}
 		i++;

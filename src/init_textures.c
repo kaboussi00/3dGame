@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 17:04:33 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/28 12:34:06 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 09:44:46 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	init_textures_helper(t_cub *cub)
 {
-	cub->door_img.img = mlx_xpm_file_to_image(cub->mlx,
-			"./doc.xpm", &cub->door_img.width,
-			&cub->door_img.height);
+	cub->door_img.img = mlx_xpm_file_to_image(cub->mlx, "./doc2.xpm",
+			&cub->door_img.width, &cub->door_img.height);
 	if (cub->door_img.img == NULL)
 		return (printerror_message("Failed to load texture!\n"), exit(1));
 	cub->door_img.addr = mlx_get_data_addr(cub->door_img.img,

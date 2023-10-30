@@ -6,7 +6,7 @@
 /*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 23:42:43 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/29 21:28:01 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:01:14 by kaboussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	imgs(t_cub *cub)
 	, &cub->sprite_img.bits_per_pixel, &cub->sprite_img.line_length);
 	cub->img.sprits[5] = mlx_xpm_file_to_image (cub->mlx, "./sprite/frame04.xpm"\
 	, &cub->sprite_img.bits_per_pixel, &cub->sprite_img.line_length);
-	if (!cub->img.sprits[1])
+	if (!cub->img.sprits[0] || !cub->img.sprits[1] || !cub->img.sprits[2] || \
+	!cub->img.sprits[3] || !cub->img.sprits[4] || !cub->img.sprits[5])
 		printerror_message("!!");
 }
 

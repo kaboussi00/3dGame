@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:39 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/29 05:41:10 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:17:07 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	copie_with_spaces(t_cub *cub)
 	if (!cub->copie)
 		return ;
 	cub->copie[0] = charge_space(' ', cub->len + 2);
+	if (!cub->copie[0])
+		printerror_message("malloc ");
 	while (cub->i < cub->line - 6)
 	{
 		x = 1;
@@ -39,6 +41,8 @@ void	copie_with_spaces(t_cub *cub)
 		cub->j++;
 	}
 	cub->copie[cub->j] = charge_space(' ', cub->len + 2);
+	if (!cub->copie[cub->j])
+		printerror_message("malloc ");
 	cub->copie[cub->j + 1] = NULL;
 }
 

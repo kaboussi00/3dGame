@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:38:53 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/29 12:38:55 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:07:10 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ void	convert_into_map_h(t_ray *ray_data, t_cub *cub)
 			ray_data->y_hor += ray_data->y_step_h;
 		}
 		else
-		{
 			break ;
-		}
 	}
 }
 

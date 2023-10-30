@@ -6,53 +6,11 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/29 18:37:00 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 12:14:21 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	ft_get_table_door(t_cub *cub, int flags)
-{
-	if (flags)
-	{
-		if (cub->map[(int)(cub->player.posx_inmap / 64)
-			+ 1][(int)(cub->player.posy_inmap / 64)] == 'D')
-			cub->map[(int)(cub->player.posx_inmap / 64)
-				+ 1][(int)(cub->player.posy_inmap / 64)] = 'd';
-		if (cub->map[(int)(cub->player.posx_inmap / 64)
-			- 1][(int)(cub->player.posy_inmap / 64)] == 'D')
-			cub->map[(int)(cub->player.posx_inmap / 64)
-				- 1][(int)(cub->player.posy_inmap / 64)] = 'd';
-		if (cub->map[(int)(cub->player.posx_inmap
-				/ 64)][(int)(cub->player.posy_inmap / 64) + 1] == 'D')
-			cub->map[(int)(cub->player.posx_inmap
-					/ 64)][(int)(cub->player.posy_inmap / 64) + 1] = 'd';
-		if (cub->map[(int)(cub->player.posx_inmap
-				/ 64)][(int)(cub->player.posy_inmap / 64) - 1] == 'D')
-			cub->map[(int)(cub->player.posx_inmap
-					/ 64)][(int)(cub->player.posy_inmap / 64) - 1] = 'd';
-	}
-	else
-	{
-		if (cub->map[(int)(cub->player.posx_inmap / 64)
-			+ 1][(int)(cub->player.posy_inmap / 64)] == 'd')
-			cub->map[(int)(cub->player.posx_inmap / 64)
-				+ 1][(int)(cub->player.posy_inmap / 64)] = 'D';
-		if (cub->map[(int)(cub->player.posx_inmap / 64)
-			- 1][(int)(cub->player.posy_inmap / 64)] == 'd')
-			cub->map[(int)(cub->player.posx_inmap / 64)
-				- 1][(int)(cub->player.posy_inmap / 64)] = 'D';
-		if (cub->map[(int)(cub->player.posx_inmap
-				/ 64)][(int)(cub->player.posy_inmap / 64) + 1] == 'd')
-			cub->map[(int)(cub->player.posx_inmap
-					/ 64)][(int)(cub->player.posy_inmap / 64) + 1] = 'D';
-		if (cub->map[(int)(cub->player.posx_inmap
-				/ 64)][(int)(cub->player.posy_inmap / 64) - 1] == 'd')
-			cub->map[(int)(cub->player.posx_inmap
-					/ 64)][(int)(cub->player.posy_inmap / 64) - 1] = 'D';
-	}
-}
 
 unsigned int	*get_table(t_cub *cub, int x)
 {
@@ -101,8 +59,7 @@ void	draw_wall_with_textures(t_cub *cub, double height, int x)
 		tex_x = fmod(cub->ray_data[x].x_hor, cub->north_img.height);
 	cub->table = get_table(cub, x);
 	texture_step = (double)cub->north_img.height / height;
-	texture_pos = ((cub->start - (HEIGHT / 2) + (height / 2)) * texture_step);
-	texture_pos = fmin(fmax(texture_pos, 0), cub->north_img.height - 1);
+	texture_pos = ((cub->start - (int)((HEIGHT / 2) - (height / 2))) * texture_step);
 	y = cub->start;
 	while (y < cub->end)
 	{

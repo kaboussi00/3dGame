@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:21 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/29 06:08:16 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 02:48:32 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	initial_variable(t_cub *cub)
 	cub->j = 0;
 	cub->len = 0;
 	cub->line = 0;
+	cub->sprite = 0;
 	cub->player.walk_direction = 0;
 	cub->player.turn_direction = 0;
 	cub->player.move_speed = 30.0;
