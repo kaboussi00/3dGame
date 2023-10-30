@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 02:37:54 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:40:32 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 {
 	t_cub	*cub;
 
-	// atexit(fu);
+	atexit(fu);
 	cub = malloc(sizeof(t_cub));
 	if (!cub)
 		return (0);

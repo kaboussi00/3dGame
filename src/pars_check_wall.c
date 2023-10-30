@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:39 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 10:17:07 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:51:41 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	check_wall(t_cub *cub)
 		y = 0;
 		while (cub->copie[x][y])
 		{
-			if (cub->copie[x][y] == '0'
+			if (cub->copie[x][y] == '0' || cub->copie[x][y] == 'D'
 				|| cub->copie[x][y] == cub->map[cub->pos_i][cub->pos_j])
 			{
 				if (cub->copie[x][y + 1] == ' ' || cub->copie[x][y - 1] == ' '

@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:25:50 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 02:42:33 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 13:12:40 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <unistd.h>
 
 # define SZ 64
-# define MOUSE_SENSITIVITY 0.001
+# define MOUSE_SENSITIVITY 0.002
 # define WIDTH 1000
 # define HEIGHT 500
 # define NUM_RAYS WIDTH
