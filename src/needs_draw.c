@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:34 by rel-isma          #+#    #+#             */
-/*   Updated: 2023/10/30 15:31:26 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:43:29 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	draw_wall_with_textures(t_cub *cub, double height, int x)
 	cub->table = get_table(cub, x);
 	texture_step = (double)cub->north_img.height / height;
 	texture_pos = ((cub->start - (int)((HEIGHT / 2)
-		- (height / 2))) * texture_step);
+					- (height / 2))) * texture_step);
 	y = cub->start;
 	while (y < cub->end)
 	{

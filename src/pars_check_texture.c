@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_check_texture.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaboussi <kaboussi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:09:45 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/27 20:21:36 by kaboussi         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:37:15 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	check_color(char *str)
 	i = 0;
 	while (str[i])
 	{
+		if (i > 11)
+			printerror_message("invalid color\n");
 		if (str[i] == ',' && str[i + 1] == '\0')
 			printerror_message("invalid color\n");
 		i++;

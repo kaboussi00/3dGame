@@ -6,7 +6,7 @@
 /*   By: rel-isma <rel-isma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:08:17 by kaboussi          #+#    #+#             */
-/*   Updated: 2023/10/30 18:40:32 by rel-isma         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:42:57 by rel-isma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 	cub->mlx_window = mlx_new_window(cub->mlx, WIDTH, HEIGHT, "my map <3");
 	cub->img.img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel,
-		&cub->img.line_length, &cub->img.endian);
+			&cub->img.line_length, &cub->img.endian);
 	init_textures(cub);
 	init_img(cub);
 	render(cub);
